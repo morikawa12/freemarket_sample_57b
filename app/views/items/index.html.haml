@@ -13,6 +13,7 @@
           =fa_icon "list-ul"
           %span カテゴリーから探す
         %li.brand-box
+          = image_tag "brand-logo", size: "18x13"
           %span ブランドから探す
       %ul.header-box__under__right
         %li.sign-in-box
@@ -21,7 +22,25 @@
         %li.log-in-box
           .log-in-box__btn
             =link_to 'ログイン', '#'
-%ul.slide-image
-  %li=image_tag "slide-back-image.png", class: "slide-back-image active"
-  %li=image_tag "slide-back-image2.png", class: "slide-back-image"
+.slick_container
+  %ul.slider
+    %li=image_tag "slide-back-image.png", class: "slide-back-image"
+    %li=image_tag "slide-back-image2.png", class: "slide-back-image"
+.items-zone
   
+.footer
+  = image_tag "mercari.png",size: "132x35"
+
+
+
+
+
+:javascript
+  $(document).on('turbolinks:load', function(){
+    $('.slider').slick({
+      autoplay:true,
+      autoplaySpeed:4000,
+      dots:true,
+      dotsClass:'slide-dots'
+    });
+  });
