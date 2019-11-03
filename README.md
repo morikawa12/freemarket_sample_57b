@@ -61,7 +61,7 @@ https://gyazo.com/564cfa58402f3b12f5b500ff822082aa
 |expiration_month|string|null: true|
 |expiration_year|string|null: true|
 |security_code|string|null: true|
-|user_id|references|foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user, inverse_of: :profile, optional: true
@@ -79,7 +79,7 @@ https://gyazo.com/564cfa58402f3b12f5b500ff822082aa
 |block|string|null: false|
 |building|string|null: true|
 |home_phone|string|null: false|
-|user_id|references|foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user, inverse_of: :address, optional: true
@@ -89,8 +89,8 @@ https://gyazo.com/564cfa58402f3b12f5b500ff822082aa
 |Column|Type|Options|
 |------|----|-------|
 |evaluation|integer|null: false|
-|seller_id|references|foreign_key: true|
-|buyer_id|references|foreign_key: true
+|seller_id|references|null: false, foreign_key: true|
+|buyer_id|references|null: false, foreign_key: true
 
 ### Association
 - belongs_to :deal
@@ -110,11 +110,11 @@ https://gyazo.com/564cfa58402f3b12f5b500ff822082aa
 |shipping|integer|null: false|
 |arrival|integer|null: false|
 |like|integer|null: false|
-|brand_id|references|foreign_key: true|
-|size_id|references|foreign_key: true|
-|first_category_id|references|foreign_key: true|
-|second_category_id|references|foreign_key: true|
-|third_category_id|references|foreign_key: true|
+|brand_id|references|null: false, foreign_key: true|
+|size_id|references|null: false, foreign_key: true|
+|first_category_id|references|null: false, foreign_key: true|
+|second_category_id|references|null: false, foreign_key: true|
+|third_category_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :first_category
@@ -141,8 +141,8 @@ https://gyazo.com/564cfa58402f3b12f5b500ff822082aa
 |Column|Type|Options|
 |------|----|-------|
 |comment|string|null: false|
-|item_id|references|foreign_key: true|
-|user_id|references|foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -151,8 +151,8 @@ https://gyazo.com/564cfa58402f3b12f5b500ff822082aa
 ## likesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|foreign_key: true|
-|item_id|references|foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -161,9 +161,9 @@ https://gyazo.com/564cfa58402f3b12f5b500ff822082aa
 ## dealsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item_id|references|foreign_key: true|
-|seller_id|references|foreign_key: true|
-|buyer_id|references|foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
+|seller_id|references|null: false, foreign_key: true|
+|buyer_id|references|null: false, foreign_key: true|
 
 ### Association
 - has_one :rate
@@ -184,7 +184,7 @@ https://gyazo.com/564cfa58402f3b12f5b500ff822082aa
 |Column|Type|Options|
 |------|----|-------|
 |category_name|string|null: false|
-|first_category_id|references|foreign_key: true|
+|first_category_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :first_category
@@ -195,7 +195,7 @@ https://gyazo.com/564cfa58402f3b12f5b500ff822082aa
 |Column|Type|Options|
 |------|----|-------|
 |category_name|string|null: false|
-|second_category_id|references|foreign_key: true|
+|second_category_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :second_category
@@ -206,7 +206,7 @@ https://gyazo.com/564cfa58402f3b12f5b500ff822082aa
 |Column|Type|Options|
 |------|----|-------|
 |size|string|null: false|
-|third_category_id|references|foreign_key: true|
+|third_category_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :third_category
@@ -223,7 +223,7 @@ https://gyazo.com/564cfa58402f3b12f5b500ff822082aa
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item_id|references|foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
 |image-url|string|null: false|
 
 ### Association
