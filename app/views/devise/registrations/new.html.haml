@@ -1,0 +1,39 @@
+.registration
+  .registration-top
+    = render "devise/shared/registration-headers"
+
+  .registration-menu
+    %h2.registration-menu__head
+      会員情報入力
+    .registration-menu__inner
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .signup-form
+          .signup-form__group
+            %label ニックネーム
+            %span 必須
+            = f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "例) メルカリ太郎", class: "signup-form__group-inner", required: ""
+          .signup-form__group
+            %label メールアドレス
+            %span 必須
+            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "signup-form__group-inner", required: ""
+          .signup-form__group
+            %label パスワード
+            %span 必須
+            - if @minimum_password_length
+              %em
+            = f.password_field :password, autocomplete: "new-password", placeholder: "6文字以上", class: "signup-form__group-inner", required: ""
+          .signup-form__group
+            %label パスワード(確認)
+            %span 必須
+            = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "6文字以上", class: "signup-form__group-inner", required: ""
+          .signup-form
+            .signup-form__group
+          .actions
+            = f.submit "次へ進む", class: "btn-red btn-default"
+          .signup-form__group.text-right
+            %p
+              = link_to "本人情報の登録について>", "https://www.mercari.com/jp/help_center/article/423/", target: "_blank", class: "text-right__inner"
+  
+  .registration-under
+    = render "devise/shared/registration-footers"
