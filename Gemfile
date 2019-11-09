@@ -79,6 +79,4 @@ gem 'rubocop'
 gem 'kaminari'
 gem 'erb2haml'
 gem 'dotenv-rails'
-
-
-
+gem "recaptcha", require: "recaptcha/rails"
