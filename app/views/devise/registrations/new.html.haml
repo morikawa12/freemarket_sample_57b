@@ -27,9 +27,8 @@
             %label パスワード(確認)
             %span 必須
             = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "6文字以上", class: "signup-form__group-inner", required: ""
-          .signup-form
-            .signup-form__group
-            = recaptcha_tags 
+          .signup-form__group
+            = recaptcha_tags  callback: 'recaptchaCallbackFunction'
           .actions
             = f.submit "次へ進む", class: "btn-red btn-default"
           .signup-form__group.text-right
