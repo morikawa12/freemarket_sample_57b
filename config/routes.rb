@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'comments/index'
+  resources :comments, only: [:index]
   devise_for :users
   
   root 'items#index'
