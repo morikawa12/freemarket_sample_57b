@@ -1,0 +1,80 @@
+.wrapper
+  .exhibit-btn
+    .exhibit-btn__box
+      %p 出品
+      .exhibit-btn-icon
+        =link_to ("#") do
+          =fa_icon "camera"
+
+
+
+  = render partial: 'header'
+
+
+  .slick_container
+    %ul.slider
+      %li=image_tag "slide-back-image.png", class: "slide-back-image"
+      %li=image_tag "slide-back-image2.png", class: "slide-back-image"
+
+  .items-contents
+    .items-contents-category
+      %h2 人気のカテゴリー
+      %ul.popularity-select
+        %li.popularity-select-detail
+          =link_to 'レディース', '#'
+        %li.popularity-select-detail
+          =link_to 'メンズ', '#'
+        %li.popularity-select-detail
+          =link_to '家電・スマホ・カメラ', '#'
+        %li.popularity-select-detail
+          =link_to 'おもちゃ・ホビー・グッズ', '#'
+  .items-list
+    .items-list__style
+      .items-list-block
+        .items-list-name
+          %h3 レディース新着アイテム
+        %ul.items-list-image-block
+          = render partial: 'items'
+          = render partial: 'items'
+          = render partial: 'items'
+          = render partial: 'items'
+          = render partial: 'items'
+          = render partial: 'items'
+          = render partial: 'items'
+          = render partial: 'items'
+          = render partial: 'items'
+          = render partial: 'items'
+
+  .items-contents
+    .items-contents-brand
+      %h2 人気のブランド
+      %ul.popularity-select
+        %li.popularity-select-detail
+          =link_to 'シャネル', '#'
+        %li.popularity-select-detail
+          =link_to 'ルイヴィトン', '#'
+        %li.popularity-select-detail
+          =link_to 'シュプリーム', '#'
+        %li.popularity-select-detail
+          =link_to 'ナイキ', '#'
+  .items-list
+    .items-list__style
+      .items-list-block
+        .items-list-name
+          %h3 シャネル新着アイテム
+        %ul.items-list-image-block
+          = render partial: 'items'
+          = render partial: 'items'
+          = render partial: 'items'
+          = render partial: 'items'
+          = render partial: 'items'
+          = render partial: 'items'
+          = render partial: 'items'
+          = render partial: 'items'
+          = render partial: 'items'
+          = render partial: 'items'
+
+
+
+  = render partial: 'footer'
+
