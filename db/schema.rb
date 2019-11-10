@@ -30,6 +30,45 @@ ActiveRecord::Schema.define(version: 2019_11_10_033820) do
   create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
+ActiveRecord::Schema.define(version: 2019_11_02_920420) do
+
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.text "description", null: false
+    t.integer "status", null: false
+    t.integer "prefecture", null: false
+    t.integer "fee", null: false
+    t.integer "size", null: false
+    t.integer "shipping", null: false
+    t.integer "arrival", null: false
+    t.integer "like", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_items_on_name"
+
+ActiveRecord::Schema.define(version: 2019_11_09_115957) do
+
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "family_name", null: false
+    t.string "first_name", null: false
+    t.string "family_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.integer "birth_year", null: false
+    t.integer "birth_month", null: false
+    t.integer "birth_day", null: false
+    t.string "mobile_phone", null: false
+    t.string "profile_image"
+    t.text "profile_content"
+    t.string "card_number"
+    t.string "expiration_month"
+    t.string "expiration_year"
+    t.string "security_code"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -45,4 +84,5 @@ ActiveRecord::Schema.define(version: 2019_11_10_033820) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "profiles", "users"
 end
