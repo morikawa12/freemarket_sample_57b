@@ -27,12 +27,6 @@ ActiveRecord::Schema.define(version: 2019_11_10_033820) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-
-ActiveRecord::Schema.define(version: 2019_11_02_920420) do
-
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.integer "price", null: false
@@ -47,8 +41,12 @@ ActiveRecord::Schema.define(version: 2019_11_02_920420) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_items_on_name"
+  end
 
-ActiveRecord::Schema.define(version: 2019_11_09_115957) do
+  create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "family_name", null: false
