@@ -27,9 +27,28 @@
             .exhibition_sell_box__left
               %p 商品の詳細
             .exhibition_sell_box__right
-              %h2 カテゴリー
-              %span 必須
-            = f.collection_select :category_id, @parents, :id, :name
-
+              .exhibition_sell_box__right__form
+                %h2 カテゴリー
+                %span 必須
+                = f.collection_select :category_id, @parents, :id, :name, {prompt: "---"}, class: :exhibition_select_field
+              .exhibition_sell_box__right__form
+                %h2 商品の状態
+                %span 必須
+                = f.select :status, ["新品、未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れあり","傷や汚れあり","全体的に状態が悪い"], {prompt: "---"}, class: :exhibition_select_field
+          .exhibition_sell_box
             .exhibition_sell_box__left
-              %p 商品の状態
+              %p 発送について
+              =link_to '?','https://www.mercari.com/jp/help_center/article/64/'
+            .exhibition_sell_box__right
+              .exhibition_sell_box__right__form
+                %h2 発送料の負担
+                %span 必須
+                = f.select :fee, ["送料込み(出品者負担)","着払い(購入者負担)"], {prompt: "---"}, class: :exhibition_select_field
+              .exhibition_sell_box__right__form
+                %h2 発送元の地域
+                %span 必須
+                = f.select :prefecture, [], {prompt: "---"}, class: :exhibition_select_field
+              .exhibition_sell_box__right__form
+                %h2 発送までの日数
+                %span 必須
+                = f.select :prefecture, ["1~2日で発送","2~3日で発送","3~7日で発送"], {prompt: "---"}, class: :exhibition_select_field

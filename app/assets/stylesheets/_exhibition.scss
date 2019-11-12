@@ -45,6 +45,7 @@
 .exhibition_sell_box{
   padding: 40px;
   border-bottom:solid 1.5px #f5f5f5;
+  display: flow-root;
 }
 
 .exhibition_sell_box p{
@@ -73,6 +74,8 @@
 }
 
 .exhibition_sell_box__right{
+  float: right;
+  width: 400px;
   & h2{
     font-weight: bold;
     font-size: 16px;
@@ -90,9 +93,24 @@
   }
   & input{
     display: block;
-    
+
   }
 }
+
+.exhibition_sell_box__left{
+  float: left;
+  & a{
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #0099e8;
+    color: #fff;
+    line-height: 14px;
+    font-size: 12px;
+    text-align: center;
+    padding: 0 3px;
+  }
+} 
 
 
 .exhibition_drop_upload_box{
@@ -127,10 +145,20 @@
   box-sizing: border-box;
 }
 
-.exhibition_sell_box__right{
-  float: right;
-  width: 400px;
+.exhibition_select_field{
+  display: block;
+  height: 48px;
+  width: 100%;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 8px 0 40px;
+  cursor: pointer;
 }
+
 
 #item_name{
   height: 48px;
