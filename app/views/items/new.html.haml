@@ -6,11 +6,31 @@
       .exhibition_field__content__inner
         .exhibition_title
           %h1 商品の情報を入力
-        .exhibition_upload_box
-          .exhibition_upload_box__title
-            %h2 出品画像
-            %span 必須
-          %p 最大10枚までアップロードできます
-          .exhibition_drop_upload_box
-            = fa_icon 'camera', class: :exhibition_camera_icon
-        .
+        = form_for @item do |f|
+          .exhibition_sell_box
+            .exhibition_sell_box__title
+              %h2 出品画像
+              %span 必須
+            %p 最大10枚までアップロードできます
+            .exhibition_drop_upload_box
+              = fa_icon 'camera', class: :exhibition_camera_icon
+          .exhibition_sell_box
+            .exhibition_sell_box__title
+              %h2 商品名
+              %span 必須
+            = f.text_field :name, class: :exhibition_input_field, placeholder: '商品名（必須４０文字まで）'
+            .exhibition_sell_box__title
+              %h2 商品の説明
+              %span 必須
+            = f.text_area :description, class: :exhibition_input_field, placeholder: '商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年ごろに1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
+          .exhibition_sell_box
+            .exhibition_sell_box__left
+              %p 商品の詳細
+            .exhibition_sell_box__right
+              %h2 カテゴリー
+              %span 必須
+              -# 要カテゴリーに変更
+              = f.select :name,{class:'exhibition_input_field'}
+
+            .exhibition_sell_box__left
+              %p 商品の状態
