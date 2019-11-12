@@ -29,8 +29,7 @@
             .exhibition_sell_box__right
               %h2 カテゴリー
               %span 必須
-              -# 要カテゴリーに変更
-              = f.select :name,{class:'exhibition_input_field'}
+            = f.collection_select :category_id, @parents, :id, :name
 
             .exhibition_sell_box__left
               %p 商品の状態
