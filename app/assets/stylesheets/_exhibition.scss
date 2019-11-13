@@ -2,6 +2,7 @@
   height: 100%;
   width: 100%;
   background-color: #f5f5f5;
+  padding: 0 0 220px;
 }
 
 .exhibition_header{
@@ -46,14 +47,13 @@
   padding: 40px;
   border-bottom:solid 1.5px #f5f5f5;
   display: flow-root;
+  & p{
+    font-size: 14px;
+    color: #333333;
+    display: inline-block;
+  }
 }
 
-.exhibition_sell_box p{
-  font-size: 14px;
-  margin: 8px 0px 0px;
-  color: #333333;
-  display: inline-block;
-}
 
 .exhibition_sell_box__title{
   & h2{
@@ -93,7 +93,16 @@
   }
   & input{
     display: block;
-
+  }
+  & li{
+    padding: 7px 0;
+    height: 48px;
+  }
+  &__block{
+    border-bottom: 1px solid #ccc;
+  }
+  &__block2{
+    border-bottom: 1px solid #ccc;
   }
 }
 
@@ -109,6 +118,11 @@
     font-size: 12px;
     text-align: center;
     padding: 0 3px;
+  }
+  & p{
+    color: #888;
+    font-size: 14px;
+    font-weight: bold;
   }
 } 
 
@@ -159,6 +173,69 @@
   cursor: pointer;
 }
 
+.exhibition_price_field{
+  height: 48px;
+  width: 160px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.exhibition_price_box_left{
+  float: left;
+  line-height: 48px;
+}
+
+
+.exhibition_price_box_right{
+  float: right;
+  display: inline-flex;
+  & p{
+    padding: 10px;
+  }
+  & h2 {
+    padding: 10px;
+  }
+}
+
+
+.precautions-field{
+  line-height: 1.5;
+  color: #333333;
+  font-size: 14px;
+  & a{
+    text-decoration: none;
+    color: #0099e8;
+  }
+}
+
+.exhibit-button-field{
+  & input{
+  margin: 40px 0 0;
+  height: 50px;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+  width: 100%;
+  cursor: pointer;
+  }
+  & a{
+    background: #aaa;
+    border: 1px solid #aaa;
+    color: #fff;
+    height: 50px;
+    width: 45%;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    line-height: 50px;
+    margin: 24px auto 0;
+  }
+}
 
 #item_name{
   height: 48px;
@@ -168,4 +245,12 @@
 
 #item_description{
   height: 160px;
+}
+
+#item_status{
+  margin: 8px 0 0;
+}
+
+#item_arrival{
+  margin: 8px 0 0;
 }
