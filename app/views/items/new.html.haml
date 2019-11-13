@@ -14,6 +14,8 @@
             %p 最大10枚までアップロードできます
             .exhibition_drop_upload_box
               = fa_icon 'camera', class: :exhibition_camera_icon
+            = f.fields_for :images, @item.images.build do |image|
+              = image.file_field :image_url, type: "file"
           .exhibition_sell_box
             .exhibition_sell_box__title
               %h2 商品名
