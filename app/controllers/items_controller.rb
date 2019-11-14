@@ -25,6 +25,22 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find(params[:child_id]).children
   end
 
+  def get_size
+    #JSから送られてきた、孫カテゴリーのidを元に、選択された孫カテゴリーのレコードを取得
+    selected_grandchild = Category.find("#{params[:grandchild_id]}") 
+    #孫カテゴリーと紐付くサイズ（親）があれば取得
+    if related_size_parent = selected_grandchild.products_sizes[0]
+      #紐づいたサイズ（親）の子供の配列を取得
+      @sizes = related_size_parent.children 
+    else
+      selected_child = Category.find("#{params[:grandchild_id]}").parent #選択された孫カテゴリーの親（子カテゴリー）のレコードを取得
+      if related_size_parent = selected_child.products_sizes[0] #子カテゴリーと紐付くサイズ（親）があれば取得
+         @sizes = related_size_parent.children #紐づいたサイズ（親）の子供の配列を取得
+      end
+   end
+
+  end
+
 
 
 
