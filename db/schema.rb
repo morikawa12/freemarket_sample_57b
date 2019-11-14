@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_12_174116) do
+ActiveRecord::Schema.define(version: 2019_11_14_131449) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "relative_family_name", null: false
@@ -78,9 +78,6 @@ ActiveRecord::Schema.define(version: 2019_11_12_174116) do
     t.string "first_name", null: false
     t.string "family_name_kana", null: false
     t.string "first_name_kana", null: false
-    t.integer "birth_year", null: false
-    t.integer "birth_month", null: false
-    t.integer "birth_day", null: false
     t.string "mobile_phone", null: false
     t.string "profile_image"
     t.text "profile_content"
@@ -91,6 +88,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_174116) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "birthday", 
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
