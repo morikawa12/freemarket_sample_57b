@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :set_parents, only: [:new, :create,]
+  # before_action :set_parents, only: [:new, :create,]
 
   def index
     
@@ -11,7 +11,23 @@ class ItemsController < ApplicationController
     @item.build_brand
     @item.build_size
     @item.build_category
+    @parents = Category.all.order("id ASC").limit(13)
   end
+
+  def get_category_children
+    #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
+    @category_children = Category.find(params[:parent_id]).children
+  end
+
+  # 子カテゴリーが選択された後に動くアクション
+  def get_category_grandchildren
+    #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
+    @category_grandchildren = Category.find(params[:child_id]).children
+  end
+
+
+
+
 
   def create
     @item = Item.new(item_params)
@@ -33,7 +49,7 @@ class ItemsController < ApplicationController
   end
 
   def set_parents
-    @parents = Category.all.order("id ASC").limit(13)
+  
   end
 
 end

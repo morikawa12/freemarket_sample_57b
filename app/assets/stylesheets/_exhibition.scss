@@ -103,6 +103,9 @@
   &__block2{
     border-bottom: 1px solid #ccc;
   }
+  &__form{
+    padding-top: 40px;
+  }
 }
 
 .exhibition_sell_box__left{
@@ -168,7 +171,21 @@
   background: 0;
   font-size: 16px;
   line-height: 1.5;
-  margin: 8px 0 40px;
+  margin: 8px 0 0  ;
+  cursor: pointer;
+}
+
+#item_category_id{
+  display: block;
+  height: 48px;
+  width: 100%;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 8px 0;
   cursor: pointer;
 }
 
