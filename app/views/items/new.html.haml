@@ -48,9 +48,10 @@
               =link_to '?','https://www.mercari.com/jp/help_center/article/68/'
             .exhibition_sell_box__right
               .exhibition_sell_box__right__form
-                %h2 発送料の負担
-                %span 必須
-                = f.select :fee, ["送料込み(出品者負担)","着払い(購入者負担)"], {prompt: "---"}, class: :exhibition_select_field
+                .delivery_select_field
+                  %h2 発送料の負担
+                  %span 必須
+                  = f.select :fee, options_for_select(@fees.map{|c|[c[:fee], c[:id]]}), {prompt: "---"}, class: :exhibition_select_field
               .exhibition_sell_box__right__form
                 %h2 発送元の地域
                 %span 必須

@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
     @item.build_category
     @parents = Category.all.order("id ASC").limit(13)
     @sizes = Size.all
+    @fees = [{id: 1, fee: "送料込み(出品者負担)"}, {id: 2, fee: "着払い(購入者負担)"}]
   end
 
   def get_category_children
@@ -27,7 +28,6 @@ class ItemsController < ApplicationController
   end
 
   def get_size
-    #JSから送られてきた、孫カテゴリーのidを元に、選択された孫カテゴリーのレコードを取得
     grandchild_id = Category.find(params[:grandchild_id]).id
         # 大人の洋服サイズ
     if grandchild_id.between?(36,95) || grandchild_id.between?(106,107) || grandchild_id.between?(204,218) || grandchild_id.between?(224,266) || grandchild_id.between?(289,292) || grandchild_id.between?(359,360)
@@ -50,7 +50,9 @@ class ItemsController < ApplicationController
     end
   end
 
-
+  def get_shipping
+    @shipping_children = Shipping.find(params[:fee_id]).children
+  end
 
 
 
@@ -66,7 +68,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :description, :status, :prefecture, :fee, :arrival, :category_id, :size_id,
+    params.require(:item).permit(:name, :price, :description, :status, :prefecture, :fee, :arrival, :category_id, :size_id,:shipping_id,
     size_attributes: [:id, :size, :category_id],
     brand_attributes: [:id, :name],
     category_attributes: [:id, :name],
