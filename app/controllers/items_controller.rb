@@ -9,8 +9,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.build_brand
-    @item.build_size
-    @item.build_category
     @parents = Category.all.order("id ASC").limit(13)
     @sizes = Size.all
     @fees = [{id: 1, fee: "送料込み(出品者負担)"}, {id: 2, fee: "着払い(購入者負担)"}]
@@ -69,9 +67,7 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :price, :description, :status, :prefecture, :fee, :arrival, :category_id, :size_id,:shipping_id,
-    size_attributes: [:id, :size, :category_id],
     brand_attributes: [:id, :name],
-    category_attributes: [:id, :name],
     images_attributes: [:id, :image_url])
   end
 
