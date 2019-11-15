@@ -5,6 +5,7 @@ $(function(){
     return html;
   }
 
+
   function appendChidrenBox(insertHTML){
     var childSelectHtml = '';
     childSelectHtml = ` <div class="children_category_wrapper">
@@ -15,6 +16,7 @@ $(function(){
     $('.category_wrapper').append(childSelectHtml);
   }
 
+
   function appendGrandChidrenBox(insertHTML){
     var grandchildselectHtml = '';
     grandchildselectHtml = `<div class="grandchildren_category_wrapper">
@@ -24,6 +26,7 @@ $(function(){
                             </div>`;
     $('.category_wrapper').append(grandchildselectHtml);
   }
+
 
   // 親カテゴリーの選択イベント
   $('#item_category_id').on('change', function(){
@@ -82,7 +85,8 @@ $(function(){
       // 子カテゴリが初期値になった時、孫以下を削除
       $('.grandchildren_category_wrapper').remove(); 
     }
-  })
+  });
+
 });
 
   

@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
     @item.build_size
     @item.build_category
     @parents = Category.all.order("id ASC").limit(13)
+    @sizes = Size.all
   end
 
   def get_category_children
@@ -27,18 +28,12 @@ class ItemsController < ApplicationController
 
   def get_size
     #JSから送られてきた、孫カテゴリーのidを元に、選択された孫カテゴリーのレコードを取得
-    selected_grandchild = Category.find("#{params[:grandchild_id]}") 
-    #孫カテゴリーと紐付くサイズ（親）があれば取得
-    if related_size_parent = selected_grandchild.products_sizes[0]
-      #紐づいたサイズ（親）の子供の配列を取得
-      @sizes = related_size_parent.children 
-    else
-      selected_child = Category.find("#{params[:grandchild_id]}").parent #選択された孫カテゴリーの親（子カテゴリー）のレコードを取得
-      if related_size_parent = selected_child.products_sizes[0] #子カテゴリーと紐付くサイズ（親）があれば取得
-         @sizes = related_size_parent.children #紐づいたサイズ（親）の子供の配列を取得
-      end
-   end
-
+    grandchild_id = Category.find(params[:grandchild_id]).id
+    if grandchild_id < 3000
+      @sizes = Size.find(1).children
+    end
+    # @select_ladyshoose_size = Size.find(2).children
+    # @select_messhoose_size = Size.find(3).children
   end
 
 
@@ -57,7 +52,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :description, :status, :prefecture, :fee, :arrival, :category_id,
+    params.require(:item).permit(:name, :price, :description, :status, :prefecture, :fee, :arrival, :category_id, :size_id,
     size_attributes: [:id, :size, :category_id],
     brand_attributes: [:id, :name],
     category_attributes: [:id, :name],

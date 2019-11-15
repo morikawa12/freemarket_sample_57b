@@ -34,10 +34,9 @@
                 %span 必須
                 .parent_category_wrapper
                   = f.collection_select :category_id, @parents, :id, :name, {prompt: "---"}, id: :item_category_id
-              .exhibition_sell_box__right__form
-                %h2 商品の状態
-                %span 必須
-                = f.select :status, ["新品、未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れあり","傷や汚れあり","全体的に状態が悪い"], {prompt: "---"}, class: :exhibition_select_field
+              %h2 商品の状態
+              %span 必須
+              = f.select :status, ["新品、未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れあり","傷や汚れあり","全体的に状態が悪い"], {prompt: "---"}, class: :exhibition_select_field
           .exhibition_sell_box
             .exhibition_sell_box__left
               %p 発送について
