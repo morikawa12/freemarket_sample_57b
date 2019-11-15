@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :category
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images
+  has_one :shipping
   
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
