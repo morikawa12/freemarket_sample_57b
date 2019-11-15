@@ -44,6 +44,8 @@ $(function(){
         $('.children_category_wrapper').remove(); 
         $('.grandchildren_category_wrapper').remove(); 
         $('.size_select_wrapper').remove();
+        $('.brand_input_field').css('display','none');
+        $('#item_brand_attributes_name').val("");
         var insertHTML = '';
         children.forEach(function(children){
           insertHTML += appendOption(children);
@@ -58,6 +60,8 @@ $(function(){
       $('.children_category_wrapper').remove(); 
       $('.grandchildren_category_wrapper').remove(); 
       $('.size_select_wrapper').remove();
+      $('.brand_input_field').css('display','none');
+      $('#item_brand_attributes_name').val("");
     }
   });
   // 子カテゴリーの選択イベント
@@ -75,6 +79,8 @@ $(function(){
       .done(function(grandchild){
         $('.grandchildren_category_wrapper').remove(); 
         $('.size_select_wrapper').remove();
+        $('.brand_input_field').css('display','none');
+        $('#item_brand_attributes_name').val("");
         var insertHTML = '';
         grandchild.forEach(function(grandchild){
           insertHTML += appendOption(grandchild);
@@ -88,6 +94,8 @@ $(function(){
       // 子カテゴリが初期値になった時、孫以下を削除
       $('.grandchildren_category_wrapper').remove(); 
       $('.size_select_wrapper').remove();
+      $('.brand_input_field').css('display','none');
+      $('#item_brand_attributes_name').val("");
     }
   });
 

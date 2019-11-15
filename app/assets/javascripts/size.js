@@ -23,7 +23,6 @@ $(function(){
   // 孫カテゴリー選択後のイベント
   $('.category_wrapper').on('change','#grandchild_category_id', function(){
     var grandchildID = document.getElementById('grandchild_category_id').value;
-    console.log(grandchildID)
     if (grandchildID != ""){
       $.ajax({
         url: 'get_size',
@@ -32,8 +31,9 @@ $(function(){
         dataType: 'json'
       })
       .done(function(sizes){
-        console.log(sizes)
+        $('.brand_input_field').css('display','block');
         $('.size_select_wrapper').remove();
+        $('#item_brand_attributes_name').val("");
         if(sizes.length > 1){
         var insertHTML = '';
         sizes.forEach(function(size){
@@ -49,6 +49,8 @@ $(function(){
       })
     }else{
       $('.size_select_wrapper').remove();
+      $('.brand_input_field').css('display','none');
+      $('#item_brand_attributes_name').val("");
     }
   });
 });
