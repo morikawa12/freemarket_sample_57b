@@ -29,11 +29,25 @@ class ItemsController < ApplicationController
   def get_size
     #JSから送られてきた、孫カテゴリーのidを元に、選択された孫カテゴリーのレコードを取得
     grandchild_id = Category.find(params[:grandchild_id]).id
-    if grandchild_id < 3000
+        # 大人の洋服サイズ
+    if grandchild_id.between?(36,95) || grandchild_id.between?(106,107) || grandchild_id.between?(204,218) || grandchild_id.between?(224,266) || grandchild_id.between?(289,292) || grandchild_id.between?(359,360)
       @sizes = Size.find(1).children
+        # 女性の靴サイズ
+    elsif grandchild_id.between?(96,104)
+      @sizes = Size.find(2).children
+        # 男性の靴サイズ
+    elsif grandchild_id.between?(268,274)
+      @sizes = Size.find(3).children
+        # キッズの洋服小サイズ
+    elsif grandchild_id.between?(364,389)
+      @sizes = Size.find(4).children
+        # キッズの洋服大サイズ
+    elsif grandchild_id.between?(391,429)
+      @sizes = Size.find(5).children
+        # キッズの靴サイズ
+    elsif grandchild_id.between?(431,434)
+      @sizes = Size.find(6).children
     end
-    # @select_ladyshoose_size = Size.find(2).children
-    # @select_messhoose_size = Size.find(3).children
   end
 
 
