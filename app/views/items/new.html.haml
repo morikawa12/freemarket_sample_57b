@@ -12,10 +12,19 @@
               %h2 出品画像
               %span 必須
             %p 最大10枚までアップロードできます
-            .exhibition_drop_upload_box
-              = fa_icon 'camera', class: :exhibition_camera_icon
-            = f.fields_for :images, @item.images.build do |image|
-              = image.file_field :image_url, type: "file"
+            .image_upload_file
+              .image_upload_field
+                = image_tag @item.images.build.image_url.to_s, id: :img_url_prev
+                .image_upload_field__edit-btn
+                  編集
+                .image_upload_field__delete-btn
+                  削除
+              %label
+                .exhibition_drop_upload_box
+                  %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+                  = fa_icon 'camera', class: :exhibition_camera_icon
+                  = f.fields_for :images, @item.images.build do |image|
+                    = image.file_field :image_url, type: "file", class: :image_upload_btn
           .exhibition_sell_box
             .exhibition_sell_box__title
               %h2 商品名
@@ -71,7 +80,7 @@
                   %span 必須
                 .exhibition_price_box_right
                   %p ￥
-                  = f.text_field :price, placeholder: '例）300',class: :exhibition_price_field
+                  = f.text_field :price, placeholder: '例）300',class: :exhibition_price_field, style: "text-align:right"
               %li.exhibition_sell_box__right__block2
                 .exhibition_price_box_left
                   %p 販売手数料 (10%)
