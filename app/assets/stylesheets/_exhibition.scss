@@ -1,0 +1,289 @@
+.exhibition_wrapper{
+  height: 100%;
+  width: 100%;
+  background-color: #f5f5f5;
+}
+
+.exhibition_header{
+  height: 128px;
+  width: 100%;
+  position: relative;
+  & img{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+  }
+}
+
+.exhibition_field{
+  width: 100%;
+  height: 100%;
+  height: 100%;
+  &__content{
+    width: 700px;
+    margin: 0 auto;
+    &__inner{
+      height: 100%;
+      width: 100%;
+      background-color: #ffffff;;
+    }
+  }
+}
+
+.exhibition_title h1{
+  text-align: center;
+  font-size: 22px;
+  padding: 32px 0;
+  font-weight: bold;
+  color: #333333;
+  border-bottom:solid 1px #f5f5f5;
+}
+
+.exhibition_sell_box{
+  padding: 40px;
+  border-bottom:solid 1.5px #f5f5f5;
+  display: flow-root;
+  & p{
+    font-size: 14px;
+    color: #333333;
+    display: inline-block;
+  }
+}
+
+
+.exhibition_sell_box__title{
+  & h2{
+    font-weight: bold;
+    font-size: 16px;
+    display: inline-block;
+  }
+  & span{
+    font-weight: bold;
+    background-color: #ea352d;
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    vertical-align: top;
+  }
+}
+
+.exhibition_sell_box__right{
+  float: right;
+  width: 400px;
+  & h2{
+    font-weight: bold;
+    font-size: 16px;
+    display: inline-block;
+  }
+  & span{
+    font-weight: bold;
+    background-color: #ea352d;
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    vertical-align: top;
+  }
+  & input{
+    display: block;
+  }
+  & li{
+    padding: 7px 0;
+    height: 48px;
+  }
+  &__block{
+    border-bottom: 1px solid #ccc;
+  }
+  &__block2{
+    border-bottom: 1px solid #ccc;
+  }
+}
+
+.exhibition_sell_box__left{
+  float: left;
+  & a{
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #0099e8;
+    color: #fff;
+    line-height: 14px;
+    font-size: 12px;
+    text-align: center;
+    padding: 0 3px;
+  }
+  & p{
+    color: #888;
+    font-size: 14px;
+    font-weight: bold;
+  }
+} 
+
+
+.exhibition_drop_upload_box{
+  width: 100%;
+  height: 160px;
+  background-color: #f5f5f5;
+  border: 1px dashed #ccc;
+  margin-top: 10px;
+  position: relative;
+}
+
+.exhibition_camera_icon{
+  color: black;
+  font-size: 15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  line-height: 160px;
+}
+
+.exhibition_input_field{
+  width: 100%;
+  margin: 8px 0 0;
+  padding: 10px 16px 8px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.exhibition_select_field{
+  display: block;
+  height: 48px;
+  width: 100%;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 8px 0 40px;
+  cursor: pointer;
+}
+
+.exhibition_price_field{
+  height: 48px;
+  width: 160px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.exhibition_price_box_left{
+  float: left;
+  line-height: 48px;
+}
+
+
+.exhibition_price_box_right{
+  float: right;
+  display: inline-flex;
+  & p{
+    padding: 10px;
+  }
+  & h2 {
+    padding: 10px;
+  }
+}
+
+
+.precautions-field{
+  line-height: 1.5;
+  color: #333333;
+  font-size: 14px;
+  & a{
+    text-decoration: none;
+    color: #0099e8;
+  }
+}
+
+.exhibit-button-field{
+  & input{
+  margin: 40px 0 0;
+  height: 50px;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+  width: 100%;
+  cursor: pointer;
+  }
+  & a{
+    background: #aaa;
+    border: 1px solid #aaa;
+    color: #fff;
+    height: 50px;
+    width: 45%;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    line-height: 50px;
+    margin: 24px auto 0;
+    &:hover{
+      opacity: 0.8;
+    }
+  }
+}
+
+#item_name{
+  height: 48px;
+  border-radius: 4px;
+  margin-bottom: 40px;
+}
+
+#item_description{
+  height: 160px;
+}
+
+#item_status{
+  margin: 8px 0 0;
+}
+
+#item_arrival{
+  margin: 8px 0 0;
+}
+
+.exhibition_footer{
+  width: 456px;
+  height: 220px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 40px 0;
+  box-sizing: border-box;
+  & li{
+    color: #333333;
+    display: inline-block;
+    margin: 0 6px;
+    & a{
+      font-size: 12px;
+      text-decoration: none;
+      color: #333333;
+    }
+  }
+  & p{
+    font-size: 10px;
+  }
+}
+
+.exhibition-footer-logo{
+  height:65px ;
+  margin-top: 40px;
+  cursor: pointer;
+  &:hover{
+    opacity: 0.8;
+  }
+}
