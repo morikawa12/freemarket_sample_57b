@@ -81,6 +81,8 @@ gem 'rubocop'
 gem 'kaminari'
 gem 'erb2haml'
 gem 'dotenv-rails'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 
 
