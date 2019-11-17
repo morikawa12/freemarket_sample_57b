@@ -1,5 +1,5 @@
 class Image < ApplicationRecord
-  belongs_to :item, dependent: :destroy_all
+  belongs_to :item
 
   mount_uploader :image_url, ImageUrlUploader
 end
