@@ -56,7 +56,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    binding.pry
     if @item.save!(validate: false)
       redirect_to root_path
     else
