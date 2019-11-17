@@ -16,7 +16,7 @@ class Item < ApplicationRecord
   has_many :seller, class_name: 'User', foreign_key: :seller_id, through: :deals
   has_many :buyer, class_name: 'User', foreign_key: :buyer_id, through: :deals
 
-  
+  validates :images, presence: true
 
 
   enum prefecture:{

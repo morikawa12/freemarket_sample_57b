@@ -1,4 +1,4 @@
-$(function(){
+$( document ).on('turbolinks:load', function() {
 
   function appendSizeOption(size){
     var html = `<option value="${size.id}">${size.size}</option>`;

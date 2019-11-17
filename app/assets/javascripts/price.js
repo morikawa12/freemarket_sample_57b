@@ -1,4 +1,4 @@
-$(function(){
+$( document ).on('turbolinks:load', function() {
   $('#item_price').on('input',function(e){
     var price = document.getElementById('item_price').value; 
     var tax_price = Math.floor(price * 0.1)

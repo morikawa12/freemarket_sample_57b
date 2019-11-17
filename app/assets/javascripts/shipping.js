@@ -1,4 +1,4 @@
-$(function(){
+$( document ).on('turbolinks:load', function() {
 
   function appendShippingOption(shipping){
     var html = `<option value="${shipping.id}">${shipping.shipping}</option>`;

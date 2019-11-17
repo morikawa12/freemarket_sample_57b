@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  # before_action :set_parents, only: [:new, :create,]
+  before_action :set_parents, only: [:new, :create,]
 
   def index
     
@@ -9,9 +9,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.build_brand
-    @parents = Category.all.order("id ASC").limit(13)
-    @sizes = Size.all
-    @fees = [{id: 1, fee: "送料込み(出品者負担)"}, {id: 2, fee: "着払い(購入者負担)"}]
   end
 
   def get_category_children
@@ -56,10 +53,10 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save!(validate: false)
+    if @item.save
       redirect_to root_path
     else
-      render :new
+      redirect_to new_item_path
     end
   end
 
@@ -72,7 +69,9 @@ class ItemsController < ApplicationController
   end
 
   def set_parents
-  
+    @parents = Category.all.order("id ASC").limit(13)
+    @fees = [{id: 1, fee: "送料込み(出品者負担)"}, {id: 2, fee: "着払い(購入者負担)"}]
+    @sizes = Size.all
   end
 
 end
