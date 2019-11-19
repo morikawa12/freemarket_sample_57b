@@ -1,13 +1,11 @@
 class Item < ApplicationRecord
   belongs_to :size
-  accepts_nested_attributes_for :size
+  belongs_to :category
   belongs_to :brand
   accepts_nested_attributes_for :brand
-  belongs_to :category
-  accepts_nested_attributes_for :category
   has_many :images, dependent: :destroy
-  accepts_nested_attributes_for :images
-  has_one :shipping
+  accepts_nested_attributes_for :images, allow_destroy: true
+  belongs_to :shipping
   
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -16,8 +14,14 @@ class Item < ApplicationRecord
   has_many :seller, class_name: 'User', foreign_key: :seller_id, through: :deals
   has_many :buyer, class_name: 'User', foreign_key: :buyer_id, through: :deals
 
-  validates :images, presence: true
-
+  validates :name, presence: true
+  validates :price, presence: true
+  validates :description, presence: true
+  validates :status, presence: true
+  validates :prefecture, presence: true
+  validates :fee, presence: true
+  validates :arrival, presence: true
+  
 
   enum prefecture:{
     北海道:'北海道',青森県:'青森県',岩手県:'岩手県',宮城県:'宮城県',秋田県:'秋田県',山形県:'山形県',福島県:'福島県:',
