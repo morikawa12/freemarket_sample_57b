@@ -1,4 +1,4 @@
 class Shipping < ApplicationRecord
-  belongs_to :item
+  has_many :item
   has_ancestry
 end
