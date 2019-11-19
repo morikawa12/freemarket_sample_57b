@@ -1,2 +1,26 @@
 require 'rails_helper'
 
+RSpec.describe Item, type: :model do
+
+  before do 
+    @brand = create(:brand)
+    @shipping = create(:shipping)
+    @size = create(:size)
+    @category = create(:category)
+  end
+
+  describe '#create' do
+
+    it "必須項目が存在すれば登録できる" do
+      item = build(:item, brand_id: @brand.id, size_id: @size.id, shipping_id: @shipping.id, category_id: @category.id)
+      expect(item).to be_valid
+    end
+
+    it "nameが空では登録できない" do
+      item = build(:item, name: nil, brand_id: @brand.id, size_id: @size.id, shipping_id: @shipping.id, category_id: @category.id)
+      item.valid?
+      expect(item.errors[:name]).to include("can't be blank")
+    end
+
+  end
+end
