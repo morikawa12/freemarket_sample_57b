@@ -1,11 +1,13 @@
 class Item < ApplicationRecord
+  
+  belongs_to :shipping
   belongs_to :size
   belongs_to :category
   belongs_to :brand
   accepts_nested_attributes_for :brand
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
-  belongs_to :shipping
+
   
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -21,6 +23,10 @@ class Item < ApplicationRecord
   validates :prefecture, presence: true
   validates :fee, presence: true
   validates :arrival, presence: true
+  validates :shipping_id, presence: true
+  validates :size_id, presence: true
+  validates :category_id, presence: true
+  validates :images, length: { minimum: 1}
   
 
   enum prefecture:{

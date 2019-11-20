@@ -2,14 +2,16 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
 
-  before do 
-    @brand = create(:brand)
-    @shipping = create(:shipping)
-    @size = create(:size)
-    @category = create(:category)
-  end
 
-  describe '#create' do
+  describe '#with validation' do
+
+    before do 
+      @brand = create(:brand)
+      @shipping = create(:shipping)
+      @size = create(:size)
+      @category = create(:category)
+      # @image = create(:image)
+    end
 
     it "必須項目が存在すれば登録できる" do
       item = build(:item, brand_id: @brand.id, size_id: @size.id, shipping_id: @shipping.id, category_id: @category.id)
@@ -57,6 +59,25 @@ RSpec.describe Item, type: :model do
       item.valid?
       expect(item.errors[:arrival]).to include("can't be blank")
     end
+
+    it "size_idが空では登録できない" do
+      item = build(:item, brand_id: @brand.id, size_id: nil, shipping_id: @shipping.id, category_id: @category.id)
+      item.valid?
+      expect(item.errors[:size_id]).to include("can't be blank")
+    end
+
+    it "category_idが空では登録できない" do
+      item = build(:item, brand_id: @brand.id, size_id: nil, shipping_id: @shipping.id, category_id: nil)
+      item.valid?
+      expect(item.errors[:category_id]).to include("can't be blank")
+    end
+
+    it "shipping_idが空では登録できない" do
+      item = build(:item, brand_id: @brand.id, size_id: nil, shipping_id: nil, category_id: @category.id)
+      item.valid?
+      expect(item.errors[:shipping_id]).to include("can't be blank")
+    end
+    
 
   end
 end

@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :item do
+  factory :item, class: Item do
     name                    {"シャツ"}
     price                   {"1000"}
     description             {"これはシャツです"}
@@ -7,12 +7,12 @@ FactoryBot.define do
     prefecture              {"北海道"}
     fee                     {"1"}
     arrival                 {"1~2日で発送"}
-    # category_id             {36}
-    # shipping_id             {3}
-    # size_id                 {8}
+
+    after(:create) do |item|
+      create(:image, item_id: item.id)
+    end
+    
   end
-
-
 end
 
 
