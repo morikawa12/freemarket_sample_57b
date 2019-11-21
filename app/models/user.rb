@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook]
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
   # Userモデルをomniauthableにすると、config/routes.rbにdevise_for :usersを記述することで以下のURLメソッドがDeviseによって作成されます。
   # user_omniauth_authorize_path(provider)
   # user_omniauth_callback_path(provider)
