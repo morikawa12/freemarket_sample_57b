@@ -14,7 +14,7 @@
             %p 最大10枚までアップロードできます
             .image_upload_file
               .image_upload_field
-                = image_tag @item.images.build.image_url.to_s, id: :img_url_prev
+                = image_tag @item.images.build.image.to_s, id: :img_url_prev
                 .image_upload_field__edit-btn
                   編集
                 .image_upload_field__delete-btn
@@ -24,7 +24,7 @@
                   %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
                   = fa_icon 'camera', class: :exhibition_camera_icon
                   = f.fields_for :images, @item.images.build do |image|
-                    = image.file_field :image_url, type: "file", class: :image_upload_btn
+                    = image.file_field :image, type: "file", class: :image_upload_btn
           .exhibition_sell_box
             .exhibition_sell_box__title
               %h2 商品名

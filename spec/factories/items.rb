@@ -10,8 +10,8 @@ FactoryBot.define do
 
     after(:create) do |item|
       create(:image, item_id: item.id)
+      
     end
-    
   end
 end
 
