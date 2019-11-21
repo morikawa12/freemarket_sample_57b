@@ -5,9 +5,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     callback_for(:facebook)
   end
   
-  # def google_oauth2
-  #   callback_for(:google)
-  # end
+  def google_oauth2
+    callback_for(:google)
+  end
   
   def callback_for(provider)
     # FacebookからOmniAuthで取得したすべての情報はrequest.env["omniauth.auth"]のハッシュでアクセスできます
@@ -16,12 +16,13 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @user.persisted?
       # sign_in_and_redirect @user, event: :authentication #after_sign_in_path_forと同じパス
       sign_in @user
+      redirect_to root_path
       set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
     else
       # OmniAuthで所得したデータをprovider_dataに格納し、セッションで引き回せるようにしてリダイレクト
       # devise.をつけておくとdeviseでログインした後に捨てるから安全らしい
       session["devise.#{provider}_data"] = request.env["omniauth.auth"].except("extra")
-      redirect_to signup_registration_path
+      redirect_to new_user_registration_path
     end
   end
 
