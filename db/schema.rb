@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_12_174116) do
+ActiveRecord::Schema.define(version: 2019_11_20_133714) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "relative_family_name", null: false
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_174116) do
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "image_url", null: false
+    t.string "image", null: false
     t.bigint "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -53,22 +53,22 @@ ActiveRecord::Schema.define(version: 2019_11_12_174116) do
     t.string "name", null: false
     t.integer "price", null: false
     t.text "description", null: false
-    t.integer "status", null: false
-    t.integer "prefecture", null: false
-    t.integer "fee", null: false
-    t.integer "size", null: false
-    t.integer "shipping", null: false
-    t.integer "arrival", null: false
-    t.integer "like", null: false
+    t.string "status", null: false
+    t.string "prefecture", null: false
+    t.string "fee", null: false
+    t.string "arrival", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "brand_id"
     t.bigint "size_id"
     t.bigint "category_id"
     t.bigint "user_id"
+    t.string "product_status"
+    t.bigint "shipping_id"
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["name"], name: "index_items_on_name"
+    t.index ["shipping_id"], name: "index_items_on_shipping_id"
     t.index ["size_id"], name: "index_items_on_size_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
@@ -94,11 +94,21 @@ ActiveRecord::Schema.define(version: 2019_11_12_174116) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "shippings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "shipping", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_shippings_on_ancestry"
+  end
+
   create_table "sizes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "size"
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_sizes_on_ancestry"
     t.index ["category_id"], name: "index_sizes_on_category_id"
   end
 
@@ -118,6 +128,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_174116) do
   add_foreign_key "images", "items"
   add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
+  add_foreign_key "items", "shippings"
   add_foreign_key "items", "sizes"
   add_foreign_key "items", "users"
   add_foreign_key "profiles", "users"
