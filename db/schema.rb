@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_131449) do
+ActiveRecord::Schema.define(version: 2019_11_22_074910) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "relative_family_name", null: false
@@ -18,13 +18,15 @@ ActiveRecord::Schema.define(version: 2019_11_14_131449) do
     t.string "relative_family_name_kana", null: false
     t.string "relative_first_name_kana", null: false
     t.string "zip_code", null: false
-    t.integer "prefecture_id", null: false
     t.string "city", null: false
     t.string "block", null: false
     t.string "building", null: false
     t.string "home_phone", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.integer "prefecture"
+    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -82,13 +84,12 @@ ActiveRecord::Schema.define(version: 2019_11_14_131449) do
     t.string "profile_image"
     t.text "profile_content"
     t.string "card_number"
-    t.string "expiration_month"
-    t.string "expiration_year"
     t.string "security_code"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "birthday", 
+    t.integer "birthday"
+    t.string "expiration_date"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -113,6 +114,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_131449) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "images", "items"
   add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"

@@ -1,0 +1,36 @@
+.registration{style: 'height: 700px'}
+  .registration-top
+    .registration-header
+      %h1.registration-header__left
+        = link_to image_tag('logo-acdd90ac4f472d5a6f7a330d33ab1225.svg',size: "193x49"), "http://52.193.209.45/"
+      .registration-header__right
+        %ul
+          %li.active
+            会員情報 
+            .progress-status__first
+          %li.active
+            電話番号認証
+            .progress-status__third
+          %li.active
+            お届け先住所入力
+            .progress-status__third
+          %li.active
+            支払い方法
+            .progress-status__third
+          %li.active
+            完了 
+            .progress-status__forth
+
+  .registration-menu
+    %h2.registration-menu__head
+      会員登録完了
+    .registration-menu__inner
+      .signup-form 
+        .signup-form__mid
+          %p ありがとうございます。
+          %p 会員登録が完了しました。
+        .actions
+          = link_to("メルカリをはじめる", root_path, {class: "btn-red btn-default"})
+            
+  .registration-under
+    = render "devise/shared/registration-footers"

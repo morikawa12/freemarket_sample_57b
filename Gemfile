@@ -89,3 +89,4 @@ gem 'erb2haml'
 gem 'dotenv-rails'
 gem "recaptcha", require: "recaptcha/rails"
 gem 'ancestry'
+gem 'active_hash'
