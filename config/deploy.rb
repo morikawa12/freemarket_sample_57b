@@ -34,7 +34,7 @@ namespace :deploy do
     # invoke 'unicorn:stop'
     # invoke 'unicorn:start'
   end
-  before :starting, 'deploy:upload'
+  # before :starting, 'deploy:upload'
   after :finishing, 'deploy:cleanup'
  
  end
