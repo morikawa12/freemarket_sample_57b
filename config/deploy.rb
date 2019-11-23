@@ -86,8 +86,6 @@ set :linked_files, fetch(:linked_files, []).push("config/master.key")
 
 
 
-set :linked_files, fetch(:linked_files, []).push("config/master.key")
-
 
   desc 'upload master.key'
   task :upload do
