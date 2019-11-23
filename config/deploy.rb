@@ -47,6 +47,8 @@ set :default_env, {
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+set :linked_files, %w{ config/master.key }
+
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 # バージョンが変わっても共通で参照するディレクトリを指定
@@ -77,5 +79,15 @@ namespace :deploy do
     # invoke 'unicorn:stop'
     # invoke 'unicorn:start'
   end
-  # after :finishing, 'deploy:cleanup'
+  desc 'upload master.key'
+  task :upload do
+   on roles(:app) do |host|
+     if test "[ ! -d #{shared_path}/config ]"
+       execute "mkdir -p #{shared_path}/config"
+     end
+     upload!('config/master.key', "#{shared_path}/config/master.key")
+   end
+ end
+ before :starting, 'deploy:upload'
+ after :finishing, 'deploy:cleanup'
 end
