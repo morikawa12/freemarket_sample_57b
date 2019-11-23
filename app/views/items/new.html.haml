@@ -12,8 +12,19 @@
               %h2 出品画像
               %span 必須
             %p 最大10枚までアップロードできます
-            .exhibition_drop_upload_box
-              = fa_icon 'camera', class: :exhibition_camera_icon
+            .image_upload_file
+              .image_upload_field
+                = image_tag @item.images.build.image.to_s, id: :img_url_prev
+                .image_upload_field__edit-btn
+                  編集
+                .image_upload_field__delete-btn
+                  削除
+              %label
+                .exhibition_drop_upload_box
+                  %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+                  = fa_icon 'camera', class: :exhibition_camera_icon
+                  = f.fields_for :images, @item.images.build do |image|
+                    = image.file_field :image, type: "file", class: :image_upload_btn
           .exhibition_sell_box
             .exhibition_sell_box__title
               %h2 商品名
@@ -27,23 +38,29 @@
             .exhibition_sell_box__left
               %p 商品の詳細
             .exhibition_sell_box__right
-              .exhibition_sell_box__right__form
+              .category_wrapper
                 %h2 カテゴリー
                 %span 必須
-                = f.collection_select :category_id, @parents, :id, :name, {prompt: "---"}, class: :exhibition_select_field
-              .exhibition_sell_box__right__form
-                %h2 商品の状態
-                %span 必須
-                = f.select :status, ["新品、未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れあり","傷や汚れあり","全体的に状態が悪い"], {prompt: "---"}, class: :exhibition_select_field
+                .parent_category_wrapper
+                  = f.collection_select :category_id, @parents, :id, :name, {prompt: "---"}, id: :item_category_id
+              = f.fields_for :brand do |brand|
+                %div.brand_input_field
+                  %h2 ブランド
+                  %span 任意
+                  = brand.text_field :name, placeholder: "例）シャネル", value: ""
+              %h2 商品の状態
+              %span 必須
+              = f.select :status, ["新品、未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れあり","傷や汚れあり","全体的に状態が悪い"], {prompt: "---"}, class: :exhibition_select_field
           .exhibition_sell_box
             .exhibition_sell_box__left
               %p 発送について
               =link_to '?','https://www.mercari.com/jp/help_center/article/68/'
             .exhibition_sell_box__right
               .exhibition_sell_box__right__form
-                %h2 発送料の負担
-                %span 必須
-                = f.select :fee, ["送料込み(出品者負担)","着払い(購入者負担)"], {prompt: "---"}, class: :exhibition_select_field
+                .delivery_select_field
+                  %h2 発送料の負担
+                  %span 必須
+                  = f.select :fee, options_for_select(@fees.map{|c|[c[:fee], c[:id]]}), {prompt: "---"}, class: :exhibition_select_field
               .exhibition_sell_box__right__form
                 %h2 発送元の地域
                 %span 必須
@@ -63,17 +80,17 @@
                   %span 必須
                 .exhibition_price_box_right
                   %p ￥
-                  = f.text_field :price, placeholder: '例）300',class: :exhibition_price_field
+                  = f.text_field :price, placeholder: '例）300',class: :exhibition_price_field, style: "text-align:right"
               %li.exhibition_sell_box__right__block2
                 .exhibition_price_box_left
                   %p 販売手数料 (10%)
                 .exhibition_price_box_right
-                  %p -
+                  .tax-field -
               %li.exhibition_sell_box__right__block3
                 .exhibition_price_box_left
                   %h2 販売利益
                 .exhibition_price_box_right
-                  %h2 -
+                  .profit-field -
           .exhibition_sell_box
             .precautions-field
               =link_to '禁止されている出品','https://www.mercari.com/jp/help_center/getting_started/prohibited_items/'
