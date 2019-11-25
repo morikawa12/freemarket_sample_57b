@@ -3,11 +3,12 @@ class ItemsController < ApplicationController
   before_action :set_parents, only: [:new, :create,]
 
   def index
-    
+    @items = Item.all.order("created_at DESC").includes(:images)
   end
 
   def new
     @item = Item.new
+    @image = Image.new
     @item.build_brand
   end
 
