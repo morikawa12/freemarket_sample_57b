@@ -12,6 +12,9 @@ RSpec.describe Item, type: :model do
       @category = create(:category)
     end
 
+    it '全て存在すれば登録できる' do
+      expect(build(:item, brand_id: @brand.id, size_id: @size.id, shipping_id: @shipping.id, category_id: @category.id)).to be_valid
+    end
 
     it "nameが空では登録できない" do
       item = build(:item, name: nil, brand_id: @brand.id, size_id: @size.id, shipping_id: @shipping.id, category_id: @category.id)

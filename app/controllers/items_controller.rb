@@ -8,8 +8,8 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @image = Image.new
     @item.build_brand
+    @item.images.build
   end
 
   def get_category_children

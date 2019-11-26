@@ -8,6 +8,7 @@ RSpec.describe Image, type: :model do
   
     it "必須項目が存在すれば登録できる" do
       image = build(:image)
+      binding.pry
       expect(image).to be_valid
     end
 

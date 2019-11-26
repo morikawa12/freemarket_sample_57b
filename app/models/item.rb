@@ -26,8 +26,7 @@ class Item < ApplicationRecord
   validates :shipping_id, presence: true
   validates :size_id, presence: true
   validates :category_id, presence: true
-  validates :images, length: { minimum: 1}
-  
+  validates :images, presence: true
 
   enum prefecture:{
     北海道:'北海道',青森県:'青森県',岩手県:'岩手県',宮城県:'宮城県',秋田県:'秋田県',山形県:'山形県',福島県:'福島県:',

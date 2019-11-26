@@ -66,16 +66,18 @@
         .items-list-name
           %h3 シャネル新着アイテム
         %ul.items-list-image-block
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
+          - @items.each do |item|
+            %li.items-list-image
+              .items-box
+                .images-box-image
+                  .image-box-price
+                    %p
+                      ¥
+                      =item.price.to_s(:delimited)
+                  - item.images.each do |image|
+                    =image_tag image.image.to_s
+                .image-box-name
+                  %p=item.name
 
 
 

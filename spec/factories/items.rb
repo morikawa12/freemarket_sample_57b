@@ -9,7 +9,8 @@ FactoryBot.define do
     arrival                 {"1~2日で発送"}
 
     after(:create) do |item|
-      create(:image, item_id: item.id)
+      # create(:images, item: item)
+      item.images << build(:image, item: item)
       
     end
   end
