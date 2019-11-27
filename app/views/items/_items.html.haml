@@ -1,0 +1,11 @@
+%li.items-list-image
+  .items-box
+    .images-box-image
+      .image-box-price
+        %p
+          ¥
+          = items.price.to_s(:delimited)
+      - items.images.each do |image|
+        =image_tag image.image.to_s
+    .image-box-name
+      %p=items.name
