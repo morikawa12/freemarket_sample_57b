@@ -25,7 +25,7 @@
     %h2.registration-menu__head
       支払い方法
     .registration-menu__inner
-      = form_for @user, url: done_signup_index_path, method: :post do |f|
+      = form_for @user, url: signup_index_path, method: :post do |f|
         = hidden_field_tag :current_step, 'step4'
         .signup-form 
           = f.fields_for :profile, Profile.new do |i|
@@ -34,7 +34,7 @@
               %span 必須
               = i.text_field :card_number, autofocus: true, autocomplete: "zip_code", placeholder: "半角数字のみ", class: "signup-form__group-inner"
             .signup-form__group
-              = image_tag('cregit.gif',size: "343x100")
+              = image_tag('cregit.gif',size: "343x130")
             .signup-form__group
               %label 有効期限
               %span 必須

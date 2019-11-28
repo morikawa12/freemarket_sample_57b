@@ -10,13 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_22_074910) do
+ActiveRecord::Schema.define(version: 2019_11_28_042414) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "relative_family_name", null: false
-    t.string "relative_first_name", null: false
-    t.string "relative_family_name_kana", null: false
-    t.string "relative_first_name_kana", null: false
     t.string "zip_code", null: false
     t.string "city", null: false
     t.string "block", null: false
@@ -88,8 +84,8 @@ ActiveRecord::Schema.define(version: 2019_11_22_074910) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "birthday"
     t.string "expiration_date"
+    t.date "birthday"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 

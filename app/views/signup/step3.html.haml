@@ -25,7 +25,7 @@
     %h2.registration-menu__head
       住所入力
     .registration-menu__inner
-      = form_for @user, url: step4_signup_index_path do |f|
+      = form_for @user, url: step4_signup_index_path, method: :get do |f|
         = hidden_field_tag :current_step, 'step3'
         .signup-form 
           = f.fields_for :address, Address.new do |r|
