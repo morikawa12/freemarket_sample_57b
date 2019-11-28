@@ -8,21 +8,23 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item.build_brand
-    @item.images.build
-  end
+    @item.build_brand    #fields_forでbrandモデルに保存するための記述
+    @item.images.build   #fields_forでimageモデルに保存するための記述
+  end 
 
+  # 親カテゴリーが選択された後に動くアクション(子)
   def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     @category_children = Category.find(params[:parent_id]).children
   end
 
-  # 子カテゴリーが選択された後に動くアクション
+  # 子カテゴリーが選択された後に動くアクション(孫)
   def get_category_grandchildren
     #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
     @category_grandchildren = Category.find(params[:child_id]).children
   end
 
+  #孫カテゴリーが選択された後に動くアクション(サイズ)
   def get_size
     grandchild_id = Category.find(params[:grandchild_id]).id
         # 大人の洋服サイズ
@@ -46,7 +48,9 @@ class ItemsController < ApplicationController
     end
   end
 
+  #配送料の負担項目が選択された後に動くアクション(配送の方法)
   def get_shipping
+    #選択された配送料の負担(送料込みor着払い)に紐づく子カテゴリーの配列を取得
     @shipping_children = Shipping.find(params[:fee_id]).children
   end
 
@@ -70,6 +74,7 @@ class ItemsController < ApplicationController
   end
 
   def set_parents
+    #実装の都合上メソッドにしてbefore_actionで呼び出している
     @parents = Category.all.order("id ASC").limit(13)
     @fees = [{id: 1, fee: "送料込み(出品者負担)"}, {id: 2, fee: "着払い(購入者負担)"}]
     @sizes = Size.all
