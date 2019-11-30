@@ -23,3 +23,4 @@ class Address < ApplicationRecord
   validates :home_phone,    allow_blank: true, format: { with: VALID_PHONE_REGEX }
 
 end
+

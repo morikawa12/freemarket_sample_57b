@@ -87,6 +87,7 @@ gem 'rubocop'
 gem 'kaminari'
 gem 'erb2haml'
 gem 'dotenv-rails'
+gem 'fog-aws'
 gem "recaptcha", require: "recaptcha/rails"
 gem 'ancestry'
 gem 'active_hash'
