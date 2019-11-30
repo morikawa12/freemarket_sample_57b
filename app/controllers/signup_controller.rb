@@ -44,7 +44,7 @@ class SignupController < ApplicationController
     @user.build_address(session[:address_attributes_after_step3]) 
     @user.build_profile(session[:profile_attributes_after_step4])
 
-    if @user.save!
+    if @user.save
       session[:id] = @user.id  
       redirect_to done_signup_index_path
     else
