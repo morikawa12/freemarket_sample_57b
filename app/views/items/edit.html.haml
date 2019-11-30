@@ -1,0 +1,153 @@
+.exhibition_wrapper
+  .exhibition_header
+    = image_tag "mercari.png",size: "185x49"
+  .exhibition_field
+    .exhibition_field__content
+      .exhibition_field__content__inner
+        .exhibition_title
+          %h1 商品の情報を入力
+        = form_for @item do |f|
+          .exhibition_sell_box
+            .exhibition_sell_box__title
+              %h2 出品画像
+              %span 必須
+            %p 最大10枚までアップロードできます
+            .image_upload_file
+              .image_upload_field
+                = image_tag @item.images.build.image.to_s, id: :img_url_prev
+                .image_upload_field__edit-btn
+                  編集
+                .image_upload_field__delete-btn
+                  削除
+              %label
+                .exhibition_drop_upload_box
+                  %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+                  = fa_icon 'camera', class: :exhibition_camera_icon
+                  = f.fields_for :images, @item.images.build do |image|
+                    = image.file_field :image, type: "file", class: :image_upload_btn
+          .exhibition_sell_box
+            .exhibition_sell_box__title
+              %h2 商品名
+              %span 必須
+            = f.text_field :name, class: :exhibition_input_field, placeholder: '商品名（必須４０文字まで）'
+            .exhibition_sell_box__title
+              %h2 商品の説明
+              %span 必須
+            = f.text_area :description, class: :exhibition_input_field, placeholder: '商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年ごろに1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
+          .exhibition_sell_box
+            .exhibition_sell_box__left
+              %p 商品の詳細
+            .exhibition_sell_box__right
+              .category_wrapper
+                %h2 カテゴリー
+                %span 必須
+                .parent_category_wrapper
+                  = f.collection_select :category_id, @parents, :id, :name, :selected => @parent, id: :item_category_id
+                .children_category_wrapper
+                  = f.collection_select :category_id, @child, :id, :name, {prompt: "---"}, id: :child_category_id, class: :exhibition_select_field
+                -# -if @child == ""
+                .grandchildren_category_wrapper
+                  = f.collection_select :category_id, @grand_child, :id, :name, {prompt: "---"}, id: :grandchild_category_id, class: :exhibition_select_field
+                .size_select_wrapper
+                  %h2 サイズ
+                  %span 必須
+                  -# = f.collection_select :size_id, @size, :id, :name, {prompt: "---"}, id: :item_size_id, class: :exhibition_select_field
+                  %select#item_size_id.exhibition_select_field{:name => "item[size_id]"}
+                    -@size.each do |size|
+                      -if size.id == @select_size.id
+                        %option{:selected => size.id,:value => size.id}
+                          =size.size
+                      -else
+                        %option{:value => size.id}
+                          =size.size
+                      
+              = f.fields_for :brand do |brand|
+                %div.brand_input_field{ style: "display:block" }
+                  %h2 ブランド
+                  %span 任意
+                  -if @item.brand.name != "" 
+                    = brand.text_field :name, placeholder: "例）シャネル", value: @item.brand.name
+                  -else
+                    = brand.text_field :name, placeholder: "例）シャネル", value: ""
+              %h2 商品の状態
+              %span 必須
+              = f.select :status, ["新品、未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れあり","傷や汚れあり","全体的に状態が悪い"], {prompt: "---"}, class: :exhibition_select_field
+          .exhibition_sell_box
+            .exhibition_sell_box__left
+              %p 発送について
+              =link_to '?','https://www.mercari.com/jp/help_center/article/68/'
+            .exhibition_sell_box__right
+              .exhibition_sell_box__right__form
+                .delivery_select_field
+                  %h2 発送料の負担
+                  %span 必須
+                  = f.select :fee, options_for_select(@fees.map{|c|[c[:fee], c[:id]]}), {prompt: "---"}, class: :exhibition_select_field
+              .shipping_select_wrapper
+                %h2 配送の方法
+                %span 必須
+                %select#item_shipping_id.exhibition_select_field{:name => "item[shipping_id]"}
+                  -@shipping.each do |shipping|
+                    -if shipping.id == @shipping_select.id
+                      %option{:selected => shipping.id,:value => shipping.id}
+                        =shipping.shipping
+                    -else
+                      %option{:value => shipping.id}
+                        =shipping.shipping
+              .exhibition_sell_box__right__form
+                %h2 発送元の地域
+                %span 必須
+                = f.select :prefecture, Item.prefectures.keys, {prompt: "---"}, class: :exhibition_select_field
+              .exhibition_sell_box__right__form
+                %h2 発送までの日数
+                %span 必須
+                = f.select :arrival, ["1~2日で発送","2~3日で発送","3~7日で発送"], {prompt: "---"}, class: :exhibition_select_field
+          .exhibition_sell_box
+            .exhibition_sell_box__left
+              %p 販売価格(300〜9,999,999)
+              =link_to '?','https://www.mercari.com/jp/help_center/article/64/'
+            %ul.exhibition_sell_box__right
+              %li.exhibition_sell_box__right__block
+                .exhibition_price_box_left
+                  %h2 価格
+                  %span 必須
+                .exhibition_price_box_right
+                  %p ￥
+                  = f.text_field :price, placeholder: '例）300',class: :exhibition_price_field, style: "text-align:right"
+              %li.exhibition_sell_box__right__block2
+                .exhibition_price_box_left
+                  %p 販売手数料 (10%)
+                .exhibition_price_box_right
+                  .tax-field
+                    ￥
+                    =@item.price.to_s(:delimited)
+              %li.exhibition_sell_box__right__block3
+                .exhibition_price_box_left
+                  %h2 販売利益
+                .exhibition_price_box_right
+                  .profit-field 
+                    ￥
+                    =@item.price.to_s(:delimited)
+          .exhibition_sell_box
+            .precautions-field
+              =link_to '禁止されている出品','https://www.mercari.com/jp/help_center/getting_started/prohibited_items/'
+              、
+              =link_to '行為', 'https://www.mercari.com/jp/help_center/getting_started/prohibited_conduct/'
+              を必ずご確認ください。
+              %br
+              またブランド品でシリアルナンバー等がある場合はご記載ください。
+              =link_to '偽ブランドの販売', 'https://www.mercari.com/jp/help_center/getting_started/counterfeit_goods/'
+              は犯罪であり処罰される可能性があります。
+              %br
+              また、出品をもちまして
+              =link_to '加盟店規約', 'https://www.mercari.com/jp/seller_terms/'
+              に同意したことになります。
+            .exhibit-button-field
+              = f.submit '変更する'
+              =link_to 'キャンセル',root_path
+  .exhibition_footer
+    %ul
+      %li=link_to 'プライバシーポリシー', 'https://www.mercari.com/jp/privacy/'
+      %li=link_to 'メルカリ利用規約', 'https://www.mercari.com/jp/tos/'
+      %li=link_to '特定商取引に関する表記', 'https://www.mercari.com/jp/tokutei/'
+    =image_tag "exhibition-footer-logo.png", class: "exhibition-footer-logo"
+    %p © 2019 Mercari

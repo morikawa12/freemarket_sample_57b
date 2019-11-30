@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :set_parents, only: [:new, :create,]
+  before_action :set_parents, only: [:new, :create, :edit, :update]
 
   def index
     @items = Item.all.order("created_at DESC").includes(:images)
@@ -62,6 +62,26 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       redirect_to new_item_path
+    end
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+    @parent = Category.find(@item.category_id).parent.parent.id
+    @child = Category.find(@item.category_id).parent.parent.children
+    @grand_child = Category.find(@item.category_id).parent.children
+    @size = Size.find(@item.size_id).parent.children
+    @select_size = Size.find(@item.size_id)
+    @shipping = Shipping.find(@item.shipping_id).parent.children
+    @shipping_select = Shipping.find(@item.shipping_id)
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
     end
   end
 
