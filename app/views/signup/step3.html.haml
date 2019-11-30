@@ -32,19 +32,19 @@
             .signup-form__group
               %label 郵便番号
               %span 必須
-              = r.text_field :zip_code, autofocus: true, autocomplete: "zip_code", placeholder: "例) 123-4567", class: "signup-form__group-inner"
+              = r.text_field :zip_code, autofocus: true, autocomplete: "zip_code", placeholder: "例) 123-4567", class: "signup-form__group-inner", required: ""
               .signup-form__group
               %label 都道府県
               %span 必須
-              = r.select :prefecture, Address.prefectures.keys, {prompt: "---"}, class: :exhibition_select_field
+              = r.select :prefecture, Address.prefectures.keys, {prompt: "---"}, class: :exhibition_select_field, required: "" 
               .signup-form__group
               %label 市町村
               %span 必須
-              = r.text_field :city, autofocus: true, autocomplete: "city", placeholder: "例) 横浜市緑区", class: "signup-form__group-inner"
+              = r.text_field :city, autofocus: true, autocomplete: "city", placeholder: "例) 横浜市緑区", class: "signup-form__group-inner", required: "" 
               .signup-form__group
               %label 番地
               %span 必須
-              = r.text_field :block, autofocus: true, autocomplete: "block", placeholder: "例) 青山1-1-1", class: "signup-form__group-inner"
+              = r.text_field :block, autofocus: true, autocomplete: "block", placeholder: "例) 青山1-1-1", class: "signup-form__group-inner", required: "" 
               .signup-form__group
               %label 建物名
               %span{style: 'background-color: #ccc'} 任意

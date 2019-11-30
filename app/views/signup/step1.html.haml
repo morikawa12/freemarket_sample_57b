@@ -66,7 +66,7 @@
               %label 生年月日
               %span 必須
               .signup-form__profile
-                != sprintf(i.date_select(:birthday,with_css_classes:'signup-form__profile-birthday', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+                != sprintf(i.date_select(:birthday,with_css_classes:'signup-form__profile-birthday', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s', required: ""),'年','月')+'日'
             %p.signup-form__text ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
             .signup-form__group
               = recaptcha_tags  callback: 'recaptchaCallbackFunction'

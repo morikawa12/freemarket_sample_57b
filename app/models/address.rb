@@ -14,12 +14,12 @@ class Address < ApplicationRecord
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
   }
   
-  VALID_ADDRESS_NUMBER_REGEX =        /\A[0-9]{3}-[0-9]{4}\z/
+  VALID_ADDRESS_NUMBER_REGEX =        /\A[0-9]{3}[0-9]{4}\z/
   VALID_PHONE_REGEX =                 /\A\d{10}$|^\d{11}\z/
   validates :zip_code,          presence: true, format: { with: VALID_ADDRESS_NUMBER_REGEX }
+  validates :prefecture,            presence: true
   validates :city,            presence: true
   validates :block,           presence: true
-  validates :building,           presence: true
   validates :home_phone,    allow_blank: true, format: { with: VALID_PHONE_REGEX }
 
 end
