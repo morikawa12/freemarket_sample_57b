@@ -70,10 +70,16 @@ class ItemsController < ApplicationController
     @parent = Category.find(@item.category_id).parent.parent.id
     @child = Category.find(@item.category_id).parent.parent.children
     @grand_child = Category.find(@item.category_id).parent.children
-    @size = Size.find(@item.size_id).parent.children
-    @select_size = Size.find(@item.size_id)
     @shipping = Shipping.find(@item.shipping_id).parent.children
     @shipping_select = Shipping.find(@item.shipping_id)
+    @images =  @item.images
+    if @item.size_id != nil
+      @size = Size.find(@item.size_id).parent.children
+      @select_size = Size.find(@item.size_id)
+    else
+      return
+    end
+   
   end
 
   def update
