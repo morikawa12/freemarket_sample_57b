@@ -32,6 +32,10 @@ class SignupController < ApplicationController
     @user.build_address
   end
 
+  def done
+    sign_in User.find(session[:id]) unless user_signed_in?
+  end
+
   def create
     session[:profile_attributes_after_step4] = user_params[:profile_attributes]
     session[:profile_attributes_after_step4].merge!(session[:profile_attributes_after_step2]) 
@@ -45,10 +49,10 @@ class SignupController < ApplicationController
     @user.build_profile(session[:profile_attributes_after_step4])
 
     if @user.save
-      session[:id] = @user.id  
+      session[:id] = @user.id
       redirect_to done_signup_index_path
     else
-      render '/signup/step1'
+      render '/signup/step4'
     end
   end
 
@@ -64,5 +68,6 @@ private
       address_attributes: [:zip_code, :prefecture, :city, :block, :building, :home_phone]
     )
   end
+
 
 end

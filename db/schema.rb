@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_28_154048) do
+ActiveRecord::Schema.define(version: 2019_11_30_113244) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "zip_code", null: false
@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 2019_11_28_154048) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.integer "prefecture"
     t.string "building"
     t.string "home_phone"
+    t.string "prefecture"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
