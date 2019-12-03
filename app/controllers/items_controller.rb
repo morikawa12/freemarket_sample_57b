@@ -73,18 +73,32 @@ class ItemsController < ApplicationController
     @shipping = Shipping.find(@item.shipping_id).parent.children
     @shipping_select = Shipping.find(@item.shipping_id)
     @images =  @item.images
+    gon.images = @images
     if @item.size_id != nil
-      @size = Size.find(@item.size_id).parent.children
-      @select_size = Size.find(@item.size_id)
+    @size = Size.find(@item.size_id).parent.children
+    @select_size = Size.find(@item.size_id)
     else
       return
     end
-   
   end
 
   def update
     @item = Item.find(params[:id])
-    if @item.update(item_params)
+    @images =  params[:item][:images_attributes]
+    @image_edit = []
+
+    @images.each do |image|
+      @image_edit << image
+    end
+
+    @index = [0, 1, 2, 3, 4]
+    @image_destroy = []
+
+    @index.each do |index|
+      # @image_destroy << @image_edit[index][1]["_destroy"]
+    end
+
+    if @item.update!(item_params)
       redirect_to root_path
     else
       render :edit
