@@ -307,19 +307,21 @@
   display: none;
 }
 
-// .exhibition_camera_icon{
-//   color: black;
-//   font-size: 15px;
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   bottom: 0;
-//   left: 0;
-//   text-align: center;
-//   line-height: 160px;
-//   cursor: pointer;
-//   display: none;
-// }
+.exhibition_edit_prev {
+  height: 162px;
+  width: 18%;
+  background-color: #f5f5f5;
+  float: left;
+  border: 1px solid #eee;
+  vertical-align: top;
+  margin: 10px 1% 10px 0;
+  & img{
+    height: 116px;
+    width: 100%;
+    object-fit: cover;
+    vertical-align: bottom;
+  }
+}
 
 .exhibition_input_field{
   width: 100%;

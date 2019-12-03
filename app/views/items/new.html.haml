@@ -14,6 +14,7 @@
             %p 最大10枚までアップロードできます
             .exhibition_drop_upload_wrapepr
 
+
               = f.fields_for :images, @item.images.build do |image|
                 %label
                   = image.file_field :image, type: "file", class: :image_upload_btn1, name: "item[images_attributes][0][image]"
@@ -27,6 +28,7 @@
                       = image.file_field :image, type: "file", class: :image_upload_btn01, name: "item[images_attributes][0][image]"
                   .image_upload_field__delete-btn.image_upload_field__delete-btn1
                     削除
+
 
               = f.fields_for :images, @item.images.build do |image|
                 %label
