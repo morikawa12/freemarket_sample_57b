@@ -1,4 +1,5 @@
 class SignupController < ApplicationController
+  before_action :save_to_session, only: :step2
 
   def index
   end
@@ -9,13 +10,23 @@ class SignupController < ApplicationController
   end
 
   def step2
+    @user = User.new
+    @user.build_profile
+  end
+
+  def save_to_session
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
     session[:password_confirmation] = user_params[:password_confirmation]
     session[:profile_attributes_after_step1] = user_params[:profile_attributes]
-    @user = User.new
-    @user.build_profile
+    @user = User.new(
+      nickname: user_params[:nickname],
+      email: user_params[:email],
+      password: user_params[:password],
+      password_confirmation: user_params[:password_confirmation],
+    )
+    render '/signup/step1' unless @user.valid?
   end
 
   def step3
@@ -48,7 +59,7 @@ class SignupController < ApplicationController
     @user.build_address(session[:address_attributes_after_step3]) 
     @user.build_profile(session[:profile_attributes_after_step4])
 
-    if @user.save
+    if @user.save!
       session[:id] = @user.id
       redirect_to done_signup_index_path
     else

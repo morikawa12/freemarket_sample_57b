@@ -32,18 +32,18 @@
             .signup-form__group
               %label カード番号
               %span 必須
-              = i.text_field :card_number, autofocus: true, autocomplete: "zip_code", placeholder: "半角数字のみ", class: "signup-form__group-inner", required: "" 
+              = i.text_field :card_number, autofocus: true, autocomplete: "zip_code", placeholder: "半角数字のみ", class: "signup-form__group-inner"
             .signup-form__group
               = image_tag('cregit.gif',size: "343x130")
             .signup-form__group
               %label 有効期限
               %span 必須
               .signup-form__profile
-                != sprintf(i.date_select(:expiration_date,with_css_classes:'signup-form__profile-birthday', order:[:month,:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s', required: "" ),'月') + '年'
+                != sprintf(i.date_select(:expiration_date,with_css_classes:'signup-form__profile-birthday', order:[:month,:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
             .signup-form__group
               %label セキュリティコード
               %span 必須
-              = i.text_field :security_code, autofocus: true, autocomplete: "zip_code", placeholder: "カード背面4桁もしくは3桁の番号", class: "signup-form__group-inner", required: "" 
+              = i.text_field :security_code, autofocus: true, autocomplete: "zip_code", placeholder: "カード背面4桁もしくは3桁の番号", class: "signup-form__group-inner"
             .actions
               =f.submit "次へ進む", class: "btn-red btn-default"
             .signup-form__group.text-right

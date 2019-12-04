@@ -32,7 +32,7 @@
             %label 携帯電話の番号
             .signup-form__mobile
               = f.fields_for :profile, Profile.new do |i|
-                = i.text_field :mobile_phone, autofocus: true, autocomplete: "mobile_phone", placeholder: "携帯電話の番号を入力", class: "signup-form__group-inner", required: ""
+                = i.text_field :mobile_phone, autofocus: true, autocomplete: "mobile_phone", placeholder: "携帯電話の番号を入力", class: "signup-form__group-inner", pattern:".{10,11}", required: ""
             %p.signup-form__info 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
             .actions
               = f.submit "SMSを送信する", class: "btn-red btn-default"

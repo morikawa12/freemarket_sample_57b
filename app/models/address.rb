@@ -14,7 +14,7 @@ class Address < ApplicationRecord
     福岡県:'福岡県',佐賀県:'佐賀県',長崎県:'長崎県',熊本県:'熊本県',大分県:'大分県',宮崎県:'宮崎県',鹿児島県:'鹿児島県',沖縄県:'沖縄県'
   }
 
-  VALID_ADDRESS_NUMBER_REGEX =        /\A\d{7}\z/
+  VALID_ADDRESS_NUMBER_REGEX =        /\A\d{3}[-]\d{4}\z/
   VALID_PHONE_REGEX =                 /\A\d{10}$|^\d{11}\z/
   validates :zip_code,          presence: true, format: { with: VALID_ADDRESS_NUMBER_REGEX }
   validates :prefecture,            presence: true
