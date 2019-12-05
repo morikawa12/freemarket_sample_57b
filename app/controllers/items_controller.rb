@@ -74,7 +74,7 @@ class ItemsController < ApplicationController
     @shipping_select = Shipping.find(@item.shipping_id)
     @images =  @item.images
     gon.images = @images
-    @item.images.build 
+    # @item.images.build
 
     if @item.size_id != nil
     @size = Size.find(@item.size_id).parent.children
@@ -93,14 +93,6 @@ class ItemsController < ApplicationController
     else
       
     end
-
-
-
-    # @new_image = params[:images_id]
-    # @new_image =  params[:item]
-    # @new_image.delete(:images_attributes)
-    # @index = @new_image.length
-    # @new_image.slice!(0, @index)
 
     # binding.pry
     if @item.update!(item_params)

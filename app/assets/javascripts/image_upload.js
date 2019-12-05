@@ -61,30 +61,35 @@ $( document ).on('turbolinks:load', function() {
     $('.image_upload_btn1').val('');
     $('.image_upload_btn01').val('');
     $('.image_upload_field1').css('display','none');
+    $('.exhibition_edit_prev1').css('display','none');
   })
 
   $('.image_upload_field__delete-btn2').on('click', function(){
     $('.image_upload_btn2').val('');
     $('.image_upload_btn02').val('');
     $('.image_upload_field2').css('display','none');
+    $('.exhibition_edit_prev2').css('display','none');
   })
 
   $('.image_upload_field__delete-btn3').on('click', function(){
     $('.image_upload_btn3').val('');
     $('.image_upload_btn03').val('');
     $('.image_upload_field3').css('display','none');
+    $('.exhibition_edit_prev3').css('display','none');
   })
 
   $('.image_upload_field__delete-btn4').on('click', function(){
     $('.image_upload_btn4').val('');
     $('.image_upload_btn04').val('');
     $('.image_upload_field4').css('display','none');
+    $('.exhibition_edit_prev4').css('display','none');
   })
 
   $('.image_upload_field__delete-btn5').on('click', function(){
     $('.image_upload_btn5').val('');
     $('.image_upload_btn05').val('');
     $('.image_upload_field5').css('display','none');
+    $('.exhibition_edit_prev5').css('display','none');
   })
 
   $(document).on('change','.image_upload_btn1',function(e){
@@ -124,6 +129,7 @@ $( document ).on('turbolinks:load', function() {
 
   $(document).on('change','.image_upload_btn01',function(e){
     readURL1(this);
+    $('#replace-img-input0').prop("checked", "true")
   })
 
   $(document).on('change','.image_upload_btn02',function(e){
@@ -141,4 +147,7 @@ $( document ).on('turbolinks:load', function() {
   $(document).on('change','.image_upload_btn05',function(e){
     readURL5(this);
   })
+
+
+  
 });

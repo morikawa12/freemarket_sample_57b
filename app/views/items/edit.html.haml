@@ -14,20 +14,21 @@
             %p 最大10枚までアップロードできます
             .exhibition_drop_upload_wrapepr
             
+              -# = f.fields_for :images, @item.images.build do |image_edit|
               = f.fields_for :images, @item.images.build do |image_edit|
                 - @images.each_with_index do |image, i|
-                  -break if i == @images.length - 1
+                - break if i == @images.length - 1
                   .exhibition_edit_prev{class: "exhibition_edit_prev#{i + 1}"}
-                    = image_tag image.image.to_s
+                    = image_tag image.image.to_s,{class: "img_url_prev#{i + 1}"}
                     %label
                       .image_upload_field__edit-btn
                         編集
                         = image_edit.file_field :image, type: "file", class: "image_upload_btn0#{i + 1}", name: "item[images_attributes][#{i}][image]", id: "item[images_attributes][#{i}][image]"
-                        %input{:name => "images_id[]", :type => "checkbox", :value => "#{i}", :id => "replace-img-input", :multiple => true}
-                    .image_upload_field__delete-btn{class: "image_upload_field__delete-btn#{i + 1}"}
-                      削除
-                      %input{:name => "images_id[]", :type => "checkbox", :value => "#{i}", :id => "replace-img-input", :multiple => true}
-                      
+                    %label
+                      .image_upload_field__delete-btn{class: "image_upload_field__delete-btn#{i + 1}"}
+                        削除
+                        %input{name: "images_id[]", type: "checkbox", value: "#{i}", id: "replace-img-input#{i}", style: "display:none"}
+                        
 
 
 
