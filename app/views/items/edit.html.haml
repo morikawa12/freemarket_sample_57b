@@ -13,7 +13,7 @@
               %span 必須
             %p 最大10枚までアップロードできます
             .exhibition_drop_upload_wrapepr
-
+            
               = f.fields_for :images, @item.images.build do |image_edit|
                 - @images.each_with_index do |image, i|
                   -break if i == @images.length - 1
@@ -23,14 +23,59 @@
                       .image_upload_field__edit-btn
                         編集
                         = image_edit.file_field :image, type: "file", class: "image_upload_btn0#{i + 1}", name: "item[images_attributes][#{i}][image]", id: "item[images_attributes][#{i}][image]"
+                        %input{:name => "images_id[]", :type => "checkbox", :value => "#{i}", :id => "replace-img-input", :multiple => true}
                     .image_upload_field__delete-btn{class: "image_upload_field__delete-btn#{i + 1}"}
                       削除
-                      = image_edit.check_box :_destroy,{checked: image_edit.object.persisted?}, false, true
+                      %input{:name => "images_id[]", :type => "checkbox", :value => "#{i}", :id => "replace-img-input", :multiple => true}
+                      
 
-                      
-                      
-                        
-                      
+
+
+
+
+
+
+
+                -# %label
+                -#   %input#item_images_attributes_0_image.image_upload_btn1{:name => "item[images_attributes][0][image]", :type => "file"}/
+                -#   .exhibition_drop_upload_box.exhibition_drop_upload_box1{:style => "display: none;"}
+                -#     %p
+                -#       ドラッグアンドドロップ
+                -#       %br>/
+                -#       またはクリックしてファイルをアップロード
+                -# #image_upload_field.image_upload_field2{:style => "display: block;"}
+                -#   %img#img_url_prev.img_url_prev2
+
+                -#   %label
+                -#     .image_upload_field__edit-btn
+                -#       編集
+                -#       %input#item_images_attributes_1_image.image_upload_btn02{:name => "item[images_attributes][1][image]", :type => "file"}/
+                -#   .image_upload_field__delete-btn.image_upload_field__delete-btn2
+                -#     削除
+
+
+
+
+
+
+
+
+
+
+
+              
+              -# = f.fields_for :images, @item.images.build do |image_edit|
+              -#   - @images.each_with_index do |image, i|
+              -#     -break if i == @images.length - 1
+              -#     .exhibition_edit_prev{class: "exhibition_edit_prev#{i + 1}"}
+              -#       = image_tag image.image.to_s
+              -#       %label
+              -#         .image_upload_field__edit-btn
+              -#           編集
+              -#           = image_edit.file_field :image, type: "file", class: "image_upload_btn0#{i + 1}", name: "item[images_attributes][#{i}][image]", id: "item[images_attributes][#{i}][image]"
+              -#       .image_upload_field__delete-btn{class: "image_upload_field__delete-btn#{i + 1}"}
+              -#         削除
+
               -# = f.fields_for :images, @item.images.build do |image|
               -#   = image_tag @item.images.build.image.to_s, class: :img_url_prev1, id: :img_url_prev
               -#   %label
@@ -57,50 +102,7 @@
 
 
 
-              -# = f.fields_for :images, @item.images.build do |image|
-              -#   %label
-              -#     = image.file_field :image, type: "file", class: :image_upload_btn3, name: "item[images_attributes][2][image]"
-              -#     .exhibition_drop_upload_box.exhibition_drop_upload_box3
-              -#       %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
-              -#   #image_upload_field.image_upload_field3
-              -#     = image_tag @item.images.build.image.to_s, class: :img_url_prev3, id: :img_url_prev
-              -#     %label
-              -#       .image_upload_field__edit-btn
-              -#         編集
-              -#         = image.file_field :image, type: "file", class: :image_upload_btn03, name: "item[images_attributes][2][image]"
-              -#     .image_upload_field__delete-btn.image_upload_field__delete-btn3
-              -#       削除
-          
-
-
-              -# = f.fields_for :images, @item.images.build do |image|
-              -#   %label
-              -#     = image.file_field :image, type: "file", class: :image_upload_btn4, name: "item[images_attributes][3][image]"
-              -#     .exhibition_drop_upload_box.exhibition_drop_upload_box4
-              -#       %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
-              -#   #image_upload_field.image_upload_field4
-              -#     = image_tag @item.images.build.image.to_s, class: :img_url_prev4, id: :img_url_prev
-              -#     %label
-              -#       .image_upload_field__edit-btn
-              -#         編集
-              -#         = image.file_field :image, type: "file", class: :image_upload_btn04, name: "item[images_attributes][3][image]"
-              -#     .image_upload_field__delete-btn.image_upload_field__delete-btn4
-              -#       削除
-
-
-              -# = f.fields_for :images, @item.images.build do |image|
-              -#   %label
-              -#     = image.file_field :image, type: "file", class: :image_upload_btn5, name: "item[images_attributes][4][image]"
-              -#     .exhibition_drop_upload_box.exhibition_drop_upload_box5
-              -#       %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
-              -#   #image_upload_field.image_upload_field5
-              -#     = image_tag @item.images.build.image.to_s, class: :img_url_prev5, id: :img_url_prev
-              -#     %label
-              -#       .image_upload_field__edit-btn
-              -#         編集
-              -#         = image.file_field :image, type: "file", class: :image_upload_btn05, name: "item[images_attributes][4][image]"
-              -#     .image_upload_field__delete-btn.image_upload_field__delete-btn5
-              -#       削除
+              
                 
           .exhibition_sell_box
             .exhibition_sell_box__title
@@ -230,3 +232,6 @@
       %li=link_to '特定商取引に関する表記', 'https://www.mercari.com/jp/tokutei/'
     =image_tag "exhibition-footer-logo.png", class: "exhibition-footer-logo"
     %p © 2019 Mercari
+
+
+

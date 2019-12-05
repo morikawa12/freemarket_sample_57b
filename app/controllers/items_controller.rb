@@ -74,43 +74,60 @@ class ItemsController < ApplicationController
     @shipping_select = Shipping.find(@item.shipping_id)
     @images =  @item.images
     gon.images = @images
+    @item.images.build 
+
     if @item.size_id != nil
     @size = Size.find(@item.size_id).parent.children
     @select_size = Size.find(@item.size_id)
     else
       return
     end
+
   end
 
   def update
     @item = Item.find(params[:id])
-    @images =  params[:item][:images_attributes]
-    @image_edit = []
-
-    @images.each do |image|
-      @image_edit << image
+    
+    if params[:images_id] != nil #パラメーターでimages_idが送られてきたら
+      remove_images_at_index(params[:images_id])
+    else
+      
     end
 
-    @index = [0, 1, 2, 3, 4]
-    @image_destroy = []
 
-    @index.each do |index|
-      # @image_destroy << @image_edit[index][1]["_destroy"]
-    end
 
+    # @new_image = params[:images_id]
+    # @new_image =  params[:item]
+    # @new_image.delete(:images_attributes)
+    # @index = @new_image.length
+    # @new_image.slice!(0, @index)
+
+    # binding.pry
     if @item.update!(item_params)
       redirect_to root_path
     else
       render :edit
     end
+
   end
 
   private
 
+  def remove_images_at_index(index)
+    remain_images = @item.images # 画像の配列をコピーする
+
+    index.each do |index| #パラメータデー送られてきたimages_idの配列をeachで回す
+      index = index.to_i #images_idはstring型なのでinteger柄に変換
+      deleted_image = remain_images[index].delete #配列の位置を指定して削除
+      deleted_image.try(:remove!)  # S3から削除する場合追加
+    end
+
+  end
+
   def item_params
     params.require(:item).permit(:name, :price, :description, :status, :prefecture, :fee, :arrival, :category_id, :size_id,:shipping_id,:product_status,:user_id,:brand_id,
     brand_attributes: [:id, :name],
-    images_attributes: [:id, :image, :_destroy])
+    images_attributes: [:id, :image])
   end
 
   def set_parents
