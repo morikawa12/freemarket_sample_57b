@@ -16,83 +16,22 @@
 
 
               = f.fields_for :images, @item.images.build do |image|
-                %label
-                  = image.file_field :image, type: "file", class: :image_upload_btn1, name: "item[images_attributes][0][image]"
-                  .exhibition_drop_upload_box.exhibition_drop_upload_box1
-                    %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
-                #image_upload_field.image_upload_field1
-                  = image_tag @item.images.build.image.to_s, class: :img_url_prev1, id: :img_url_prev
+                -@number.each do |i|
                   %label
-                    .image_upload_field__edit-btn
-                      編集
-                      = image.file_field :image, type: "file", class: :image_upload_btn01, name: "item[images_attributes][0][image]"
-                  .image_upload_field__delete-btn.image_upload_field__delete-btn1
-                    削除
+                    = image.file_field :image, type: "file", class: "image_upload_btn#{i + 1}", name: "item[images_attributes][#{i}][image]"
+                    .exhibition_drop_upload_box{class: "exhibition_drop_upload_box#{i + 1}"}
+                      %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+                  #image_upload_field{class: "image_upload_field#{i + 1}"}
+                    = image_tag @item.images.build.image.to_s, class: "img_url_prev#{i + 1}", id: :img_url_prev
+                    %label
+                      .image_upload_field__edit-btn
+                        編集
+                        = image.file_field :image, type: "file", class: :image_upload_btn01, name: "item[images_attributes][#{i}][image]"
+                    .image_upload_field__delete-btn{class: "image_upload_field__delete-btn#{i + 1}"}
+                      削除
 
 
-              = f.fields_for :images, @item.images.build do |image|
-                %label
-                  = image.file_field :image, type: "file", class: :image_upload_btn2, name: "item[images_attributes][1][image]"
-                  .exhibition_drop_upload_box.exhibition_drop_upload_box2
-                    %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
-                #image_upload_field.image_upload_field2
-                  = image_tag @item.images.build.image.to_s, class: :img_url_prev2, id: :img_url_prev
-                  %label
-                    .image_upload_field__edit-btn
-                      編集
-                      = image.file_field :image, type: "file", class: :image_upload_btn02, name: "item[images_attributes][1][image]"
-                  .image_upload_field__delete-btn.image_upload_field__delete-btn2
-                    削除
-
-
-
-
-              = f.fields_for :images, @item.images.build do |image|
-                %label
-                  = image.file_field :image, type: "file", class: :image_upload_btn3, name: "item[images_attributes][2][image]"
-                  .exhibition_drop_upload_box.exhibition_drop_upload_box3
-                    %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
-                #image_upload_field.image_upload_field3
-                  = image_tag @item.images.build.image.to_s, class: :img_url_prev3, id: :img_url_prev
-                  %label
-                    .image_upload_field__edit-btn
-                      編集
-                      = image.file_field :image, type: "file", class: :image_upload_btn03, name: "item[images_attributes][2][image]"
-                  .image_upload_field__delete-btn.image_upload_field__delete-btn3
-                    削除
-          
-
-
-              = f.fields_for :images, @item.images.build do |image|
-                %label
-                  = image.file_field :image, type: "file", class: :image_upload_btn4, name: "item[images_attributes][3][image]"
-                  .exhibition_drop_upload_box.exhibition_drop_upload_box4
-                    %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
-                #image_upload_field.image_upload_field4
-                  = image_tag @item.images.build.image.to_s, class: :img_url_prev4, id: :img_url_prev
-                  %label
-                    .image_upload_field__edit-btn
-                      編集
-                      = image.file_field :image, type: "file", class: :image_upload_btn04, name: "item[images_attributes][3][image]"
-                  .image_upload_field__delete-btn.image_upload_field__delete-btn4
-                    削除
-
-
-              = f.fields_for :images, @item.images.build do |image|
-                %label
-                  = image.file_field :image, type: "file", class: :image_upload_btn5, name: "item[images_attributes][4][image]"
-                  .exhibition_drop_upload_box.exhibition_drop_upload_box5
-                    %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
-                #image_upload_field.image_upload_field5
-                  = image_tag @item.images.build.image.to_s, class: :img_url_prev5, id: :img_url_prev
-                  %label
-                    .image_upload_field__edit-btn
-                      編集
-                      = image.file_field :image, type: "file", class: :image_upload_btn05, name: "item[images_attributes][4][image]"
-                  .image_upload_field__delete-btn.image_upload_field__delete-btn5
-                    削除
-
-
+              
           .exhibition_sell_box
             .exhibition_sell_box__title
               %h2 商品名

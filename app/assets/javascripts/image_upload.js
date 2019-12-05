@@ -55,6 +55,17 @@ $( document ).on('turbolinks:load', function() {
     }
   }
 
+  function readURL6(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('.img_url_prev6').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
 
 
   $('.image_upload_field__delete-btn1').on('click', function(){
@@ -127,6 +138,13 @@ $( document ).on('turbolinks:load', function() {
     $('.image_upload_field5').css('display','block');
   })
 
+  $(document).on('change','.image_upload_btn6',function(e){
+    readURL6(this);
+    $('.exhibition_drop_upload_box').css('display','none');
+    $('.image_upload_field6').css('display','block');
+  })
+
+
   $(document).on('change','.image_upload_btn01',function(e){
     readURL1(this);
     $('#replace-img-input0').prop("checked", "true")
@@ -134,18 +152,22 @@ $( document ).on('turbolinks:load', function() {
 
   $(document).on('change','.image_upload_btn02',function(e){
     readURL2(this);
+    $('#replace-img-input1').prop("checked", "true")
   })
 
   $(document).on('change','.image_upload_btn03',function(e){
     readURL3(this);
+    $('#replace-img-input2').prop("checked", "true")
   })
 
   $(document).on('change','.image_upload_btn04',function(e){
     readURL4(this);
+    $('#replace-img-input3').prop("checked", "true")
   })
 
   $(document).on('change','.image_upload_btn05',function(e){
     readURL5(this);
+    $('#replace-img-input4').prop("checked", "true")
   })
 
 

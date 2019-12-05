@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.build_brand    #fields_forでbrandモデルに保存するための記述
     @item.images.build   #fields_forでimageモデルに保存するための記述
+    @number = [0,1,2,3,4]
   end 
 
   # 親カテゴリーが選択された後に動くアクション(子)
@@ -73,15 +74,13 @@ class ItemsController < ApplicationController
     @shipping = Shipping.find(@item.shipping_id).parent.children
     @shipping_select = Shipping.find(@item.shipping_id)
     @images =  @item.images
-    gon.images = @images
-    # @item.images.build
-
     if @item.size_id != nil
     @size = Size.find(@item.size_id).parent.children
     @select_size = Size.find(@item.size_id)
     else
       return
     end
+
 
   end
 
@@ -94,8 +93,31 @@ class ItemsController < ApplicationController
       
     end
 
-    # binding.pry
+    # if params[:images_id] != nil && params[:item][:images_attributes] != nil 
+    #   add_images(params[:images_id], params[:item][:images_attributes])
+    # else
+
+    # end
+
     if @item.update!(item_params)
+      # image_id = params[:images_id]
+      # image_id_index = []
+
+      # image_id.each do |image_id|
+      #   image_id_index << image_id.to_i
+      # end
+
+      # index = image_id.length
+
+      # array_images = @item.images
+      # reverse_array_images = array_images.reverse
+      # another_array_images = reverse_array_images[0..index - 1]
+      # another_array_images.zip(image_id_index) do |new_image, i|
+      #   array_images[i]
+      #   binding.pry
+      # end
+      # @item.images = array_images
+      # binding.pry
       redirect_to root_path
     else
       render :edit
@@ -115,6 +137,17 @@ class ItemsController < ApplicationController
     end
 
   end
+
+  # def add_images(index, new_image)
+  #   images = @item.images
+
+  #   index.zip(new_image) do |index, new_image|
+  #     index = index.to_i
+  #     binding.pry
+  #     images.insert(index, new_image)
+  #   end
+
+  # end
 
   def item_params
     params.require(:item).permit(:name, :price, :description, :status, :prefecture, :fee, :arrival, :category_id, :size_id,:shipping_id,:product_status,:user_id,:brand_id,
