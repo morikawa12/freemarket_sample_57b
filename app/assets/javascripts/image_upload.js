@@ -103,6 +103,14 @@ $( document ).on('turbolinks:load', function() {
     $('.exhibition_edit_prev5').css('display','none');
   })
 
+  $('.image_upload_field__delete-btn6').on('click', function(){
+    $('.image_upload_btn6').val('');
+    $('.image_upload_btn06').val('');
+    $('.image_upload_field6').css('display','none');
+    $('.exhibition_edit_prev6').css('display','none');
+  })
+
+
   $(document).on('change','.image_upload_btn1',function(e){
     readURL1(this);
     $('.exhibition_drop_upload_box1').css('display','none');

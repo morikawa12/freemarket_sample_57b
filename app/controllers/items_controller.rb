@@ -86,7 +86,6 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    
     if params[:images_id] != nil #パラメーターでimages_idが送られてきたら
       remove_images_at_index(params[:images_id])
     else
