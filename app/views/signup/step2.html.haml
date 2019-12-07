@@ -26,7 +26,6 @@
       電話番号の確認
     .registration-menu__inner
       = form_for @user, url: step3_signup_index_path,method: :get do |f|
-        = hidden_field_tag :current_step, 'step2'
         .signup-form
           .signup-form__group
             %label 携帯電話の番号

@@ -26,13 +26,12 @@
       住所入力
     .registration-menu__inner
       = form_for @user, url: step4_signup_index_path, method: :get do |f|
-        = hidden_field_tag :current_step, 'step3'
         .signup-form 
           = f.fields_for :address, Address.new do |r|
             .signup-form__group
               %label 郵便番号
               %span 必須
-              = r.text_field :zip_code, autofocus: true, autocomplete: "zip_code", placeholder: "例) 123-4567", class: "signup-form__group-inner", required: ""
+              = r.text_field :zip_code, autofocus: true, autocomplete: "zip_code", placeholder: "例) 123-4567", class: "signup-form__group-inner", pattern:"[0-9]{3}-[0-9]{4}", required: ""
               .signup-form__group
               %label 都道府県
               %span 必須

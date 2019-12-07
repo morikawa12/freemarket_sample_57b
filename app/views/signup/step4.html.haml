@@ -26,7 +26,6 @@
       支払い方法
     .registration-menu__inner
       = form_for @user, url: signup_index_path, method: :post do |f|
-        = hidden_field_tag :current_step, 'step4'
         .signup-form 
           = f.fields_for :profile, Profile.new do |i|
             .signup-form__group
