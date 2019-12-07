@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :set_parents, only: [:new, :create, :edit, :update]
+  before_action :set_item, only: [:update,:edit]
 
   def index
     @items = Item.all.order("created_at DESC").includes(:images)
@@ -67,7 +68,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
     @parent = Category.find(@item.category_id).parent.parent.id
     @child = Category.find(@item.category_id).parent.parent.children
     @grand_child = Category.find(@item.category_id).parent.children
@@ -85,18 +85,13 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
+
     if params[:images_id] != nil #パラメーターでimages_idが送られてきたら
       remove_images_at_index(params[:images_id])
     else
       
     end
 
-    # if params[:images_id] != nil && params[:item][:images_attributes] != nil 
-    #   add_images(params[:images_id], params[:item][:images_attributes])
-    # else
-
-    # end
 
     if @item.update!(item_params)
       redirect_to root_path
@@ -119,16 +114,6 @@ class ItemsController < ApplicationController
 
   end
 
-  # def add_images(index, new_image)
-  #   images = @item.images
-
-  #   index.zip(new_image) do |index, new_image|
-  #     index = index.to_i
-  #     binding.pry
-  #     images.insert(index, new_image)
-  #   end
-
-  # end
 
   def item_params
     params.require(:item).permit(:name, :price, :description, :status, :prefecture, :fee, :arrival, :category_id, :size_id,:shipping_id,:product_status,:user_id,:brand_id,
@@ -141,6 +126,10 @@ class ItemsController < ApplicationController
     @parents = Category.all.order("id ASC").limit(13)
     @fees = [{id: 1, fee: "送料込み(出品者負担)"}, {id: 2, fee: "着払い(購入者負担)"}]
     @sizes = Size.all
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
 end
