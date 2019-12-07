@@ -481,6 +481,11 @@ button{
   height: 0;
   padding-bottom: 100%;
   position: relative;
+  & img{
+    height: 184px;
+    width: 184px;
+    object-fit: cover;
+  }
 }
 
 
