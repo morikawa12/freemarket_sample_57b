@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   
   belongs_to :shipping
-  belongs_to :size
+  belongs_to :size, optional: true
   belongs_to :category
   belongs_to :brand
   accepts_nested_attributes_for :brand
@@ -24,7 +24,7 @@ class Item < ApplicationRecord
   validates :fee, presence: true
   validates :arrival, presence: true
   validates :shipping_id, presence: true
-  validates :size_id, presence: true
+  # validates :size_id, presence: true
   validates :category_id, presence: true
   validates :images, presence: true
 
