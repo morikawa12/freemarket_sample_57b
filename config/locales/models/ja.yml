@@ -5,3 +5,5 @@ ja:
     attributes:
       user:
         email: このメールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
