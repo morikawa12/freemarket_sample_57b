@@ -1,0 +1,80 @@
+= render partial: 'header'
+= render partial: 'mypage-bread-crumbs'
+.exhibit-btn
+  .exhibit-btn__box
+    %p 出品
+    .exhibit-btn-icon
+      =link_to new_item_path do
+        =fa_icon "camera"
+        
+.l-container-clearfix
+  .mypage-content
+    .mypage-content__user-icon
+      = link_to "#" do
+        %figure
+          =image_tag "user_icon.jpg", size: "60x60"
+        %h2 つむ
+        .mypage-content__user-icon__mypage-number
+          %div
+            評価
+            %span.bold 0
+          %div
+            出品数
+            %span.bold 0
+
+
+
+    .mypage-content__tab-container-notification-todo
+      %ul.mypage-content__tabs
+        %li.active
+          %h3
+            = link_to "#mypage-tab-notification", "data-toggle": "tab" do
+              お知らせ
+        %li
+          %h3
+            = link_to "#mypage-tab-todo", "data-toggle": "tab" do
+              やることリスト
+
+      .tab-content
+        %ul#mypage-tab-notification.mypage-content__item-list.mypage-content__tab-content__tab-pane.active
+          %li
+            = link_to "", class: "mypage-content__item-link" do
+              %figure
+                = image_tag "https://static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png", alt: "data-src", class: "lazyload"
+              .mypage-content__item-body
+                .mypage-content__item-text 事務局から個別メッセージ「"1~2日で発送"を選択した商品は、40時間以上も早く売れています！」
+                %time
+                  %i.icon-time
+                  %span 4 日前
+              %i.icon-arrow-right
+          %li
+            = link_to "", class: "mypage-content__item-link" do
+              %figure
+                = image_tag "https://static-mercari-jp-imgtr2.akamaized.net/images/mercari_profile.png", alt: "data-src", class: "lazyload"
+              .mypage-content__item-body
+                .mypage-content__item-text 事務局から個別メッセージ「【重要】新サービス開始に伴う利用規約改訂のお知らせ」
+                %time
+                  %i.icon-time
+                  %span 10 日前
+              %i.icon-arrow-right
+          %li.mypage-content__go-list
+            = link_to "一覧を見る", ""
+
+    .mypage-content__mypage-tab-container
+      %h2.mypage-content__tab-head 購入した商品
+      %ul.mypage-tabs
+      %ul.mypage-content__tabs
+        %li.active
+          %h3
+            = link_to "#" do
+              取引中
+        %li
+          %h3
+            = link_to "#mypage-tab-transaction-old", "data-toggle": "tab" do
+              過去の取引
+      .mypage-content__tab-content
+        %ul#mypage-tab-transaction-now.mypage-content__item-list.mypage-content__tab-pane.active
+          %li.mypage-content__item-not-found.bold 取引中の商品がありません
+
+  = render partial: 'side-bar'
+= render partial: 'items/footer'
