@@ -4,6 +4,6 @@ ja:
       user: ユーザー
     attributes:
       user:
-        email: このメールアドレス
+        email: 入力されたメールアドレス
         password: パスワード
         password_confirmation: 確認用パスワード

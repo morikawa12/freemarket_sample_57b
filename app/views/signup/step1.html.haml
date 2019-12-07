@@ -26,6 +26,7 @@
       会員情報入力
     .registration-menu__inner
       = form_for @user, url: step2_signup_index_path, method: :get do |f|
+        = render 'error_messages', model: f.object
         .signup-form
           .signup-form__group
             %label ニックネーム
@@ -35,7 +36,6 @@
             %label メールアドレス
             %span 必須
             = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "signup-form__group-inner", required: ""
-            = render 'error_messages', model: f.object
           .signup-form__group
             %label パスワード
             %span 必須
