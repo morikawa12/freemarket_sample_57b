@@ -14,7 +14,6 @@
             %p 最大10枚までアップロードできます
             .exhibition_drop_upload_wrapepr
             
-              -# = f.fields_for :images, @item.images.build do |image_edit|
               = f.fields_for :images, @item.images.build do |image_edit|
                 - @images.each_with_index do |image, i|
                 - break if i == @images.length - 1

@@ -99,24 +99,6 @@ class ItemsController < ApplicationController
     # end
 
     if @item.update!(item_params)
-      # image_id = params[:images_id]
-      # image_id_index = []
-
-      # image_id.each do |image_id|
-      #   image_id_index << image_id.to_i
-      # end
-
-      # index = image_id.length
-
-      # array_images = @item.images
-      # reverse_array_images = array_images.reverse
-      # another_array_images = reverse_array_images[0..index - 1]
-      # another_array_images.zip(image_id_index) do |new_image, i|
-      #   array_images[i]
-      #   binding.pry
-      # end
-      # @item.images = array_images
-      # binding.pry
       redirect_to root_path
     else
       render :edit
