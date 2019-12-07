@@ -2,7 +2,11 @@
   .items-box
     .images-box-image
       .image-box-price
-        %p ￥1,000
-      = image_tag "test.JPG"
+        %p
+          ¥
+          = items.price.to_s(:delimited)
+      - items.images.each_with_index do |image, i|
+      - break if i == 1
+        =image_tag image.image.to_s
     .image-box-name
-      %p test
+      %p=items.name

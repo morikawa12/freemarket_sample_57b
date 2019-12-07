@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :image do
-    image     { Rack::Test::UploadedFile.new(Rails.root.join('spec', 'fixtures', 'test_image.jpg')) }
+    image    {File.open("#{Rails.root}/public/test_uploaders/test_pic.jpg")}
     item_id  {1}
-      association :item, factory: :item
+    
+    item
   end
 end
