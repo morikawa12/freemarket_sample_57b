@@ -1,1 +1,60 @@
-Hello World
+
+.exhibit-btn
+  .exhibit-btn__box
+    %p 出品
+    .exhibit-btn-icon
+      =link_to new_item_path do
+        =fa_icon "camera"
+.header
+  = render 'items/header'
+.headers
+  .header2
+    .header2__l メルカリ ＞
+    .header2__c  マイページ ＞
+    .header2__r  本人確認の登録
+.mypage__allo
+  .mypage__all
+    .mypage__container
+      .mypage__main
+        .mypage__main__header 本人情報の登録
+        .mypage__main__in
+          .mypage__main__up__text
+          %p お客さまの本人情報をご登録ください。
+          %p 登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+          .mypage__main__up__textupload 本人確認書類のアップロードについて>
+          .mypage__main__user
+            .mypage__main__user__g  お名前
+            .mypage__main__user__o  鈴木一郎
+          .mypage__main__user
+            .mypage__main__user__g お名前カナ
+            .mypage__main__user__o スズキイチロウ
+          .mypage__main__user
+            .mypage__main__user__g 生年月日
+            .mypage__main__user__o 2000/01/10
+          .mypage__main__user2
+            .mypage__main__user2__g2 郵便番号
+            .mypage__main__user2__ni 任意
+            %input.input-default
+          .mypage__main__user2
+            .mypage__main__user2__g2 都道府県
+            .mypage__main__user2__ni 任意
+            %input.input-default
+          .mypage__main__user2
+            .mypage__main__user2__g2 市区町村
+            .mypage__main__user2__ni 任意
+            %input.input-default
+          .mypage__main__user2
+            .mypage__main__user2__g2 番地
+            .mypage__main__user2__ni 任意
+            %input.input-default
+          .mypage__main__user2
+            .mypage__main__user2__g2 建物名
+            .mypage__main__user2__ni 任意
+            %input.input-default
+          .mypage__main__button
+            %button.input-button 登録する
+          .mypage__main__regist 本人情報の登録について>
+.footer
+  = render 'items/footer'
+
+
