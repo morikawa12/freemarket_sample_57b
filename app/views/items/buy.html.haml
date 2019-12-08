@@ -32,47 +32,48 @@
                   = @item.price.to_s(:delimited)
               .buy_accordion_table
                 .buy_accordion_table__check
-                  
-                .buy_accordion_table__use 
-                  ポイントを使用(所持ポイント:P3)
+                  %label
+                    %input{type: 'checkbox'}
+                    .point_check_button
+                    %p
+                      ポイントを使用(所持ポイント:P0)
+
                 %ul.buy_accordion__parent
                   %li.buy_accordion__child
-                    %input{"data-buy" => "all", name: "consume_point_radio", type: "radio", value: "all", id: 'point'}
-                    %label{for: 'point'}
+                    %label
+                      %input{"data-buy" => "all", name: "consume_point_radio", type: "radio", value: "all", id: 'point'}
                       .point_radio_button
-                    -# %p
-                    -#   すべてのポイントを使う
-                    -#   <br>
-                    -#   (使用ポイント:P3)
+                      %p
+                        すべてのポイントを使う
+                        <br>
+                        (使用ポイント:P0)
                   %li.buy_accordion__child
                     %label
-                      %input{"data-buy" => "part", :name => "consume_point_radio", :type => "radio", :value => "0"}
-                        aaaa
-                  %li.buy_accordion__child
+                      %input{"data-buy" => "all", name: "consume_point_radio", type: "radio", value: "all", id: 'point'}
+                      .point_radio_button
+                      %p
+                        一部のポイントを使う
+                  %li.buy_accordion__child2
+                    %input{type: "number", placeholder: '使うポイントを入力'}
+
               .buy_info_table
                 .buy_info_table__title
                   %p 支払い方法
                 .buy_info_table__info
                   = fa_icon 'plus-circle'
                   %span
-                    登録してください
+                    =link_to '登録してください', '#'
               .buy_info_table
                 .buy_info_table__title
                   %p 配送先
                 .buy_info_table__info
                   = fa_icon 'plus-circle'
                   %span
-                    登録してください
+                    =link_to '登録してください', '#'
               .buy_button_table
                 .buy_button_table__button  
                   購入する
 
-                
-
-
-
-              
-  
 
 
   .exhibition_footer

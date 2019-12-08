@@ -52,25 +52,40 @@
   margin: 24px 0;
   text-align: left;
   &__check{
-    width: 20px;
-    height: 20px;
-    border-radius: 2px;
-    background: #fff;
-    border: 1px solid #ccc;
-    font-size: 10px;
-    line-height: 17px;
-    text-align: center;
-    color: #fff;
-    vertical-align: middle;
-    cursor: pointer;
-    display: inline-block;
+    & input {
+      display: none;
+      &:checked + .point_check_button{
+        border-color: transparent;
+        background: #0099e8;
+        
+      }
+    }
+    & p{
+      font-size: 14px;
+      display: inline-block;
+      cursor: pointer;
+    }
   }
-  &__use{
-    font-size: 14px;
-    cursor: pointer;
-    margin-left: 10px;
-    display: inline-block;
+}
+
+.point_check_button{
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  background: #fff;
+  border: 1px solid #ccc;
+  display: inline-block;
+  cursor: pointer;
+  transition: all ease-out .3s;
+  &::before{
+    font-family: FontAwesome ;
+    content: "\f00c";
+    color: white;
   }
+}
+
+.buy_accordion__parent{
+  display: none;
 }
 
 .buy_info_table{
@@ -85,6 +100,13 @@
     margin: 8px 0 0;
     font-size: 14px;
     color: #0099E8;
+    & a{
+      color: #0099E8;
+      text-decoration: none;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
     & span{
       margin: 0 0 0 4px;
     }
@@ -114,35 +136,52 @@
 }
 
 .buy_accordion__child{
+  margin-bottom: 16px;
   & input{
     margin-right: 5px;
+    display: none;
+    &:checked + .point_radio_button{
+      border: 0;
+      border: 6px solid #0099e8;
+      box-sizing: border-box;
+    }
   }
   & p{
-    display: inline-flex;
     font-size: 14px;
-  }
-  &__checkbox::before{
-    width: 20px;
-    height: 20px;
-    border-radius: 2px;
-    background: #fff;
-    border: 1px solid #ccc;
-  }
-  & label{
-    width: 20px;
-  height: 20px;
-  border: 1px solid #ccc;
-  border-radius: 50%;
-  background: #fff;
+    display: inline-block;
+    margin-left: 10px;
+    cursor: pointer;
   }
 }
 
 
-// .point_radio_button{
-//   width: 20px;
-//   height: 20px;
-//   border: 1px solid #ccc;
-//   border-radius: 50%;
-//   background: #fff;
-// }
+.point_radio_button{
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  background: #fff;
+  transition:  all ease-out .3s;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+}
 
+.buy_accordion__child2 input{
+  height: 48px;
+  width: 100%;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
