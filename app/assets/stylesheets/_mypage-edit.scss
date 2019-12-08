@@ -1,0 +1,121 @@
+.headers{
+  .header2{
+    position: relative;
+    border-top: 1px solid #eee;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+    background: #fff;
+    display: flex;
+    overflow: visible;
+    margin: 0 auto;
+    padding: 16px 0;
+    white-space: normal;
+    padding-left: 210px;
+    font-size: 14px;
+    &__r{
+      font-weight: bold;
+    }
+   }
+  }
+.mypage__allo{
+  background-color: #F5F5F5;
+  padding-top: 40px; 
+  .mypage__all{
+    width: 1020px;
+    margin: 0 auto;
+    .mypage__container{
+      padding: 0 0 40px;
+      .mypage__main{
+        width: 700px;
+        background-color: white;
+        margin: 0 0 0 auto;
+        .mypage__main__header{
+          background: #fff;
+          padding: 64px;
+          border-top: 1px solid #f5f5f5;
+          padding: 12px 4%;
+          border-bottom: 1px solid #f5f5f5;
+          text-align: center;
+          font-size: 18px;
+          font-size: 24px;
+          padding: 8px 24px;
+        }
+        .mypage__main__in{
+          padding: 64px;
+          font-size: 14px;
+            .mypage__main__up__text{
+              margin-top: 8px;
+              font-size: 14px;
+            }
+            .mypage__main__up__textupload{
+              line-height: 1.5;
+              margin: 8px 0 0;
+              text-align: right;
+            }
+            .mypage__main__user{
+              margin: 40px 0 0;
+              &__g{
+                font-weight: 600;
+              }
+              &__o{
+                margin: 8px 0 0;
+                line-height: 1.5;
+              }
+            }
+            .mypage__main__user2{
+              margin: 40px 0 0;
+              &__g2{
+                font-weight: 600;
+                display: inline-block;
+              }
+              &__ni{
+                margin: 0 0 0 8px;
+                padding: 2px 4px;
+                border-radius: 2px;
+                color: white;
+                font-size: 12px;
+                vertical-align: top;
+                width: 30px;
+                background: #ccc;
+                display: inline-block;
+              }
+              }  
+              .input-default{
+                font-family: inherit;
+                font-size: inherit;
+                font-weight: inherit;
+                width: 100%;
+                margin: 8px 0 0;
+                padding: 10px 16px 8px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+                background: #fff;
+                line-height: 1.5;
+                font-size: 16px;
+                box-sizing: border-box;
+              }
+            .mypage__main__button{
+              .input-button{
+                margin: 40px 0 0 0;
+                background: #ea352d;
+                border: 1px solid #ea352d;
+                display: block;
+                line-height: 48px;
+                font-size: 14px;
+                border: 1px solid transparent;
+                -webkit-transition: all ease-out .3s;
+                transition: all ease-out .3s;
+                cursor: pointer;
+                text-align: center;
+                color:white;
+                width: 571px;
+              }    
+              }
+            .mypage__main__regist{
+              margin: 40px 0 0;
+              text-align: right;
+            }
+            }
+          }
+      }  
+      }
+    }
