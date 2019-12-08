@@ -1,0 +1,53 @@
+.registration
+  .registration-top
+    .registration-header
+      %h1.registration-header__left
+        = link_to image_tag('logo-acdd90ac4f472d5a6f7a330d33ab1225.svg',size: "193x49"), root_path
+      .registration-header__right
+        %ul
+          %li.active
+            会員情報 
+            .progress-status__first
+          %li.active
+            電話番号認証
+            .progress-status__third
+          %li.active
+            お届け先住所入力
+            .progress-status__third
+          %li.active
+            支払い方法
+            .progress-status__second
+          %li
+            完了 
+            .progress-status__end
+
+  .registration-menu
+    %h2.registration-menu__head
+      支払い方法
+    .registration-menu__inner
+      = form_for @user, url: signup_index_path, method: :post do |f|
+        .signup-form 
+          = f.fields_for :profile, Profile.new do |i|
+            .signup-form__group
+              %label カード番号
+              %span 必須
+              = i.text_field :card_number, autofocus: true, autocomplete: "zip_code", placeholder: "半角数字のみ", class: "signup-form__group-inner"
+            .signup-form__group
+              = image_tag('cregit.gif',size: "343x130")
+            .signup-form__group
+              %label 有効期限
+              %span 必須
+              .signup-form__profile
+                != sprintf(i.date_select(:expiration_date,with_css_classes:'signup-form__profile-birthday', order:[:month,:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
+            .signup-form__group
+              %label セキュリティコード
+              %span 必須
+              = i.text_field :security_code, autofocus: true, autocomplete: "zip_code", placeholder: "カード背面4桁もしくは3桁の番号", class: "signup-form__group-inner"
+            .actions
+              =f.submit "次へ進む", class: "btn-red btn-default"
+            .signup-form__group.text-right
+              %p
+              = link_to "カード裏面の番号とは？", "/#", target: "_blank", class: "text-right__inner"
+              
+  .registration-under
+    = render "devise/shared/registration-footers"

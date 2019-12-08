@@ -90,4 +90,6 @@ gem 'dotenv-rails'
 gem 'fog-aws'
 gem "recaptcha", require: "recaptcha/rails"
 gem 'ancestry'
+gem 'active_hash'
+gem 'rails-i18n'
 gem 'gon'
