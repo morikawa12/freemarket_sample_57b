@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:index]
   devise_for :users
   root 'items#index'
-  resources :users, only: [:index, :edit]
+  resources :users, only: [:index, :edit, :show]
 
   resources :items, only: [:index, :new, :create, :edit, :update] do
   collection do
