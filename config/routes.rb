@@ -4,7 +4,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :edit, :show]
 
-  resources :items, only: [:index, :new, :create, :edit, :update] do
+
+
+
+  resources :items, only: [:index, :new, :create, :edit, :update, :buy] do
+
   collection do
     get 'get_category_children', defaults: { format: 'json' }
     get 'get_category_grandchildren', defaults: { format: 'json' }
@@ -16,6 +20,9 @@ Rails.application.routes.draw do
     get 'get_category_grandchildren', defaults: { format: 'json' }
     get 'get_size', defaults: { format: 'json' }
     get 'get_shipping', defaults: { format: 'json' }
+
+    get 'buy', to: 'items#buy'
+
   end
 end
 
