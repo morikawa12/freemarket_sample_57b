@@ -72,3 +72,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
     def profile_params
       devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, profile_attributes: [:family_name],profile_attributes: [:first_name],profile_attributes: [:family_name_kana],profile_attributes: [:first_name_kana],profile_attributes: [:birthday]])
     end
+  end
