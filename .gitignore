@@ -32,3 +32,10 @@
 
 # Ignore SSL certifications
 /config/certs/*
+/.env
+# Ignore uploaded files in development
+/public/uploads/
+
+config/certs/localhost.pem
+config/certs/localhost-key.pem
+

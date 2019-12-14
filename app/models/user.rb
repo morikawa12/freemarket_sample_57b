@@ -1,6 +1,14 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  validate :email_presence
+  
+  has_one :profile, dependent: :destroy
+  has_one :address, dependent: :destroy
+
+  accepts_nested_attributes_for :profile
+  accepts_nested_attributes_for :address
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
   # Userモデルをomniauthableにすると、config/routes.rbにdevise_for :usersを記述することで以下のURLメソッドがDeviseによって作成されます。
@@ -10,9 +18,16 @@ class User < ApplicationRecord
   has_many :sns_credential
          
   validates :nickname, presence: true, length: { maximum: 20 }
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :nickname, presence: true, length: { maximum: 20 }
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
-  validates :password, length: { minimum: 6 , maximum: 128 }
+  validates :password, presence: true,length: { minimum: 6 , maximum: 128 }
+
+  def email_presence
+    return if email.present?
+    errors.add(:base, "このメールアドレスは既に使われております。")
+  end
 
 # 　コールバックされた値のproviderおよびuidからDBを検索し、条件に合わせてコントローラに返す。
 #   controllerのcallback_for(provider)内から呼び出される。

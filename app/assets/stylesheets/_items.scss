@@ -38,6 +38,7 @@
 
 .fa-camera{
   color: #ffffff;
+  margin: 8px 0 0;
 }
 
 .exhibit-btn-icon{
@@ -480,6 +481,11 @@ button{
   height: 0;
   padding-bottom: 100%;
   position: relative;
+  & img{
+    height: 184px;
+    width: 184px;
+    object-fit: cover;
+  }
 }
 
 
@@ -533,7 +539,6 @@ button{
   width: 1440px;
   height: 389px;
   background-color: rgb(34, 34, 34);
-  padding: 0 20px 10px;
   box-sizing: border-box;
   &__overview{
     width: 1020px;

@@ -3,7 +3,7 @@
     .exhibit-btn__box
       %p 出品
       .exhibit-btn-icon
-        =link_to ("#") do
+        =link_to new_item_path do
           =fa_icon "camera"
 
 
@@ -34,16 +34,8 @@
         .items-list-name
           %h3 レディース新着アイテム
         %ul.items-list-image-block
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
+          =render partial:'items/items', collection: @items
+          
 
   .items-contents
     .items-contents-brand
@@ -63,18 +55,7 @@
         .items-list-name
           %h3 シャネル新着アイテム
         %ul.items-list-image-block
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-          = render partial: 'items'
-
-
+          =render partial:'items/items', collection: @items
 
   = render partial: 'footer'
 

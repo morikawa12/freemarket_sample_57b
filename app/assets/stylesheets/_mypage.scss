@@ -1,0 +1,468 @@
+body {
+  position: relative;
+  min-height: 100%;
+  background: #f5f5f5;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  font-size: 14px;
+  color: #333;
+  line-height: 1;
+}
+
+
+
+// header
+.header {
+  width: 100%;
+}
+
+.pc-header-menu-link {
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 10px;
+  color: #333;
+  touch-action: manipulation;
+  text-decoration: none;
+}
+
+.pc-header-menu-link:hover {
+  color:#0099e8;
+  & i {
+    color:#0099e8;
+  }
+}
+
+.pc-header-user-icon {
+  position: relative;
+  display: block;
+  height: 44px;
+  line-height: 32px;
+  font-size: 0;
+  color: #333;
+  text-decoration: none;
+  & span {
+    font-size: 14px;
+    margin-left: 10px;
+  }
+  & span:hover {
+    color:#0099e8;
+  }
+  & figure {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    vertical-align: top;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    & img {
+      overflow: hidden;
+      border-radius: 50%;
+    }
+  }
+}
+
+.mypage_icon {
+  display: inline-block;
+  font-style: normal;
+  color: #ccc;
+  font-size: 20px;
+}
+
+.liked-items-link a {
+  padding-right: 14px;
+}
+
+.pc-header-user-nav {
+  padding: 0 7px;
+}
+
+.sign-in-box {
+  padding: 0 7px;
+}
+
+.my-page-box {
+  padding: 0 7px;
+}
+
+
+
+// bread-crumbs
+.bread-crumbs {
+  position: relative;
+  border-top: 1px solid #eee;
+  background: #f5f5f5;
+  -webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  background: #fff;
+}
+
+.bread-crumbs ul {
+  width: 1020px;
+  overflow: visible;
+  margin: 0 auto;
+  padding: 16px 0;
+  white-space: normal;
+}
+
+.bread-crumbs li {
+  display: inline-block;
+  line-height: 1.2;
+}
+
+.bread-crumbs a {
+  color: #333;
+  text-decoration: none;
+}
+
+.bread-crumbs i {
+  margin: 0 8px;
+  font-size: 9px;
+  color: #888;
+}
+
+
+
+// main-contents-right
+.l-container-clearfix {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  margin: 40px auto 0;
+  padding-bottom: 40px;
+}
+
+.mypage-content {
+  float: right;
+  width: 700px;
+
+  &__user-icon {
+    height: 160px;
+    position: relative;
+    padding: 20px;
+    background: url(https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?91658059);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    & figure {
+      overflow: hidden;
+      width: 60px;
+      height: 60px;
+      margin: 0 auto;
+      border-radius: 50%;
+    }
+    & h2 {
+      margin: 8px 0 0;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    &__mypage-number {
+      margin: 8px 0 0;
+      & div {
+        display: inline-block;
+        font-size: 14px;
+      }
+      & div+div {
+        margin: 0 0 0 16px;
+      }
+      & span {
+        margin: 0 0 0 8px;
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__user-icon a {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    color: #333;
+    text-decoration: none;
+  }
+
+  &__tab-container-notification-todo {
+    margin: 0;
+    background: #fff;
+  }
+
+  &__tabs {
+    border: 0;
+    background: #eee;
+    font-size: 0;
+  }
+  
+  &__tabs li {
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+  }
+
+  &__tabs li.active {
+    background: #fff;
+  }
+
+  &__tabs li.current {
+    background: #fff;
+  }
+
+  &__mypage-tab-container {
+    margin: 40px 0 0;
+    background: #fff;
+  }
+
+  &__tabs a:hover {
+    text-decoration: none;
+  }
+
+  &__tabs li.active a {
+    border-top: 2px solid #ea352d;
+    text-decoration: none;
+  }
+
+  &__tabs li.current a {
+    border-top: 2px solid #ea352d;
+    text-decoration: none;
+  }
+
+  &__tabs a {
+    position: relative;
+    display: block;
+    color: #333;
+    font-size: 16px;
+    line-height: 72px;
+    text-decoration: none;
+  }
+
+  &__tab-content {
+    &__tab-pane.active {
+      display: block;
+    }
+  }
+
+  &__item-list li {
+    position: relative;
+    border-bottom: 1px solid #eee;
+  }
+
+  &__item-list li:first-child {
+    border-bottom: 1px solid #eee;
+  }
+
+  &__item-link {
+    display: block;
+    min-height: 80px;
+    padding: 16px;
+    color: #333;
+    text-decoration: none;
+    & figure {
+      position: relative;
+      overflow: hidden;
+      float: left;
+      width: 48px;
+      height: 48px;
+    }
+    &:hover {
+      background: rgb(248, 248, 248);
+    }
+  }
+
+  &__item-list img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+  }
+
+  &__item-list li:last-child {
+    border: 0;
+  }
+
+  &__item-body {
+    margin: 0 40px 0 68px;
+  }
+
+  &__item-link time {
+    display: inline-block;
+    color: #888;
+  }
+
+  &__item-link time span {
+    vertical-align: middle;
+  }
+
+  &__go-list {
+    padding: 16px;
+  }
+
+  &__go-list a {
+    display: block;
+    height: 56px;
+    margin: 0 auto;
+    background: #eee;
+    color: #333;
+    line-height: 56px;
+    text-align: center;
+    text-decoration: none;
+    &:hover {
+      background: rgb(248, 248, 248);
+    }
+  }
+
+  &__tab-container {
+    margin: 40px 0 0;
+    background: #fff;
+  }
+
+  &__tab-head {
+    padding: 0 16px;
+    background: #fafafa;
+    font-size: 16px;
+    line-height: 72px;
+    font-weight: bold;
+  }
+
+  &__tabs h3 {
+    font-weight: bold;
+  }
+
+  &__item-not-found {
+    padding: 160px 0 60px;
+    background: url(https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?91658059);
+    background-repeat: no-repeat;
+    background-position: center 40px;
+    background-size: 78px 85px;
+    text-align: center;
+    font-size: 16px;
+    color: #ccc;
+    font-weight: bold;
+  }
+
+  &__chapter-container {
+      margin: 40px 0 0;
+      background: #fff;
+  }
+
+  &__chapter-container:first-child {
+      margin: 0;
+  }
+
+  &__chapter-head {
+      border-bottom: 1px solid #f5f5f5;
+      text-align: center;
+      font-size: 24px;
+      padding: 8px 24px;
+  }
+
+  &__inner {
+      border-top: 1px solid #f5f5f5;
+      padding: 64px;
+      p {
+        margin: 8px 0 0;
+        line-height: 1.5;
+      }
+  }
+
+  &__text-right {
+    text-align: right;
+  }
+
+  &__form-group {
+    margin: 40px 0 0;
+    label {
+        font-weight: 600;
+        display: inline-block;
+    }
+    select {
+        width: 100%;
+    }
+    &:first-child {
+        margin: 0;
+    }
+  }
+
+  &__form-arbitrary {
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    vertical-align: top;
+    background: #ccc;
+  }
+
+  &__select-wrap {
+    position: relative;
+    background: #fff;
+    margin: 8px 0 0;
+  }
+
+  &__input-default {
+    width: 100%;
+    margin: 8px 0 0;
+  }
+
+  &__btn-red {
+    margin: 40px 0 0;
+  }
+
+  &__identification button[type="submit"] {
+    margin: 40px 0 0 0;
+  }
+}
+
+
+
+// main-contents-left
+.side-bar {
+  float: left;
+  width: 280px;
+  margin: 0 40px 0 0;
+}
+
+.mypage-nav-list li {
+  border-top: 1px solid #eee;
+}
+
+.mypage-nav-list-item.active {
+  background: #eee;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mypage-nav-list-item {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  padding: 16px;
+  background: #fff;
+  font-size: 14px;
+  color: #333;
+  &:hover {
+    background: rgb(248, 248, 248);
+    transform: translate(10px);
+    transition: all ease-out .2s;
+  }
+}
+
+.list_item_active {
+  color: #333;
+  float: right;
+}
+
+.list_item {
+  color: #ccc;
+  float: right;
+}
+
+.mypage-nav-head {
+  margin: 40px 0 0;
+  font-size: 16px;
+  font-weight: bold;
+}

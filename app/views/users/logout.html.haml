@@ -1,0 +1,12 @@
+= render partial: 'header'
+= render partial: 'mypage-bread-crumbs'
+
+.logout-section
+  = render partial: 'side-bar'
+  .logout-content
+    .logout-container
+      .logout-inner
+        = link_to destroy_user_session_path, method: :delete do
+          .btn-logout{type: "submit"} ログアウト
+
+= render partial: 'items/footer'

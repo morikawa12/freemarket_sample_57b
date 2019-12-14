@@ -1,24 +1,61 @@
-.header
-  .header-box
-    .header-box__top 
-      .logo-box
-        = image_tag "mercari.png",size: "132x35"
-      .search-box
-        %input.search-box__input-field{placeholder: '何をお探しですか？'}
-        .serach-box__btn
-          =fa_icon "search"
-    .header-box__under
-      %ul.header-box__under__left
-        %li.category-box
-          =fa_icon "list-ul"
-          %span カテゴリーから探す
-        %li.brand-box
-          = image_tag "brand-logo", size: "18x13"
-          %span ブランドから探す
-      %ul.header-box__under__right
-        %li.sign-in-box
-          .sign-in-box__btn
-            =link_to '新規会員登録', '#'
-        %li.log-in-box
-          .log-in-box__btn
-            =link_to 'ログイン', '#'
+- if user_signed_in?
+  .header
+    .header-box
+      .header-box__top 
+        .logo-box
+          = image_tag "mercari.png",size: "132x35"
+        .search-box
+          %input.search-box__input-field{placeholder: '何かお探しですか？'}
+          .serach-box__btn
+            =fa_icon "search"
+      .header-box__under
+        %ul.header-box__under__left
+          %li.category-box
+            =fa_icon "list-ul"
+            %span カテゴリーから探す
+          %li.brand-box
+            = image_tag "brand-logo.png", size: "18x13"
+            %span ブランドから探す
+  
+        %ul.header-box__under__right
+  
+          %li.pc-header-user-nav
+            = link_to "#", class: "pc-header-menu-link" do
+              = fa_icon "bell-o", class: :mypage_icon
+              %span お知らせ
+  
+          %li.sign-in-box
+            = link_to "#", class: "pc-header-menu-link" do
+              = fa_icon "check", class: :mypage_icon
+              %span やることリスト
+  
+          %li.my-page-box
+            = link_to user_path(current_user.id), class: "pc-header-user-icon" do
+              %figure
+                =image_tag "user_icon.jpg", size: "32x32"
+              %span マイページ
+- else
+  .header
+    .header-box
+      .header-box__top 
+        .logo-box
+          = image_tag "mercari.png",size: "132x35"
+        .search-box
+          %input.search-box__input-field{placeholder: '何をお探しですか？'}
+          .serach-box__btn
+            =fa_icon "search"
+      .header-box__under
+        %ul.header-box__under__left
+          %li.category-box
+            =fa_icon "list-ul"
+            %span カテゴリーから探す
+          %li.brand-box
+            = image_tag "brand-logo.png", size: "18x13"
+            %span ブランドから探す
+        %ul.header-box__under__right
+          %li.sign-in-box
+            .sign-in-box__btn
+              =link_to '新規会員登録', step1_signup_index_path
+          %li.log-in-box
+            .log-in-box__btn
+              =link_to 'ログイン', '#'
