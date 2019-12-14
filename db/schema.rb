@@ -76,17 +76,26 @@ ActiveRecord::Schema.define(version: 2019_11_30_113244) do
     t.string "first_name", null: false
     t.string "family_name_kana", null: false
     t.string "first_name_kana", null: false
+    t.date "birthday"
     t.string "mobile_phone", null: false
     t.string "profile_image"
     t.text "profile_content"
     t.string "card_number"
+    t.string "expiration_date"
     t.string "security_code"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "expiration_date"
-    t.date "birthday"
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
   end
 
   create_table "shippings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -120,6 +129,8 @@ ActiveRecord::Schema.define(version: 2019_11_30_113244) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+
+  add_foreign_key "sns_credentials", "users"
   add_foreign_key "addresses", "users"
   add_foreign_key "images", "items"
   add_foreign_key "items", "brands"

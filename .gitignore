@@ -29,6 +29,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore SSL certifications
+/config/certs/*
 /.env
 # Ignore uploaded files in development
 /public/uploads/
