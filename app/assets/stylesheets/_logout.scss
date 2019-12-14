@@ -1,0 +1,39 @@
+.logout-section {
+  margin: 40px auto 0;
+  width: 1020px;
+  height: 1292px;
+  margin: 40px auto 0;
+}
+
+.logout-content {
+  float: right;
+  .logout-container {
+    background: #fff;
+    width: 700px;
+    margin: 0 auto;
+    .logout-inner {
+      padding: 64px 0;
+      max-width: 320px;
+      margin: 0 auto;
+      a{
+        text-decoration: none;
+      }
+        .btn-logout {
+          text-align: center;
+          text-decoration: none;
+          background: #ea352d;
+          border: 1px solid #ea352d;
+          color: #fff;
+          display: block;
+          width: 100%;
+          line-height: 48px;
+          font-size: 14px;
+          padding: 0;
+          cursor: pointer;
+          outline: none;
+        }
+      }
+    }
+  }
+
+

@@ -14,10 +14,18 @@
       .active{
         font-weight: 600;
         color: #ea352d;
-        .progress-status,.progress-status__first,.progress-status__end {
+        .progress-status__start,.progress-status__first,.progress-status__second,.progress-status__third,.progress-status__forth {
           background: #ea352d;
-        }
+         }
+       }
+       .act{
+        .progress-status__start,.progress-status__first,.progress-status__second,.progress-status__third,.progress-status__forth {
+          background: #ea352d;
+         }
+       }
       }
+      
+      
     li {
     font-size: 12px;
     color: #888;
@@ -26,25 +34,25 @@
     display: inline-block;
     margin: 0 25px 0 10px;
     min-width: 60px;
-   .progress-status,.progress-status__first,.progress-status__end{
+    .progress-status,.progress-status__start,.progress-status__first,.progress-status__second,.progress-status__third,.progress-status__forth,.progress-status__end{
     width: 12px;
     height: 12px;
     margin: 8px auto 0;
     background: #ccc;
     border-radius: 50%;
     }
-    .progress-status__end::after {
-      right: 50%;
+    .progress-status__end::after,.progress-status__forth::after {
+      right: 39.5%;
       position: absolute;
       bottom: 5px;
       z-index: -1;
       display: block;
       content: '';
-      width: 200px;
+      width: 100px;
       height: 2px;
       background: #ccc;
     }
-    .progress-status__first::before {
+    .progress-status__start::before,.progress-status__first::before, {
       left: 50%;
       position: absolute;
       bottom: 5px;
@@ -55,7 +63,7 @@
       height: 2px;
       background: #ccc;
     }
-  .progress-status::after, .progress-status::before{
+    .progress-status::after,.progress-status__second::after,.progress-status__third::after,.progress-status__forth::after, .progress-status::before,.progress-status__second::before,.progress-status__third::before{
     position: absolute;
     bottom: 5px;
     z-index: -1;
@@ -65,15 +73,22 @@
     height: 2px;
     background: #ccc;
    }
-  .progress-status::after {
+   .progress-status::after, .progress-status__second::after,.progress-status__third::after {
     right: 50%;
    }
-  .progress-status::before {
+    .progress-status__second::after,.progress-status__third::after,.progress-status__forth::after {
+      background-color: #ea352d;
+     }
+   .progress-status::before, .progress-status__second::before,.progress-status__third::before {
     left: 50%;
    }
+    .progress-status__first::before,.progress-status__third::before {
+      background-color: #ea352d;
+     }
+   }
   }
- }
-}
+ 
+
 
 // footer
 .registration-footer {
