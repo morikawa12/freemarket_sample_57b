@@ -205,6 +205,10 @@ body {
     background: #fff;
   }
 
+  &__tabs li.current {
+    background: #fff;
+  }
+
   &__mypage-tab-container {
     margin: 40px 0 0;
     background: #fff;
@@ -215,6 +219,11 @@ body {
   }
 
   &__tabs li.active a {
+    border-top: 2px solid #ea352d;
+    text-decoration: none;
+  }
+
+  &__tabs li.current a {
     border-top: 2px solid #ea352d;
     text-decoration: none;
   }
@@ -428,25 +437,26 @@ body {
 }
 
 .mypage-nav-list-item {
+  text-decoration: none;
+  color: #333;
+  display: block;
   padding: 16px;
   background: #fff;
-  cursor: pointer;
+  font-size: 14px;
+  color: #333;
   &:hover {
     background: rgb(248, 248, 248);
+    transform: translate(10px);
+    transition: all ease-out .2s;
   }
 }
 
-.mypage-nav-list a {
-  text-decoration: none;
-  color: #333;
-}
-
-.fa.list_item_active {
+.list_item_active {
   color: #333;
   float: right;
 }
 
-.fa.list_item {
+.list_item {
   color: #ccc;
   float: right;
 }

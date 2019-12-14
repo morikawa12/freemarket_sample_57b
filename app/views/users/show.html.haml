@@ -26,11 +26,11 @@
       %ul.mypage-content__tabs
         %li.active
           %h3
-            = link_to "#mypage-tab-notification", "data-toggle": "tab" do
+            = link_to "#mypage-tab-notification" do
               お知らせ
         %li
           %h3
-            = link_to "#mypage-tab-todo", "data-toggle": "tab" do
+            = link_to "#mypage-tab-todo" do
               やることリスト
 
       .tab-content
@@ -57,22 +57,27 @@
               %i.icon-arrow-right
           %li.mypage-content__go-list
             = link_to "一覧を見る", ""
+          
+        %ul#mypage-tab-todo.mypage-content__item-list.mypage-content__tab-content__tab-pane
+          %li.mypage-content__item-not-found.bold 現在、やることリストはありません
 
     .mypage-content__mypage-tab-container
       %h2.mypage-content__tab-head 購入した商品
-      %ul.mypage-tabs
       %ul.mypage-content__tabs
-        %li.active
+        %li.current
           %h3
-            = link_to "#" do
+            = link_to "#mypage-tab-transaction-now" do
               取引中
         %li
           %h3
-            = link_to "#mypage-tab-transaction-old", "data-toggle": "tab" do
+            = link_to "#mypage-tab-transaction-old" do
               過去の取引
       .mypage-content__tab-content
         %ul#mypage-tab-transaction-now.mypage-content__item-list.mypage-content__tab-pane.active
           %li.mypage-content__item-not-found.bold 取引中の商品がありません
+
+        %ul#mypage-tab-transaction-old.mypage-content__item-list.mypage-content__tab-pane
+          %li.mypage-content__item-not-found.bold 過去に取引した商品がありません
 
   = render partial: 'side-bar'
 = render partial: 'items/footer'
