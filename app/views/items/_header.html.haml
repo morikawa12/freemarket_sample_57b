@@ -3,7 +3,8 @@
     .header-box
       .header-box__top 
         .logo-box
-          = image_tag "mercari.png",size: "132x35"
+          %a{href: "/items"}
+            = image_tag "mercari.png",size: "132x35"
         .search-box
           %input.search-box__input-field{placeholder: '何かお探しですか？'}
           .serach-box__btn
