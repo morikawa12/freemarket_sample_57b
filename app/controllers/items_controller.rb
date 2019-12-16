@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :set_parents, only: [:new, :create, :edit, :update]
-  before_action :set_item, only: [:update, :edit, :buy]
+  before_action :set_item, only: [:update, :edit, :buy, :show]
 
   def index
     @items = Item.all.order("created_at DESC").includes(:images)
@@ -103,6 +103,10 @@ class ItemsController < ApplicationController
       render :edit
     end
 
+  end
+
+  def show
+    
   end
 
   private
