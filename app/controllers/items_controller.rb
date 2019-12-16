@@ -120,9 +120,9 @@ class ItemsController < ApplicationController
 
 
   def item_params
-    params.require(:item).permit(:name, :price, :description, :status, :prefecture, :fee, :arrival, :category_id, :size_id,:shipping_id,:product_status,:user_id,:brand_id,
+    params.require(:item).permit(:name, :price, :description, :status, :prefecture, :fee, :arrival, :category_id, :size_id,:shipping_id,:product_status,:brand_id,
     brand_attributes: [:id, :name],
-    images_attributes: [:id, :image])
+    images_attributes: [:id, :image]).merge(user_id: current_user.id)
   end
 
   def set_parents
