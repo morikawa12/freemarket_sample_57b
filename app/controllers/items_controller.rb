@@ -106,7 +106,15 @@ class ItemsController < ApplicationController
   end
 
   def show
-      
+    @items = Item.all
+    index=[]
+    @items.each_with_index do |item, i|
+      if @item.id == item.id
+        index << i
+      end
+    end
+    @nav_next = @items.slice(index[0] + 1, 1)
+    @nav_prev = @items.slice(index[0] - 1, 1)
   end
 
   private
