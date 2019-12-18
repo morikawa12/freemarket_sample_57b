@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :set_parents, only: [:new, :create, :edit, :update]
-  before_action :set_item, only: [:update, :edit, :buy]
+  before_action :set_item, only: [:update, :edit, :buy, :show]
 
   def index
     @items = Item.all.order("created_at DESC").includes(:images)
@@ -105,6 +105,21 @@ class ItemsController < ApplicationController
 
   end
 
+  def show
+    @items = Item.all
+    index=[]
+    @items.each_with_index do |item, i|
+      if @item.id == item.id
+        index << i
+      end
+    end
+    @nav_next = @items.slice(index[0] + 1, 1)
+    @nav_prev = @items.slice(index[0] - 1, 1)
+
+    @user_items = @item.user.items
+    @category_items = Item.where(category_id: @item.category_id)
+  end
+
   private
 
   def remove_images_at_index(index)
@@ -120,9 +135,9 @@ class ItemsController < ApplicationController
 
 
   def item_params
-    params.require(:item).permit(:name, :price, :description, :status, :prefecture, :fee, :arrival, :category_id, :size_id,:shipping_id,:product_status,:user_id,:brand_id,
+    params.require(:item).permit(:name, :price, :description, :status, :prefecture, :fee, :arrival, :category_id, :size_id,:shipping_id,:product_status,:brand_id,
     brand_attributes: [:id, :name],
-    images_attributes: [:id, :image])
+    images_attributes: [:id, :image]).merge(user_id: current_user.id)
   end
 
   def set_parents

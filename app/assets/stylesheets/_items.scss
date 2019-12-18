@@ -101,6 +101,15 @@
   height: 35px;
   padding: 2.5px 0;
   cursor: pointer;
+  position: relative;
+  & a{
+    display: block;
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+  }
 }
 
 
@@ -446,10 +455,12 @@ button{
 
 .items-list-image{
   width: 20%;
+  height: 268px;
   padding: 10px;
   display: inline-block;
   box-sizing: border-box;
   vertical-align: top;
+  position: relative;
 }
 
 
@@ -459,7 +470,15 @@ button{
   background-color: #ffffff;
   box-shadow: 0 0 4px rgba(0,0,0,0.3);
   box-sizing: border-box;
-  cursor: pointer;
+  position: relative;
+  & a{
+    display: block;
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+  }
   &:hover{
     border: 1px solid #0095ee;
   }
@@ -473,6 +492,7 @@ button{
   overflow: hidden;
   & p{
     font-size: 14px;
+    color: black;
   }
 }
 

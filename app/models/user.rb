@@ -5,6 +5,7 @@ class User < ApplicationRecord
   
   has_one :profile, dependent: :destroy
   has_one :address, dependent: :destroy
+  has_many :items, dependent: :destroy
 
   accepts_nested_attributes_for :profile
   accepts_nested_attributes_for :address

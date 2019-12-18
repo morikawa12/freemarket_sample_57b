@@ -11,10 +11,10 @@ threads threads_count, threads_count
 #
 # port        ENV.fetch("PORT") { 3000 }
 
-ssl_bind "0.0.0.0", "9292", {
-  cert: "config/certs/localhost.pem",
-  key:  "config/certs/localhost-key.pem"
-}
+# ssl_bind "0.0.0.0", "9292", {
+#   cert: "config/certs/localhost.pem",
+#   key:  "config/certs/localhost-key.pem"
+# }
 
 # Specifies the `environment` that Puma will run in.
 #
