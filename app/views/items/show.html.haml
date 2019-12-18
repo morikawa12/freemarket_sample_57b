@@ -114,7 +114,7 @@
         P0をお持ちです
 
     .item-show-buy-btn
-      購入画面に進む
+      =link_to "購入画面に進む",buy_item_path(@item.id)
 
     .item-show-app
       =link_to "アプリで購入", "http://app.adjust.io/xio2ii?campaign=android&adgroup=items.buy_button1"

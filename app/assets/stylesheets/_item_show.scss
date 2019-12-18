@@ -174,11 +174,23 @@
 .item-show-buy-btn{
   font-size: 24px;
   font-weight: bold;
+  height: 60px;
+  width: 100%;
   line-height: 60px;
   margin-top: 16px;
   background: #ea352d;
   text-align: center;
-  color: white;
+  position: relative;
+  & a{
+    text-decoration: none;
+    color: white;
+    display: block;
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+  }
 }
 
 .item-show-app{
@@ -388,6 +400,7 @@
     & img{
       height: 220px;
       width: 100%;
+      object-fit: cover;
     }
   }
   &__body{
