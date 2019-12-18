@@ -1,13 +1,14 @@
-%a{href: "/items/#{items.id}"}
-  %li.items-list-image
-    .items-box
-      .images-box-image
-        .image-box-price
-          %p
-            ¥
-            = items.price.to_s(:delimited)
-        - items.images.each_with_index do |image, i|
-        - break if i == 1
-          =image_tag image.image.to_s
-      .image-box-name
-        %p=items.name
+%li.items-list-image
+  .items-box
+    =link_to "", item_path(items.id)
+    .images-box-image
+      =link_to "", item_path(items.id)
+      .image-box-price
+        %p
+          ¥
+          = items.price.to_s(:delimited)
+      - items.images.each_with_index do |image, i|
+      - break if i == 1
+        =image_tag image.image.to_s
+    .image-box-name
+      %p=items.name
