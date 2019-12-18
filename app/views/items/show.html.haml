@@ -1,10 +1,10 @@
 = render partial: 'header'
 
-.item-show-contont
-  .item-show-contont__box
+.item-show-content
+  .item-show-content__box
     %h1.item-show-name
       =@item.name
-    .clearfix.item-show-main
+    .item-show-main
       .item-show-main__photo
         .item-show-main__photo__big
           -@item.images.each_with_index do |image, i|
@@ -58,7 +58,11 @@
           .item-detail-table__title
             商品のサイズ
           .item-detail-table__val
-            =@item.size.size
+            -if @item.size == nil
+              =''
+            -else
+              =@item.size.size
+
 
         %li.item-detail-table
           .item-detail-table__title
@@ -92,5 +96,117 @@
             配送日の目安
           .item-detail-table__val
             =@item.arrival
+
+    .item-show-price
+      .item-show-price__price
+        ¥
+        = @item.price
+      .item-show-price__tax
+        (税込)
+      .item-show-price__fee
+        -if @item.fee == 1
+          送料込み
+        -else 
+          着払い
+
+    .item-show-point
+      .item-show-point__message 
+        P0をお持ちです
+
+    .item-show-buy-btn
+      購入画面に進む
+
+    .item-show-app
+      =link_to "アプリで購入", "http://app.adjust.io/xio2ii?campaign=android&adgroup=items.buy_button1"
+    
+    .item-show-description
+      %p=@item.description
+
+    .item-show-btn-content
+      .item-show-btn-content__left
+        %button.item-like-btn
+          =fa_icon 'heart-o'
+          いいね! 0
+        .item-report-btn
+          =fa_icon 'flag-o'
+          不適切な商品の報告
+      .item-show-btn-content__right
+        =link_to "あんしん・あんぜんへの取り組み", "https://www.mercari.com/jp/safe/description/"
+
+  .item-show-content__comment
+    .item-show-comment
+      %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      %textarea
+      .item-show-comment__button
+        コメントする
+  .item-show-content__nav
+    .item-nav-prev
+      -unless @nav_prev == nil
+        = fa_icon 'chevron-left'
+        =link_to "#{@nav_prev[0].name}", item_path(@nav_prev[0].id)
+    .item-nav-next
+      -unless @nav_next == nil 
+        =link_to "#{@nav_next[0].name}", item_path(@nav_next[0].id)
+        = fa_icon 'chevron-right'
+
+  .item-show-content__sns
+    %ul.item-sns-box
+      %li.item-sns-box__facebook
+        =link_to "", "#"
+        = fa_icon 'facebook-square'
+      %li.item-sns-box__twitter
+        =link_to "", "#"
+        = fa_icon 'twitter'
+      %li.item-sns-box__pinterest
+        =link_to "", "#"
+        = fa_icon 'pinterest'
+
+  .item-show-head
+    %h2.item-show-head__title
+      =link_to "#{@item.user.nickname}さんのその他の商品", "#"
+  
+  .item-show-user-item
+    -@user_items.each_with_index do |item, i|
+      -if @user_items.length > 6
+        -break if i == 6
+      .items-show-box
+        =link_to '', item_path(item.id)
+        .items-show-box__photo
+          =image_tag item.images[0].image.to_s
+        .items-show-box__body
+          %h3 
+            =item.name
+          .items-show-box__body__num
+            .items-show-box__body__num__price
+              ¥
+              =item.price
+            .items-show-box__body__num__like
+              =fa_icon 'heart-o'
+              0
+
+  .item-show-head
+    %h2.item-show-head__title
+      =link_to "#{@item.category.name} (#{@item.category.parent.parent.name})その他の商品", "#"
+
+  .item-show-user-item
+    -@category_items.each_with_index do |item, i|
+      -if @category_items.length > 6
+        -break if i == 6
+      .items-show-box
+        =link_to '', item_path(item.id)
+        .items-show-box__photo
+          =image_tag item.images[0].image.to_s
+        .items-show-box__body
+          %h3 
+            =item.name
+          .items-show-box__body__num
+            .items-show-box__body__num__price
+              ¥
+              =item.price
+            .items-show-box__body__num__like
+              =fa_icon 'heart-o'
+              0
+
+
 
 = render partial: 'footer'

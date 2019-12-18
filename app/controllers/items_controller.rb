@@ -115,6 +115,9 @@ class ItemsController < ApplicationController
     end
     @nav_next = @items.slice(index[0] + 1, 1)
     @nav_prev = @items.slice(index[0] - 1, 1)
+
+    @user_items = @item.user.items
+    @category_items = Item.where(category_id: @item.category_id)
   end
 
   private
