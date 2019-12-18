@@ -141,11 +141,11 @@
         コメントする
   .item-show-content__nav
     .item-nav-prev
-      -unless @nav_prev == nil
+      -unless @nav_prev == []
         = fa_icon 'chevron-left'
         =link_to "#{@nav_prev[0].name}", item_path(@nav_prev[0].id)
     .item-nav-next
-      -unless @nav_next == nil 
+      -unless @nav_next == []
         =link_to "#{@nav_next[0].name}", item_path(@nav_next[0].id)
         = fa_icon 'chevron-right'
 
@@ -206,6 +206,9 @@
             .items-show-box__body__num__like
               =fa_icon 'heart-o'
               0
+
+  = link_to '削除', "/items/#{@item.id}", method: :delete
+
 
 
 
