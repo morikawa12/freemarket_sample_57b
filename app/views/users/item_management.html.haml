@@ -27,7 +27,7 @@
           =image_tag item.images[0].image.to_s
           .mypage-item-list__detail
             .mypage-item-list__detail__name
-              =@item.name
+              = item.name
             .mypage-item-list__detail__status
               =fa_icon 'heart-o'
               .mypage-item-list__detail__status__like
@@ -37,6 +37,8 @@
                 0
               .mypage-item-list__detail__status__display
                 出品中
+          .mypage-item-list__icon
+            = fa_icon 'chevron-right'
 
     .mypage-item-management-history
       
