@@ -111,7 +111,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to root_path
+    redirect_to item_management_user_path(current_user.id)
   end
 
   def show
