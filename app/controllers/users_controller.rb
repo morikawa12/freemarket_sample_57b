@@ -13,4 +13,8 @@ class UsersController < ApplicationController
   def logout
   end
 
+  def item_management
+    @item = Item.where(user_id: current_user.id)
+  end
+
 end

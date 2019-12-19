@@ -1,0 +1,129 @@
+= render partial: 'header'
+
+.item-detail-content
+  .item-detail-content__box
+    .item-show-content__box
+      %h1.item-show-name
+        =@item.name
+      .item-show-main
+        .item-show-main__photo
+          .item-show-main__photo__big
+            -@item.images.each_with_index do |image, i|
+              -if i == 0
+                .image-slide.image-active
+                  =image_tag image.image.url
+              -else
+                .image-slide
+                  =image_tag image.image.url
+          .item-show-main__photo__small
+            -@item.images.each_with_index do |image, i|
+              -if i == 0
+                .image-slide-prev.image-opacity
+                  =image_tag image.image.url
+              -else
+                .image-slide-prev
+                  =image_tag image.image.url
+        %ul.item-show-main__detail
+          %li.item-detail-table
+            .item-detail-table__title
+              出品者
+            .item-detail-table__link
+              =@item.user.nickname
+              .item-user-rate
+                = fa_icon 'smile-o'
+                0
+                = fa_icon 'meh-o'
+                0
+                = fa_icon 'frown-o'
+                0
+
+          %li.item-detail-table
+            .item-detail-table__title
+              カテゴリー
+            .item-detail-table__link
+              =@item.category.parent.parent.name
+              %br
+              = fa_icon 'chevron-right'
+              =@item.category.parent.name
+              %br
+              = fa_icon 'chevron-right'
+              =@item.category.name
+
+          %li.item-detail-table
+            .item-detail-table__title
+              ブランド
+            .item-detail-table__link
+              =@item.brand.name
+
+          %li.item-detail-table
+            .item-detail-table__title
+              商品のサイズ
+            .item-detail-table__val
+              -if @item.size == nil
+                =''
+              -else
+                =@item.size.size
+
+
+          %li.item-detail-table
+            .item-detail-table__title
+              商品の状態
+            .item-detail-table__val
+              =@item.status
+
+          %li.item-detail-table
+            .item-detail-table__title
+              配送料の負担
+            .item-detail-table__val
+              -if @item.fee == 1
+                送料込み(出品者負担)
+              -else 
+                着払い(購入者負担)
+
+          %li.item-detail-table
+            .item-detail-table__title
+              配送料の方法
+            .item-detail-table__val
+              =@item.shipping.shipping
+
+          %li.item-detail-table
+            .item-detail-table__title
+              配送元地域
+            .item-detail-table__val
+              =@item.prefecture
+
+          %li.item-detail-table
+            .item-detail-table__title
+              配送日の目安
+            .item-detail-table__val
+              =@item.arrival
+
+      .item-show-price
+        .item-show-price__price
+          ¥
+          = @item.price
+        .item-show-price__tax
+          (税込)
+        .item-show-price__fee
+          -if @item.fee == 1
+            送料込み
+          -else 
+            着払い
+
+    .item-detail-content__change-box
+      .item-detail-content__change-box__edit
+        =link_to "商品の編集", edit_item_path(@item.id)
+      %p or
+      %button 出品を一旦停止する
+      .item-detail-content__change-box__delete
+        = link_to 'この商品を削除する', item_path(@item.id), method: :delete, data: { confirm: '本当に削除しますか？' }
+
+    .item-show-content__comment
+      .item-show-comment
+        %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %textarea
+        .item-show-comment__button
+          コメントする
+
+
+= render partial: 'footer'
