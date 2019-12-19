@@ -6,11 +6,6 @@ Rails.application.routes.draw do
   
   root 'items#index'
 
-  # resources :users, only: [:show] do
-  #   collection do
-  #     get 'logout' #次にAPIログインを設置
-  #   end
-  # end
 
   resources :users, only: [:index, :edit, :show] do 
     collection do
