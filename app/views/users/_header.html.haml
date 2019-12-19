@@ -34,7 +34,7 @@
             %span やることリスト
 
         %li.my-page-box
-          = link_to "#", class: "pc-header-user-icon" do
+          = link_to  user_path(current_user.id), class: "pc-header-user-icon" do
             %figure
               =image_tag "user_icon.jpg", size: "32x32"
             %span マイページ

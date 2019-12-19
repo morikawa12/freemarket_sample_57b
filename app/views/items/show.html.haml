@@ -139,6 +139,7 @@
       %textarea
       .item-show-comment__button
         コメントする
+        
   .item-show-content__nav
     .item-nav-prev
       -unless @nav_prev == []
@@ -206,8 +207,6 @@
             .items-show-box__body__num__like
               =fa_icon 'heart-o'
               0
-
-  = link_to '削除', "/items/#{@item.id}", method: :delete
 
 
 
