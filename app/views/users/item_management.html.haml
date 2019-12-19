@@ -1,0 +1,51 @@
+= render partial: 'header'
+= render partial: 'mypage-bread-crumbs'
+.exhibit-btn
+  .exhibit-btn__box
+    %p 出品
+    .exhibit-btn-icon
+      =link_to new_item_path do
+        =fa_icon "camera"
+        
+.l-container-clearfix
+  .mypage-item-management-tab
+    .mypage-item-management-tab__title
+      出品した商品
+
+    %ul.mypage-item-management-tab__list
+      %li.management_active
+        =link_to "出品中", "#"
+      %li
+        =link_to "取引中", "#"
+      %li
+        =link_to "売却済み", "#"
+
+    %ul.mypage-item-management-tab__item
+      -@item.each do |item|
+        %li.mypage-item-list
+          =link_to "", detail_item_path(item.id)
+          =image_tag item.images[0].image.to_s
+          .mypage-item-list__detail
+            .mypage-item-list__detail__name
+              =@item.name
+            .mypage-item-list__detail__status
+              =fa_icon 'heart-o'
+              .mypage-item-list__detail__status__like
+                0
+              =fa_icon 'comment-o'
+              .mypage-item-list__detail__status__comment
+                0
+              .mypage-item-list__detail__status__display
+                出品中
+
+    .mypage-item-management-history
+      
+      .mypage-item-management-history__prev
+        =link_to "", '#'
+        = fa_icon 'chevron-left'
+      .mypage-item-management-history__next
+        =link_to "", '#'
+        = fa_icon 'chevron-right'
+
+  = render partial: 'side-bar'
+= render partial: 'items/footer'
