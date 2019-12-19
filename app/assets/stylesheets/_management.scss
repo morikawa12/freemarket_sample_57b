@@ -1,0 +1,143 @@
+.management_active{
+  background-color: #fff;
+  border-top: 2px solid #ea352d;
+}
+
+.mypage-item-management-tab{
+  float: right;
+  width: 700px;
+  &__title{
+    padding: 0 16px;
+    font-size: 16px;
+    line-height: 72px;
+    background: #fafafa;
+    font-weight: bold;
+  }
+  &__list{
+    line-height: 72px;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    background-color: #eee;
+    & li{
+      width: 33.3%;
+      height: 72px;
+      text-align: center;
+      position: relative;
+      & a{
+        color: #333;
+        text-decoration: none;
+        display: block;
+        position: absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+      }
+    }
+  }
+}
+
+.mypage-item-list{
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+  position: relative;
+  padding: 16px;
+  box-sizing: border-box;
+  & a{
+    display: block;
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+  }
+  & img{
+    height: 48px;
+    width: 48px;
+    object-fit: cover;
+    display: inline-block;
+  }
+  &__detail{
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: top;
+    width: 500px;
+    &__name{
+      margin-bottom: 20px;
+    }
+    &__status{
+      display: flex;
+      & i{
+        color: #ccc;
+        margin-right: 5px;
+      }
+      &__like{
+        font-size: 16px;
+        color: #888;
+        margin-right: 10px;
+      }
+      &__comment{
+        font-size: 16px;
+        color: #888;
+        margin-right: 10px;
+      }
+      &__display{
+        color: white;
+        background-color: #0099e8;
+        padding: 5px 6px;
+        border-radius: 2px;
+        font-size: 12px;
+      }
+    }
+  }
+  &__icon{
+    float: right;
+    line-height: 56px;
+  }
+}
+
+.mypage-item-management-history{
+  margin: 40px 0 0;
+  &__prev{
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    background: #fff;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    line-height: 42px;
+    text-align: center;
+    position: relative;
+    float: left;
+    text-align: center;
+    & a{
+    display: block;
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    }
+  }
+  &__next{
+    text-align: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    background: #fff;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    line-height: 42px;
+    float: right;
+    position: relative;
+    & a{
+      display: block;
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      }
+  }
+}

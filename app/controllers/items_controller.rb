@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :set_parents, only: [:new, :create, :edit, :update]
-  before_action :set_item, only: [:update, :edit, :buy, :show]
+  before_action :set_item, only: [:update, :edit, :buy, :show, :destroy, :detail]
 
   def index
     @items = Item.all.order("created_at DESC").includes(:images)
@@ -103,6 +103,19 @@ class ItemsController < ApplicationController
       render :edit
     end
 
+  end
+
+  def detail
+
+  end
+
+  def destroy
+    if @item.user.id == current_user.id
+      @item.destroy
+      redirect_to item_management_user_path(current_user.id)
+    else
+      redirect_to :back , alert: '削除できません'
+    end
   end
 
   def show

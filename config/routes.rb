@@ -6,18 +6,20 @@ Rails.application.routes.draw do
   
   root 'items#index'
 
-  resources :users, only: [:show] do
+
+  resources :users, only: [:index, :edit, :show] do 
     collection do
       get 'logout' #次にAPIログインを設置
     end
+    member do
+      get 'item_management'
+    end
   end
 
-  resources :users, only: [:index, :edit, :show]
 
 
 
-
-  resources :items, only: [:index, :new, :create, :edit, :update, :show] do
+  resources :items do
   collection do
     get 'get_category_children', defaults: { format: 'json' }
     get 'get_category_grandchildren', defaults: { format: 'json' }
@@ -32,7 +34,7 @@ Rails.application.routes.draw do
     get 'get_shipping', defaults: { format: 'json' }
 
     get 'buy', to: 'items#buy'
-
+    get 'detail', to: 'detail'
   end
 end
 
