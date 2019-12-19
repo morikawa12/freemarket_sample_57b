@@ -6,13 +6,20 @@ Rails.application.routes.draw do
   
   root 'items#index'
 
-  resources :users, only: [:show] do
+  # resources :users, only: [:show] do
+  #   collection do
+  #     get 'logout' #次にAPIログインを設置
+  #   end
+  # end
+
+  resources :users, only: [:index, :edit, :show] do 
     collection do
       get 'logout' #次にAPIログインを設置
     end
+    member do
+      get 'item_management'
+    end
   end
-
-  resources :users, only: [:index, :edit, :show]
 
 
 
@@ -32,7 +39,7 @@ Rails.application.routes.draw do
     get 'get_shipping', defaults: { format: 'json' }
 
     get 'buy', to: 'items#buy'
-
+    get 'detail', to: 'detail'
   end
 end
 
