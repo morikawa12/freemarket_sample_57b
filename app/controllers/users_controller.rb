@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def item_management
-    @item = current_user.items
+    @item = current_user.items.order("created_at DESC")
   end
 
 end
