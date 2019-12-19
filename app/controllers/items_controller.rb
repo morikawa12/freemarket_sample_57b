@@ -110,8 +110,12 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item.destroy
-    redirect_to item_management_user_path(current_user.id)
+    if @item.user.id == current_user.id
+      @item.destroy
+      redirect_to item_management_user_path(current_user.id)
+    else
+      redirect_to :back , alert: '削除できません'
+    end
   end
 
   def show
