@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
 
-  
+  #削除機能の実装に伴い一旦アソシエーションきってます
   # has_many :comments, dependent: :destroy
   # has_many :likes, dependent: :destroy
   # has_many :buyer_deals, class_name: 'Deal', foreign_key: :buyer_id, dependent: :destroy
@@ -25,7 +25,6 @@ class Item < ApplicationRecord
   validates :fee, presence: true
   validates :arrival, presence: true
   validates :shipping_id, presence: true
-  # validates :size_id, presence: true
   validates :category_id, presence: true
   validates :images, presence: true
 
