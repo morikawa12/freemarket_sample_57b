@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :edit, :show]
 
-
+  resources :addresses, only: [:edit,:update]
+  # get ‘addresses/update’ => ‘addresses#update’
 
 
   resources :items, only: [:index, :new, :create, :edit, :update, :buy] do
