@@ -1,14 +1,15 @@
-- if user_signed_in?
-  .header
-    .header-box
-      .header-box__top 
-        .logo-box
-          =link_to "", items_path
-          = image_tag "mercari.png",size: "132x35"
-        .search-box
-          %input.search-box__input-field{placeholder: '何かお探しですか？'}
-          .serach-box__btn
-            =fa_icon "search"
+
+.header
+  .header-box
+    .header-box__top 
+      .logo-box
+        =link_to "", items_path
+        = image_tag "mercari.png",size: "132x35"
+      .search-box
+        %input.search-box__input-field{placeholder: '何かお探しですか？'}
+        .serach-box__btn
+          =fa_icon "search"
+    - if user_signed_in?
       .header-box__under
         %ul.header-box__under__left
           %li.category-box
@@ -35,16 +36,7 @@
               %figure
                 =image_tag "user_icon.jpg", size: "32x32"
               %span マイページ
-- else
-  .header
-    .header-box
-      .header-box__top 
-        .logo-box
-          = image_tag "mercari.png",size: "132x35"
-        .search-box
-          %input.search-box__input-field{placeholder: '何をお探しですか？'}
-          .serach-box__btn
-            =fa_icon "search"
+    - else
       .header-box__under
         %ul.header-box__under__left
           %li.category-box
