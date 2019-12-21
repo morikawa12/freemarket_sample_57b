@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   end
 
 
-
+  resources :addresses, only: [:edit,:update]
+  # get ‘addresses/update’ => ‘addresses#update’
 
   resources :items do
   collection do
