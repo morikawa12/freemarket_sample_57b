@@ -40,6 +40,7 @@ end
 
   resources :signup do 
     collection do
+      get 'new'
       get 'step1'
       get 'step2'
       get 'step3'

@@ -1,7 +1,7 @@
 class SignupController < ApplicationController
   before_action :save_to_session, only: :step2
 
-  def index
+  def new
   end
 
   def step1 #ユーザー・本名、誕生日（Proifile）入力画面
