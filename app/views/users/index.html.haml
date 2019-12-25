@@ -1,0 +1,36 @@
+.exhibit-btn
+  .exhibit-btn__box
+    %p 出品
+    .exhibit-btn-icon
+      =link_to new_item_path do
+        =fa_icon "camera"
+.header
+  = render 'items/header'
+.headers
+  .header2
+    .header2__l
+      .header2__l__l 
+        =link_to 'メルカリ','https://www.mercari.com/jp/'
+      .header2__l__r ＞
+    .header2__c  
+      .header2__c__l
+        =link_to 'マイページ','https://www.mercari.com/jp/mypage' 
+      .header2__c__r ＞
+    .header2__r  プロフィール
+.profile__allo
+  .profile__all
+    .profile__container
+      .side-bar
+        = render 'users/side-bar'
+      .profile__main
+        .profile__main__header プロフィール
+        .profile__main__body
+          .profile__main__body__up
+            .profile__main__body__up_icon
+              = image_tag 'member_photo_noimage_thumb.png',size: "60x60"
+            %input.input-default 
+          .profile__main__body__down
+            .profile__main__body__down__text　よろしくお願いします。
+            .profile__main__body__down__botton　変更する
+.footer
+  = render 'items/footer'
