@@ -17,4 +17,7 @@ class UsersController < ApplicationController
     @item = current_user.items.order("created_at DESC")
   end
 
+  def profile
+  end
+
 end
