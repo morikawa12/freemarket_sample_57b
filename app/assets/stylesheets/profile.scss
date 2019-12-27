@@ -1,0 +1,114 @@
+headers{
+  .header2{
+    position: relative;
+    border-top: 1px solid #eee;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+    background: #fff;
+    display: flex;
+    overflow: visible;
+    margin: 0 auto;
+    padding: 16px 0;
+    white-space: normal;
+    padding-left: 210px;
+    font-size: 14px;
+    &__l{
+      width: 80px;
+      &__l{
+        float: left;
+        text-decoration: none;
+      }
+    }
+    &__c{
+      width: 100px;
+      &__l{
+        float: left;
+      }
+
+    }
+    &__r{
+      font-weight: bold;
+    }
+   }
+  }
+.profile__allo{
+  background-color: #F5F5F5;
+  padding: 40px 0;
+  height: 1252px;
+
+
+  .profile__all{
+    width: 1020px;
+    margin: 0 auto;
+    .profile__container{
+      padding: 0 0 40px;
+      .profile__main{
+        width: 700px;
+        background-color: white;
+        margin: 0 0 0 auto;
+        .profile__main__header{
+          font-size: 24px;
+          padding: 8px 24px;
+          text-align: center;
+          line-height: 1.4;
+
+        }
+        .profile__main__body{
+          width: 700px;
+          height: 518px;
+          .profile__main__body__up{
+            text-align: center;
+            height: 60px;
+            padding: 72px 16px 24px;
+            background: url(https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?93931886);
+            .profile__main__body__up_icon{
+              display: inline-block;
+              overflow: hidden;
+              width: 60px;
+              height: 60px;
+              order-radius: 50%;
+              border-radius: 50%;
+              vertical-align: middle;
+              text-align: center;
+              background-color: white;
+
+            }
+            .input-default{
+              width: 186px;
+              height: 28px;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 16px;
+
+            }
+
+          }
+          .profile__main__body__down{
+            width: 668px;
+            height: 282px;
+            padding: 40px 16px;
+            .profile__main__body__down__text{
+              width: 646px;
+              height: 194px;
+              padding: 10px;
+              border: 1px solid #ccc;
+
+            }
+            .profile__main__body__down__botton{
+              margin: 16px 0 0;
+              width: 666px;
+              height: 48px;
+              background: #ea352d;
+              border: 1px solid #ea352d;
+              color: #fff;
+              text-align: center;
+              line-height: 50px;
+            }
+          }
+        }
+      }
+    }
+  }
+} 
