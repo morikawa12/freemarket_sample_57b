@@ -1,0 +1,55 @@
+.payment-method-box{
+  float: right;
+  width: 700px;
+  &__title{
+    font-size: 24px;
+    padding: 8px 24px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #f5f5f5;
+    background: #fafafa;
+  }
+  &__register{
+    padding: 64px;
+    border-top: 1px solid #f5f5f5;
+    background: #fafafa;
+    overflow: hidden;
+    &__title{
+      font-size: 16px;
+      font-weight: bold;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+    &__btn{
+      padding: 24px 0;
+      border-bottom: 1px solid #eee;
+      max-width: 320px;
+      margin: 0 auto;
+      & a{
+        margin-bottom: 8px !important;
+        background: #ea352d;
+        border: 1px solid #ea352d;
+        color: #fff;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        line-height: 48px;
+        font-size: 14px;
+        text-align: center;
+      }
+    }
+    &__about{
+      float: right;
+      & a{
+        margin: 40px 0 0;
+        text-align: right;
+        display: inline-block;
+        color: #0099e8;
+        text-decoration: none;
+      }
+      & i{
+        color: #0099e8;
+      }
+    }
+  }
+}
