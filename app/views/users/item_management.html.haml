@@ -21,7 +21,7 @@
         =link_to "売却済み", "#"
 
     %ul.mypage-item-management-tab__item
-      -@item.each do |item|
+      -@items.each do |item|
         %li.mypage-item-list
           =link_to "", detail_item_path(item.id)
           =image_tag item.images[0].image.to_s
