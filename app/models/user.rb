@@ -11,7 +11,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :address
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
+  :recoverable, :rememberable, :validatable,
+  :omniauthable, omniauth_providers: %i[facebook google_oauth2]
   # Userモデルをomniauthableにすると、config/routes.rbにdevise_for :usersを記述することで以下のURLメソッドがDeviseによって作成されます。
   # user_omniauth_authorize_path(provider)
   # user_omniauth_callback_path(provider)
@@ -30,7 +31,7 @@ class User < ApplicationRecord
     errors.add(:base, "このメールアドレスは既に使われております。")
   end
 
-# 　コールバックされた値のproviderおよびuidからDBを検索し、条件に合わせてコントローラに返す。
+#   コールバックされた値のproviderおよびuidからDBを検索し、条件に合わせてコントローラに返す。
 #   controllerのcallback_for(provider)内から呼び出される。
 #   controllerのrequest.env("omniauth.auth")が引数で引き継がれる。env（）
   def self.find_oauth(auth)

@@ -1,10 +1,15 @@
 class SignupController < ApplicationController
   before_action :save_to_session, only: :step2
 
-  def new
+  def top
   end
 
   def step1 #ユーザー・本名、誕生日（Proifile）入力画面
+    @user = User.new
+    @user.build_profile
+  end
+
+  def api #メールアドレス,facebook,google
     @user = User.new
     @user.build_profile
   end
@@ -13,13 +18,11 @@ class SignupController < ApplicationController
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
-    session[:password_confirmation] = user_params[:password_confirmation]
     session[:profile_attributes_after_step1] = user_params[:profile_attributes]
     @user = User.new(
       nickname: user_params[:nickname],
       email: user_params[:email],
       password: user_params[:password],
-      password_confirmation: user_params[:password_confirmation],
     )
     render '/signup/step1' unless @user.valid?
   end
@@ -49,12 +52,12 @@ class SignupController < ApplicationController
 
   def create
     session[:profile_attributes_after_step4] = user_params[:profile_attributes]
-    session[:profile_attributes_after_step4].merge!(session[:profile_attributes_after_step2]) 
+    session[:profile_attributes_after_step4].merge!(session[:profile_attributes_after_step2])
+    
     @user = User.new(
       email: session[:email],
       password: session[:password],
-      password_confirmation: session[:password_confirmation],
-      nickname: session[:nickname]
+      nickname: session[:nickname],
     )
     @user.build_address(session[:address_attributes_after_step3]) 
     @user.build_profile(session[:profile_attributes_after_step4])
@@ -73,7 +76,6 @@ private
     params.require(:user).permit(
       :email,
       :password,
-      :password_confirmation,
       :nickname,
       profile_attributes: [:family_name, :first_name, :family_name_kana , :first_name_kana, :birthday, :mobile_phone,:card_number, :expiration_date, :security_code],
       address_attributes: [:zip_code, :prefecture, :city, :block, :building, :home_phone]

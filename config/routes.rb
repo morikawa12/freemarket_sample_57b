@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   
   root 'items#index'
 
-
   resources :users, only: [:index, :edit, :show] do 
     collection do
       get 'logout' #次にAPIログインを設置
@@ -15,8 +14,6 @@ Rails.application.routes.draw do
       get 'item_management'
     end
   end
-
-
 
 
   resources :items do
@@ -40,7 +37,8 @@ end
 
   resources :signup do 
     collection do
-      get 'new'
+      get 'top'
+      get 'api'
       get 'step1'
       get 'step2'
       get 'step3'

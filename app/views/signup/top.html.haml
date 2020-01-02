@@ -1,0 +1,19 @@
+.registration
+  .registration-top
+    .registration-header
+      %h1.registration-header__left
+        = link_to image_tag('logo-acdd90ac4f472d5a6f7a330d33ab1225.svg',size: "193x49"), root_path
+
+  .registration-menu
+    %h2.registration-menu__head
+      新規会員登録
+    .registration-menu__inner
+      .registration-menu__inner__btn
+      = link_to image_tag('mail.png',size: "341x48"), step1_signup_index_path 
+      .registration-menu__inner__btn
+      = link_to image_tag('facebook.png',size: "343x48"), user_facebook_omniauth_authorize_path, method: :post 
+      .registration-menu__inner__btn
+      = link_to image_tag('Google.png',size: "343x48"), user_google_oauth2_omniauth_authorize_path, method: :post 
+
+  .registration-under
+    = render "devise/shared/registration-footers"

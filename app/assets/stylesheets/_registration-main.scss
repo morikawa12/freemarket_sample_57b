@@ -16,6 +16,9 @@
   }
   &__inner{
    padding: 24px 16px 40px;
+   &__btn{
+     margin:15px 0 0 0;
+   }
   }
   .alert{
     font-size: 15px;
@@ -187,6 +190,31 @@
           font-size: 14px;
      }
     }
+    &__group-checbox{
+     margin: 20px 0 0 0;
+     label{
+     font-weight: lighter;
+     }
+    }
+      .active {
+        display: inline-block;
+        background-color: #f5f5f5;
+        margin: 10px 0 0 0;
+        padding: 4px 8px;
+        display: inline-block;
+        font-weight: 500;
+        font-family: monospace;
+        font-size: 16px;
+      }
    }
   }
  }
+
+ #reveal_password {
+  padding-left: 45px;
+  font-size: 45px;
+  line-height: 50px;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+}
