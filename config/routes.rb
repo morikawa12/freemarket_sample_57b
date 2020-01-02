@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
     member do
       get 'item_management'
+      get 'card'
     end
   end
 
