@@ -58,5 +58,32 @@
         color: #0099e8;
       }
     }
+    &__list{
+      padding: 24px 0;
+      margin: 0 auto;
+      max-width: 320px;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      & img{
+        width: 49px;
+      }
+      &__num{
+        margin: 8px 0 0;
+      }
+      &__expiration{
+        margin: 8px 0 0;
+      }
+      & button{
+        border-radius: 3px;
+        border: 1px solid #ea352d;
+        color: #ea352d;
+        padding: 4px 6px;
+        background: #fff;
+        position: absolute;
+        top: 20px;
+        left: 250px;
+        cursor: pointer;
+      }
+    }
   }
 }
