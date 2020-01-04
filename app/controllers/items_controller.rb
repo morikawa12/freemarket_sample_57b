@@ -153,16 +153,21 @@ class ItemsController < ApplicationController
   end
 
   def pay
-    card = Card.where(user_id: current_user.id).first
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-    Payjp::Charge.create(
-    :amount => @item.price.to_s, #支払金額を入力（itemテーブル等に紐づけても良い）
-    :customer => card.customer_id, #顧客ID
-    :currency => 'jpy', #日本円
-    )
-    @item.product_status = current_user.id.to_i
-    @item.save
-    redirect_to root_path
+    if @item.product_status == nil
+      card = Card.where(user_id: current_user.id).first
+      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+      Payjp::Charge.create(
+      :amount => @item.price.to_s, #支払金額を入力（itemテーブル等に紐づけても良い）
+      :customer => card.customer_id, #顧客ID
+      :currency => 'jpy', #日本円
+      )
+      
+      @item.product_status = current_user.id.to_i
+      @item.save
+      redirect_to root_path
+    else
+      redirect_to root_path
+    end
   end
 
   private
