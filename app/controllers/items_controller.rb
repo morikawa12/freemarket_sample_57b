@@ -159,8 +159,10 @@ class ItemsController < ApplicationController
     :amount => @item.price.to_s, #支払金額を入力（itemテーブル等に紐づけても良い）
     :customer => card.customer_id, #顧客ID
     :currency => 'jpy', #日本円
-  )
-  redirect_to root_path
+    )
+    @item.product_status = current_user.id.to_i
+    @item.save
+    redirect_to root_path
   end
 
   private
