@@ -134,6 +134,7 @@ class ItemsController < ApplicationController
   require 'payjp'
 
   def buy
+    @address = current_user.address
     if @item.user_id == current_user.id || @item.product_status != nil
       redirect_to root_path
     else

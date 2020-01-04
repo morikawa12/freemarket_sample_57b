@@ -78,13 +78,27 @@
                 .buy_info_table__title
                   %p 配送先
                 .buy_info_table__info
+                -if @address.blank?
                   = fa_icon 'plus-circle'
                   %span
                     =link_to '登録してください', '#'
+                -else
+                  %p 
+                    〒
+                    =@address.zip_code
+                    %br
+                      =@address.prefecture
+                      =@address.city
+                      =@address.block
+                      -if @address.building
+                        =@address.building
+                      %br
+                        =current_user.profile.family_name
+                        =current_user.profile.first_name
               .buy_button_table
                 .buy_button_table__button  
                   = form_tag(action: :pay, method: :post, disabled: :disabled) do
-                    -if @card.blank?
+                    -if @card.blank? || @address.blank?
                       %button{:disabled => "disabled"} 購入する
                     -else
                       %button{:style => "background-color : #ea352d; cursor: pointer"} 購入する
