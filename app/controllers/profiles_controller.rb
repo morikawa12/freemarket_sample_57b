@@ -6,7 +6,8 @@ class ProfilesController < ApplicationController
   def update
     @profile = Profile.find(params[:id])
     if @profile.update(profile_params)
-      redirect_to controller: :profiles, action: :edit
+      redirect_to edit_profile_path
+
     else
       render :edit
     end
