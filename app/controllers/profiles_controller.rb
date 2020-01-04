@@ -9,15 +9,11 @@ class ProfilesController < ApplicationController
       redirect_to controller: :profiles, action: :edit
     else
       render :edit
+    end
   end
-
-end
 
   private
-
   def profile_params
     params.require(:profile).permit(:profile_content)
-  
   end
-
 end
