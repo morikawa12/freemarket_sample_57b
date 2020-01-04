@@ -22,6 +22,8 @@
             -else
               .image-slide-prev
                 =image_tag image.image.url
+        -unless @item.product_status == nil
+          = render partial: 'sold_out'
       %ul.item-show-main__detail
         %li.item-detail-table
           .item-detail-table__title
