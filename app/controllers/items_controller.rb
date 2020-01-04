@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :set_parents, only: [:new, :create, :edit, :update]
-  before_action :set_item, only: [:update, :edit, :buy, :show, :destroy, :detail]
+  before_action :set_item, only: [:update, :edit, :buy, :show, :destroy, :detail, :pay]
 
   def index
     @items = Item.all.order("created_at DESC").includes(:images)
@@ -67,11 +67,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def buy
-    if @item.user_id == current_user.id
-      redirect_to root_path
-    end
-  end
+  
   
   def edit
     @parent = Category.find(@item.category_id).parent.parent.id
@@ -133,6 +129,38 @@ class ItemsController < ApplicationController
 
     @user_items = @item.user.items
     @category_items = Item.where(category_id: @item.category_id)
+  end
+
+  require 'payjp'
+
+  def buy
+    if @item.user_id == current_user.id
+      redirect_to root_path
+    else
+      
+      @card = Card.where(user_id: current_user.id).first
+      if @card.blank?
+
+      else
+        #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
+        Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+        #保管した顧客IDでpayjpから情報取得
+        customer = Payjp::Customer.retrieve(@card.customer_id)
+        #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
+        @default_card_information = customer.cards.retrieve(@card.card_id)
+      end
+    end
+  end
+
+  def pay
+    card = Card.where(user_id: current_user.id).first
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    Payjp::Charge.create(
+    :amount => @item.price.to_s, #支払金額を入力（itemテーブル等に紐づけても良い）
+    :customer => card.customer_id, #顧客ID
+    :currency => 'jpy', #日本円
+  )
+  redirect_to root_path
   end
 
   private

@@ -36,7 +36,6 @@ Rails.application.routes.draw do
     get 'get_shipping', defaults: { format: 'json' }
   end
   member do
-    get 'buy'
     get 'get_category_children', defaults: { format: 'json' }
     get 'get_category_grandchildren', defaults: { format: 'json' }
     get 'get_size', defaults: { format: 'json' }
@@ -44,6 +43,7 @@ Rails.application.routes.draw do
 
     get 'buy', to: 'items#buy'
     get 'detail', to: 'detail'
+    post 'pay', to: 'items#pay'
   end
 end
 

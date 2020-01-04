@@ -1,5 +1,7 @@
 class CardController < ApplicationController
 
+  before_action :authenticate_user!, only: [:new, :pay, :delete, :show]
+
   def new
     card = Card.where(user_id: current_user.id)
     redirect_to action: "show" if card.exists?
