@@ -111,7 +111,9 @@
         -else 
           着払い
     -if user_signed_in?
-      -unless @item.user_id == current_user.id || @item.product_status != nil
+      -if @item.user_id == current_user.id
+        
+      -elsif @item.product_status == nil
         .item-show-point
           .item-show-point__message 
             P0をお持ちです
@@ -119,11 +121,11 @@
           =link_to "購入画面に進む",buy_item_path(@item.id)
         .item-show-app
           =link_to "アプリで購入", "http://app.adjust.io/xio2ii?campaign=android&adgroup=items.buy_button1"
-      -else
+      -elsif @item.product_status != nil
         .item-show-buy-btn{ style: "color:white; background-color:#888; cursor: not-allowed;" } 
           売り切れました
     -else
-      -unless @item.product_status != nil
+      -if @item.product_status == nil
         .item-show-buy-btn
           =link_to "購入画面に進む","#"
         .item-show-app
