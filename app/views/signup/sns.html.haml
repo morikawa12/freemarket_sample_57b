@@ -31,11 +31,15 @@
           .signup-form__group
             %label ニックネーム
             %span 必須
-            = f.text_field :nickname, autofocus: true, value: session[:nickname], class: "signup-form__group-inner", required: ""
+            = f.text_field :nickname, value: "#{session[:nickname]}", autofocus: true, class: "signup-form__group-inner", required: ""
           .signup-form__group
             %label メールアドレス
             %span 必須
-            = f.email_field :email, autofocus: true, value: session[:email] class: "signup-form__group-inner", required: ""
+            = f.email_field :email, value: "#{session[:email]}", autofocus: true, class: "signup-form__group-inner", required: ""
+          .signup-form__hidden
+            = f.hidden_field :password, value: "#{session[:password]}", class: "signup-form__group-inner"
+            = f.hidden_field :uid, value: "#{session[:uid]}", class: "signup-form__group-inner"
+            = f.hidden_field :provider, value: "#{session[:provider]}", class: "signup-form__group-inner"
           .signup-form__group
             %h3 本人確認
             %p 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。

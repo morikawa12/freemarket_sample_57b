@@ -9,7 +9,7 @@ class SignupController < ApplicationController
     @user.build_profile
   end
 
-  def api #メールアドレス,facebook,google
+  def sns #メールアドレス,facebook,google
     @user = User.new
     @user.build_profile
   end
@@ -18,13 +18,19 @@ class SignupController < ApplicationController
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
+    session[:uid] = user_params[:uid]
+    session[:provider] =  user_params[:provider]
     session[:profile_attributes_after_step1] = user_params[:profile_attributes]
+
     @user = User.new(
       nickname: user_params[:nickname],
       email: user_params[:email],
       password: user_params[:password],
+      uid: user_params[:uid],
+      provider: user_params[:provider],
     )
-    render '/signup/step1' unless @user.valid?
+    
+    render '/signup/sns' unless @user.valid?
   end
 
   def step2 #携帯番号入力画面
@@ -58,6 +64,8 @@ class SignupController < ApplicationController
       email: session[:email],
       password: session[:password],
       nickname: session[:nickname],
+      uid: session[:uid],
+      provider: session[:provider]
     )
     @user.build_address(session[:address_attributes_after_step3]) 
     @user.build_profile(session[:profile_attributes_after_step4])
@@ -65,6 +73,8 @@ class SignupController < ApplicationController
     if @user.save
       session[:id] = @user.id
       redirect_to done_signup_index_path
+    elsif @user.provider.present?
+      render '/signup/sns' #登録に不備があれば最初から入力し直す
     else
       render '/signup/step1' #登録に不備があれば最初から入力し直す
     end
@@ -77,6 +87,8 @@ private
       :email,
       :password,
       :nickname,
+      :uid,
+      :provider,
       profile_attributes: [:family_name, :first_name, :family_name_kana , :first_name_kana, :birthday, :mobile_phone,:card_number, :expiration_date, :security_code],
       address_attributes: [:zip_code, :prefecture, :city, :block, :building, :home_phone]
     )

@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     collection do
       get 'logout' #次にAPIログインを設置
     end
+    collection do
+      get 'login'
+    end
     member do
       get 'item_management'
     end
@@ -38,7 +41,7 @@ end
   resources :signup do 
     collection do
       get 'top'
-      get 'api'
+      get 'sns'
       get 'step1'
       get 'step2'
       get 'step3'
