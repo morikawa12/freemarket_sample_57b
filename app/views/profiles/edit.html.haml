@@ -25,14 +25,14 @@
       .profile__main
         .profile__main__header プロフィール
         .profile__main__body
-          = form_for current_user.profile do |f|
+          = form_for @profile do |f|
             .profile__main__body__up
               .profile__main__body__up_icon
                 = image_tag 'in.png',size: "60x60"
               .input-default 
-                = current_user.nickname
+                = @user.nickname
             .profile__main__body__down
-              = f.text_field :profile_content,class: 'profile__main__body__down__text'
+              = f.text_area :profile_content,class: 'profile__main__body__down__text'
               = f.submit '変更する',class:'profile__main__body__down__botton'
 .footer
   = render 'items/footer'
