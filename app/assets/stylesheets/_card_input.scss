@@ -1,0 +1,135 @@
+.card-input-form{
+  padding: 40px 40px 64px;
+  border-top: 1px solid #f5f5f5;
+  background: #fafafa;
+  &__inner{
+    max-width: 343px;
+    margin: 0 auto;
+  }
+  &__number{
+    & label{
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-block;
+    }
+    & span{
+      background: #ea352d;
+      color: white;
+      margin: 0 0 0 8px;
+      padding: 2px 4px;
+      border-radius: 2px;
+      font-size: 12px;
+      display: inline-block;
+    }
+    & input{
+      display: block;
+      margin: 8px 0 0;
+      height: 48px;
+      padding: 10px 16px 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: #fff;
+      line-height: 1.5;
+      font-size: 16px;
+      box-sizing: border-box;
+      width: 100%;
+    }
+  }
+  &__card-image{
+    width: 100%;
+    & img{
+      width: 100%;
+      margin: 8px 0 0;
+    }
+  }
+  &__expiration{
+    margin-top: 32px;
+    & label{
+      font-size: 14px;
+      font-weight: 600;
+    }
+    & span{
+      background: #ea352d;
+      color: white;
+      margin: 0 0 0 8px;
+      padding: 2px 4px;
+      border-radius: 2px;
+      font-size: 12px;
+    }
+    &__select{
+      margin: 8px 0 0;
+      & select{
+        height: 48px;
+        padding: 0 16px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background: 0;
+        font-size: 16px;
+        line-height: 1.5;
+        cursor: pointer;
+        width: 131px;
+      }
+      & span{
+        background-color: #fafafa;
+        color: black;
+      }
+    }
+  }
+  &__security{
+    margin-top: 32px;
+    & label{
+      font-size: 14px;
+      font-weight: 600;
+    }
+    & span{
+      background: #ea352d;
+      color: white;
+      margin: 0 0 0 8px;
+      padding: 2px 4px;
+      border-radius: 2px;
+      font-size: 12px;
+    }
+    & input{
+      display: block;
+      margin: 8px 0 0;
+      height: 48px;
+      padding: 10px 16px 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: #fff;
+      line-height: 1.5;
+      font-size: 16px;
+      box-sizing: border-box;
+      width: 100%;
+    }
+  }
+  &__text{
+    text-align: right;
+    margin: 8px 0 0;
+    color: #0099e8;
+    & span{
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #0099e8;
+      color: #fff;
+      line-height: 14px;
+      font-size: 12px;
+      display: inline-block;
+      text-align: center;
+    }
+  }
+  &__btn{
+    margin-top: 32px;
+    & input{
+      background: #ea352d;
+      border: 1px solid #ea352d;
+      color: #fff;
+      display: block;
+      width: 100%;
+      line-height: 48px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  }
+}

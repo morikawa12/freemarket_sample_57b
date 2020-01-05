@@ -22,6 +22,8 @@
             -else
               .image-slide-prev
                 =image_tag image.image.url
+        -unless @item.product_status == nil
+          = render partial: 'sold_out'
       %ul.item-show-main__detail
         %li.item-detail-table
           .item-detail-table__title
@@ -108,17 +110,18 @@
           送料込み
         -else 
           着払い
-    -unless @item.user_id == current_user.id
+    -unless @item.user_id == current_user.id || @item.product_status != nil
       .item-show-point
         .item-show-point__message 
           P0をお持ちです
-
       .item-show-buy-btn
         =link_to "購入画面に進む",buy_item_path(@item.id)
-
       .item-show-app
         =link_to "アプリで購入", "http://app.adjust.io/xio2ii?campaign=android&adgroup=items.buy_button1"
-    
+    -else
+      .item-show-buy-btn{ style: "color:white; background-color:#888; cursor: not-allowed;" } 
+        売り切れました
+      
     .item-show-description
       %p=@item.description
 
