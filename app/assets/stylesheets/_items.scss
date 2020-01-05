@@ -463,6 +463,27 @@ button{
   position: relative;
 }
 
+.item-sold-out{
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 10px;
+  border-top: 60px solid #ea352d;
+  border-right: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+  border-left: 60px solid #ea352d;
+  & p{
+    font-size: 26px;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: -60px;
+    top: -30px;
+  }
+}
+
 
 .items-box{
   width: 100%;
