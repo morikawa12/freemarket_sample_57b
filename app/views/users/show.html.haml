@@ -13,7 +13,8 @@
       = link_to "#" do
         %figure
           =image_tag "user_icon.jpg", size: "60x60"
-        %h2 つむ
+        %h2 
+        =current_user.nickname
         .mypage-content__user-icon__mypage-number
           %div
             評価
