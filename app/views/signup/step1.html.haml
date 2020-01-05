@@ -31,23 +31,28 @@
           .signup-form__group
             %label ニックネーム
             %span 必須
-            = f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "例) メルカリ太郎", class: "signup-form__group-inner", required: ""
+            = f.text_field :nickname, value: "#{session[:nickname]}", autofocus: true, class: "signup-form__group-inner", required: ""
           .signup-form__group
             %label メールアドレス
             %span 必須
-            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "signup-form__group-inner", required: ""
+            = f.email_field :email, value: "#{session[:email]}", autofocus: true, class: "signup-form__group-inner", required: ""
           .signup-form__group
+          - if session[:provider].blank?
             %label パスワード
             %span 必須
             - if @minimum_password_length
               %em
             = f.password_field :password, autocomplete: "new-password", placeholder: "6文字以上", id: 'signup-form-field',class: "signup-form__group-inner", required: ""
-            = f.hidden_field :uid, value: "#{session[:uid]}", class: "signup-form__group-inner"
             %p.signup-form__text ※ 英字と数字の両方を含めて設定してください
             .signup-form__group-checbox
               %input#reveal_password{type: "checkbox"}
               = f.label :reveal_password, "パスワードを表示する"
             .signup-form__group-checbox__result
+          - else
+            .signup-form__hidden
+            = f.hidden_field :password, value: "#{session[:password]}", class: "signup-form__group-inner"
+            = f.hidden_field :uid, value: "#{session[:uid]}", class: "signup-form__group-inner"
+            = f.hidden_field :provider, value: "#{session[:provider]}", class: "signup-form__group-inner"
               
           .signup-form__group
             %h3 本人確認

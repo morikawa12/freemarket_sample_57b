@@ -9,11 +9,6 @@ class SignupController < ApplicationController
     @user.build_profile
   end
 
-  def sns #メールアドレス,facebook,google
-    @user = User.new
-    @user.build_profile
-  end
-
   def save_to_session #email重複時のバリテーションエラー用
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
@@ -29,8 +24,8 @@ class SignupController < ApplicationController
       uid: user_params[:uid],
       provider: user_params[:provider],
     )
+    render '/signup/step1' unless @user.valid?
     
-    render '/signup/sns' unless @user.valid?
   end
 
   def step2 #携帯番号入力画面
@@ -73,7 +68,7 @@ class SignupController < ApplicationController
     if @user.save
       session[:id] = @user.id
       redirect_to done_signup_index_path
-    elsif @user.provider.present?
+    elsif @user.uid.present?
       render '/signup/sns' #登録に不備があれば最初から入力し直す
     else
       render '/signup/step1' #登録に不備があれば最初から入力し直す

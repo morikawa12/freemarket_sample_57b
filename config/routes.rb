@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # コールバックを実装する場合に最初に必要なのは、config/routes.rbを開いて、Omniauthコールバックを実装するコールバックをDeviseに伝えることです
   
   root 'items#index'
-
+  
   resources :users, only: [:index, :edit, :show] do 
     collection do
       get 'logout' #次にAPIログインを設置
@@ -32,7 +32,6 @@ Rails.application.routes.draw do
     get 'get_category_grandchildren', defaults: { format: 'json' }
     get 'get_size', defaults: { format: 'json' }
     get 'get_shipping', defaults: { format: 'json' }
-
     get 'buy', to: 'items#buy'
     get 'detail', to: 'detail'
   end
@@ -41,7 +40,6 @@ end
   resources :signup do 
     collection do
       get 'top'
-      get 'sns'
       get 'step1'
       get 'step2'
       get 'step3'
