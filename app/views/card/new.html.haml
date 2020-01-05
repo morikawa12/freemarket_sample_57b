@@ -1,11 +1,6 @@
 = render partial: 'items/header'
 = render partial: 'users/mypage-bread-crumbs'
-.exhibit-btn
-  .exhibit-btn__box
-    %p 出品
-    .exhibit-btn-icon
-      =link_to new_item_path do
-        =fa_icon "camera"
+= render partial: 'items/exhibit_btn'
 
 .l-container-clearfix
   .payment-method-box
