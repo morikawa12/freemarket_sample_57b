@@ -13,6 +13,9 @@ class UsersController < ApplicationController
   def logout
   end
 
+  def update
+  end
+
   def item_management
     @items = current_user.items.order("created_at DESC")
   end
