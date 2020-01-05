@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-
+  
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_parents, only: [:new, :create, :edit, :update]
   before_action :set_item, only: [:update, :edit, :buy, :show, :destroy, :detail, :pay]
 
