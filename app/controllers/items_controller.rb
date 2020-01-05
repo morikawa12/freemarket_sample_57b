@@ -139,7 +139,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       
-      @card = Card.where(user_id: current_user.id).first
+      @card = Card.find_by(user_id: current_user.id)
       if @card.blank?
 
       else
@@ -155,7 +155,7 @@ class ItemsController < ApplicationController
 
   def pay
     if @item.product_status == nil
-      card = Card.where(user_id: current_user.id).first
+      card = Card.find_by(user_id: current_user.id)
       Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
       Payjp::Charge.create(
       :amount => @item.price.to_s, #支払金額を入力（itemテーブル等に紐づけても良い）
