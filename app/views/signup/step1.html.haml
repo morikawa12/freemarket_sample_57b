@@ -38,8 +38,8 @@
             = f.email_field :email, value: "#{session[:email]}", autofocus: true, class: "signup-form__group-inner", required: ""
           .signup-form__group
           - if session[:provider].blank?
-            %label パスワード
-            %span 必須
+            %label{style: 'font-size: 14px; font-weight: 600;'} パスワード 
+            %span{style: 'background: #ea352d; margin: 0 0 0 8px; padding: 3px 4px; border-radius: 3px;color: #fff; font-size: 12px;'} 必須
             - if @minimum_password_length
               %em
             = f.password_field :password, autocomplete: "new-password", placeholder: "6文字以上", id: 'signup-form-field',class: "signup-form__group-inner", required: ""

@@ -16,7 +16,6 @@ $( document ).on('turbolinks:load', function() {
         })
       }
      else {
-      // $('.signup-form__group-checbox__result').toggle("");
       $('.signup-form__group-checbox__result').removeClass('active');
       $('.signup-form__group-checbox__result').text("")
      }
