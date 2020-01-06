@@ -1,0 +1,21 @@
+= render partial: 'header'
+= render partial: 'mypage-bread-crumbs'
+= render partial: 'items/exhibit_btn'
+      
+.l-container-clearfix
+  .payment-method-box
+    .payment-method-box__title
+      支払い方法
+    .payment-method-box__register
+      .payment-method-box__register__title
+        クレジットカード一覧
+      .payment-method-box__register__btn
+        =link_to 'クレジットカードを追加する', new_card_path
+        = fa_icon 'credit-card'
+      .payment-method-box__register__about
+        =link_to '支払い方法について', '#'
+        = fa_icon 'chevron-right'
+
+
+  = render partial: 'users/side-bar'
+= render partial: 'items/footer'

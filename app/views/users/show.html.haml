@@ -1,19 +1,15 @@
 = render partial: 'header'
 = render partial: 'mypage-bread-crumbs'
-.exhibit-btn
-  .exhibit-btn__box
-    %p 出品
-    .exhibit-btn-icon
-      =link_to new_item_path do
-        =fa_icon "camera"
-        
+= render partial: 'items/exhibit_btn'
+
 .l-container-clearfix
   .mypage-content
     .mypage-content__user-icon
       = link_to "#" do
         %figure
           =image_tag "user_icon.jpg", size: "60x60"
-        %h2 つむ
+        %h2 
+        =current_user.nickname
         .mypage-content__user-icon__mypage-number
           %div
             評価

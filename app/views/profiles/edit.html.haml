@@ -1,0 +1,33 @@
+= render partial: 'items/exhibit_btn'
+.header
+  = render 'items/header'
+.headers
+  .header2
+    .header2__l
+      .header2__l__l 
+        =link_to 'メルカリ','https://www.mercari.com/jp/'
+      .header2__l__r ＞
+    .header2__c  
+      .header2__c__l
+        =link_to 'マイページ','https://www.mercari.com/jp/mypage' 
+      .header2__c__r ＞
+    .header2__r  プロフィール
+.profile__allo
+  .profile__all
+    .profile__container
+      .side-bar
+        = render 'users/side-bar'
+      .profile__main
+        .profile__main__header プロフィール
+        .profile__main__body
+          = form_for @profile do |f|
+            .profile__main__body__up
+              .profile__main__body__up_icon
+                = image_tag 'in.png',size: "60x60"
+              .input-default 
+                = @user.nickname
+            .profile__main__body__down
+              = f.text_area :profile_content,class: 'profile__main__body__down__text'
+              = f.submit '変更する',class:'profile__main__body__down__botton'
+.footer
+  = render 'items/footer'

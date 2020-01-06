@@ -8,16 +8,30 @@ Rails.application.routes.draw do
   # コールバックを実装する場合に最初に必要なのは、config/routes.rbを開いて、Omniauthコールバックを実装するコールバックをDeviseに伝えることです
   
   root 'items#index'
-  
-  resources :users, only: [:index, :edit, :show] do 
+
+  resources :users, only: [:index, :edit, :show, :update] do  
+
     collection do
       get 'logout' 
     end
     member do
       get 'item_management'
+      get 'card'
     end
   end
 
+  resources :card, only: [:new, :show] do
+    collection do
+      post 'show', to: 'card#show'
+      post 'pay', to: 'card#pay'
+      post 'delete', to: 'card#delete'
+    end
+  end
+
+  resources :profiles, only: [:edit,:update]
+
+  resources :addresses, only: [:edit,:update]
+  # get ‘addresses/update’ => ‘addresses#update’
 
   resources :items do
   collection do
@@ -27,13 +41,13 @@ Rails.application.routes.draw do
     get 'get_shipping', defaults: { format: 'json' }
   end
   member do
-    get 'buy'
     get 'get_category_children', defaults: { format: 'json' }
     get 'get_category_grandchildren', defaults: { format: 'json' }
     get 'get_size', defaults: { format: 'json' }
     get 'get_shipping', defaults: { format: 'json' }
     get 'buy', to: 'items#buy'
     get 'detail', to: 'detail'
+    post 'pay', to: 'items#pay'
   end
 end
 

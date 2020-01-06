@@ -11,6 +11,20 @@
     white-space: normal;
     padding-left: 210px;
     font-size: 14px;
+    &__l{
+      width: 80px;
+      &__l{
+        float: left;
+        text-decoration: none;
+      }
+    }
+    &__c{
+      width: 100px;
+      &__l{
+        float: left;
+      }
+
+    }
     &__r{
       font-weight: bold;
     }

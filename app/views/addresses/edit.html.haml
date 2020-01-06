@@ -1,0 +1,73 @@
+= render partial: 'items/exhibit_btn'
+.header
+  = render 'items/header'
+.headers
+  .header2
+    .header2__l
+      .header2__l__l 
+        =link_to 'メルカリ','https://www.mercari.com/jp/'
+      .header2__l__r ＞
+    .header2__c  
+      .header2__c__l
+        =link_to 'マイページ','https://www.mercari.com/jp/mypage' 
+      .header2__c__r ＞
+    .header2__r  本人確認の登録
+.mypage__allo
+  .mypage__all
+    .mypage__container
+      .side-bar
+        = render 'users/side-bar'
+      .mypage__main
+        .mypage__main__header 本人情報の登録
+        .mypage__main__in
+          .mypage__main__up__text
+          %p お客さまの本人情報をご登録ください。
+          %p 登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+          .mypage__main__up__textupload 本人確認書類のアップロードについて>
+          .mypage__main__user
+            .mypage__main__user__g  お名前
+            .mypage__main__user__o  
+              = @profile.family_name
+              = @profile.first_name
+          .mypage__main__user
+            .mypage__main__user__g お名前カナ
+            .mypage__main__user__o 
+              = @profile.family_name_kana
+              = @profile.first_name_kana
+          .mypage__main__user
+            .mypage__main__user__g 生年月日
+            .mypage__main__user__o
+              = @profile.birthday
+          = form_for @address do |f|
+            .mypage__main__user2
+              .mypage__main__user2__g2 郵便番号
+              .mypage__main__user2__ni 任意
+              .input
+                = f.text_field :zip_code , class: 'input-default'
+            .mypage__main__user2
+              .mypage__main__user2__g2 都道府県
+              .mypage__main__user2__ni 任意
+              .input
+                = f.text_field :prefecture , class: 'input-default'
+            .mypage__main__user2
+              .mypage__main__user2__g2 市区町村
+              .mypage__main__user2__ni 任意
+              .input
+                = f.text_field :city , class: 'input-default'
+            .mypage__main__user2
+              .mypage__main__user2__g2 番地
+              .mypage__main__user2__ni 任意
+              .input
+                = f.text_field :block , class: 'input-default'
+            .mypage__main__user2
+              .mypage__main__user2__g2 建物名
+              .mypage__main__user2__ni 任意
+              .input
+                = f.text_field :building , class: 'input-default'
+            .mypage__main__button
+              .button 
+                
+                = f.submit '登録する', class: 'input-button'
+            .mypage__main__regist 本人情報の登録について>
+.footer
+  = render 'items/footer'

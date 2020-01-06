@@ -86,7 +86,7 @@
     %h3.mypage-nav-head 設定
     %ul.mypage-nav-list
       %li
-        = link_to "#", class: "mypage-nav-list-item" do
+        = link_to edit_profile_path(current_user.id), class: "mypage-nav-list-item" do
           プロフィール
           = fa_icon "chevron-right", class: :list_item
 
@@ -96,7 +96,7 @@
             = fa_icon "chevron-right", class: :list_item
 
         %li
-          = link_to "#", class: "mypage-nav-list-item" do
+          = link_to card_user_path(current_user.id), class: "mypage-nav-list-item" do
             支払い方法
             = fa_icon "chevron-right", class: :list_item
 
@@ -106,7 +106,7 @@
             = fa_icon "chevron-right", class: :list_item
 
         %li
-          = link_to "#", class: "mypage-nav-list-item" do
+          = link_to edit_address_path(current_user.id), class: "mypage-nav-list-item" do
             本人情報
             = fa_icon "chevron-right", class: :list_item
 
