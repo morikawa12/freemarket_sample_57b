@@ -1,17 +1,26 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.registration
+  .registration-top
+    .registration-header
+      %h1.registration-header__left
+        = link_to image_tag('logo-acdd90ac4f472d5a6f7a330d33ab1225.svg',size: "193x49"), root_path
+ 
+  .login
+    .login__new
+      %p アカウントをお持ちでない方はこちら
+      = link_to "新規会員登録", top_signup_index_path, class: "blue-btn-default"
+    .login__menu
+      .login__menu__btn
+        = link_to image_tag('f-login.png',size: "330x48"), user_facebook_omniauth_authorize_path, class: "login__menu__facebook", method: :post
+        = link_to image_tag('g-login.png',size: "330x48"), user_google_oauth2_omniauth_authorize_path, class: "login__menu__google", method: :post
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .login__menu__form
+        = f.text_field :email, placeholder: "メールアドレス", class: 'login__form__input'
+        = f.password_field :password, placeholder: "パスワード", class: 'login__form__input' 
+      .login__menu__tag
+        = recaptcha_tags  callback: 'recaptchaCallbackFunction'
+        = f.submit "ログイン", class: "btn-red btn-default"
+      .login__menu__text
+        = link_to "パスワードをお忘れの方", "", class: "login__form__text"
+
+  .registration-under
+    = render "devise/shared/registration-footers"

@@ -3,17 +3,25 @@
     .registration-header
       %h1.registration-header__left
         = link_to image_tag('logo-acdd90ac4f472d5a6f7a330d33ab1225.svg',size: "193x49"), root_path
-
-  .registration-menu
-    %h2.registration-menu__head
-      新規会員登録
-    .registration-menu__inner
-      .registration-menu__inner__btn
-      = link_to image_tag('mail.png',size: "341x48"), step1_signup_index_path 
-      .registration-menu__inner__btn
-      = link_to image_tag('facebook.png',size: "343x48"), user_facebook_omniauth_authorize_path, method: :post 
-      .registration-menu__inner__btn
-      = link_to image_tag('Google.png',size: "343x48"), user_google_oauth2_omniauth_authorize_path, method: :post 
+ 
+  .login
+    .login__new
+      %p アカウントをお持ちでない方はこちら
+      = link_to "新規会員登録", top_signup_index_path, class: "blue-btn-default"
+    .login__menu
+      .login__menu__btn
+        = link_to image_tag('f-login.png',size: "330x48"), user_facebook_omniauth_authorize_path, class: "login__menu__facebook", method: :post
+        = link_to image_tag('g-login.png',size: "330x48"), user_google_oauth2_omniauth_authorize_path, class: "login__menu__google", method: :post
+      .login__menu__form
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          = f.text_field :email, placeholder: "メールアドレス", class: 'login__form__input'
+          = f.password_field :password, placeholder: "パスワード", class: 'login__form__input' 
+      .login__menu__tag
+        = recaptcha_tags  callback: 'recaptchaCallbackFunction'
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          = f.submit "ログイン", class: "btn-red btn-default"
+      .login__menu__text
+        = link_to "パスワードをお忘れの方", "", class: "login__form__text"
 
   .registration-under
     = render "devise/shared/registration-footers"
