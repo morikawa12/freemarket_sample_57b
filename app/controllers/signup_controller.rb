@@ -1,7 +1,7 @@
 class SignupController < ApplicationController
   before_action :save_to_session, only: :step2
 
-  def index
+  def top
   end
 
   def step1 #ユーザー・本名、誕生日（Proifile）入力画面
@@ -13,15 +13,19 @@ class SignupController < ApplicationController
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
-    session[:password_confirmation] = user_params[:password_confirmation]
+    session[:uid] = user_params[:uid]
+    session[:provider] =  user_params[:provider]
     session[:profile_attributes_after_step1] = user_params[:profile_attributes]
+
     @user = User.new(
       nickname: user_params[:nickname],
       email: user_params[:email],
       password: user_params[:password],
-      password_confirmation: user_params[:password_confirmation],
+      uid: user_params[:uid],
+      provider: user_params[:provider],
     )
     render '/signup/step1' unless @user.valid?
+    
   end
 
   def step2 #携帯番号入力画面
@@ -49,12 +53,14 @@ class SignupController < ApplicationController
 
   def create
     session[:profile_attributes_after_step4] = user_params[:profile_attributes]
-    session[:profile_attributes_after_step4].merge!(session[:profile_attributes_after_step2]) 
+    session[:profile_attributes_after_step4].merge!(session[:profile_attributes_after_step2])
+    
     @user = User.new(
       email: session[:email],
       password: session[:password],
-      password_confirmation: session[:password_confirmation],
-      nickname: session[:nickname]
+      nickname: session[:nickname],
+      uid: session[:uid],
+      provider: session[:provider]
     )
     @user.build_address(session[:address_attributes_after_step3]) 
     @user.build_profile(session[:profile_attributes_after_step4])
@@ -62,6 +68,8 @@ class SignupController < ApplicationController
     if @user.save
       session[:id] = @user.id
       redirect_to done_signup_index_path
+    elsif @user.uid.present?
+      render '/signup/sns' #登録に不備があれば最初から入力し直す
     else
       render '/signup/step1' #登録に不備があれば最初から入力し直す
     end
@@ -73,8 +81,9 @@ private
     params.require(:user).permit(
       :email,
       :password,
-      :password_confirmation,
       :nickname,
+      :uid,
+      :provider,
       profile_attributes: [:family_name, :first_name, :family_name_kana , :first_name_kana, :birthday, :mobile_phone,:card_number, :expiration_date, :security_code],
       address_attributes: [:zip_code, :prefecture, :city, :block, :building, :home_phone]
     )

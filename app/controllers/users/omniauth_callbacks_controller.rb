@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     callback_for(:facebook)
@@ -8,20 +6,23 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
     callback_for(:google)
   end
-  
+
   def callback_for(provider)
+    provider = provider.to_s
     @user = User.find_oauth(request.env["omniauth.auth"])
-    if @user.persisted?
-      sign_in @user
-      redirect_to root_path
+  
+    session[:uid] = @user.uid
+    session[:provider] = @user.provider
+    session[:nickname] = @user.nickname
+    session[:email] = @user.email
+    session[:password] = @user.password
+
+    if @user.persisted?       #userが存在したら。
+      sign_in_and_redirect @user, event: :authentication  #after_sign_in_path_forと同じ。（ログイン時実行されるメソッド、ログイン時に飛んでほしいページを指定）
       set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
-    else
-      session["devise.#{provider}_data"] = request.env["omniauth.auth"].except("extra")
-      redirect_to new_user_registration_path
+    else    #userが存在しない場合
+      redirect_to step1_signup_index_path
     end
   end
 
-  def failure
-    redirect_to root_path
-  end  
 end

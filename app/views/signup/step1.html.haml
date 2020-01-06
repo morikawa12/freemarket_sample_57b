@@ -31,21 +31,29 @@
           .signup-form__group
             %label ニックネーム
             %span 必須
-            = f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "例) メルカリ太郎", class: "signup-form__group-inner", required: ""
+            = f.text_field :nickname, value: "#{session[:nickname]}", autofocus: true, class: "signup-form__group-inner", required: ""
           .signup-form__group
             %label メールアドレス
             %span 必須
-            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "signup-form__group-inner", required: ""
+            = f.email_field :email, value: "#{session[:email]}", autofocus: true, class: "signup-form__group-inner", required: ""
           .signup-form__group
-            %label パスワード
-            %span 必須
+          - if session[:provider].blank?
+            %label{style: 'font-size: 14px; font-weight: 600;'} パスワード 
+            %span{style: 'background: #ea352d; margin: 0 0 0 8px; padding: 3px 4px; border-radius: 3px;color: #fff; font-size: 12px;'} 必須
             - if @minimum_password_length
               %em
-            = f.password_field :password, autocomplete: "new-password", placeholder: "6文字以上", class: "signup-form__group-inner", required: ""
-          .signup-form__group
-            %label パスワード(確認)
-            %span 必須
-            = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "6文字以上", class: "signup-form__group-inner", required: ""
+            = f.password_field :password, autocomplete: "new-password", placeholder: "6文字以上", id: 'signup-form-field',class: "signup-form__group-inner", required: ""
+            %p.signup-form__text ※ 英字と数字の両方を含めて設定してください
+            .signup-form__group-checbox
+              %input#reveal_password{type: "checkbox"}
+              = f.label :reveal_password, "パスワードを表示する"
+            .signup-form__group-checbox__result
+          - else
+            .signup-form__hidden
+            = f.hidden_field :password, value: "#{session[:password]}", class: "signup-form__group-inner"
+            = f.hidden_field :uid, value: "#{session[:uid]}", class: "signup-form__group-inner"
+            = f.hidden_field :provider, value: "#{session[:provider]}", class: "signup-form__group-inner"
+              
           .signup-form__group
             %h3 本人確認
             %p 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
@@ -68,8 +76,6 @@
               .signup-form__profile
                 != sprintf(i.date_select(:birthday,with_css_classes:'signup-form__profile-birthday', prompt:"--", use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s', required: ""),'年','月')+'日'
             %p.signup-form__text ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
-            .signup-form__group
-              = recaptcha_tags  callback: 'recaptchaCallbackFunction'
             .signup-form__rule「次へ進む」のボタンを押すことにより、<a href="https://www.mercari.com/jp/tos_list/">利用規約</a> に同意したものとみなします 
             .actions
               =f.submit "次へ進む", class: "btn-red btn-default"

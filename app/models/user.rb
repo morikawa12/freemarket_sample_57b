@@ -13,12 +13,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :address
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
-  # Userモデルをomniauthableにすると、config/routes.rbにdevise_for :usersを記述することで以下のURLメソッドがDeviseによって作成されます。
-  # user_omniauth_authorize_path(provider)
-  # user_omniauth_callback_path(provider)
-
-  has_many :sns_credential
+  :recoverable, :rememberable, :validatable,
+  :omniauthable, omniauth_providers: %i[facebook google_oauth2]
          
   validates :nickname, presence: true, length: { maximum: 20 }
 
@@ -32,36 +28,20 @@ class User < ApplicationRecord
     errors.add(:base, "このメールアドレスは既に使われております。")
   end
 
-# 　コールバックされた値のproviderおよびuidからDBを検索し、条件に合わせてコントローラに返す。
-#   controllerのcallback_for(provider)内から呼び出される。
-#   controllerのrequest.env("omniauth.auth")が引数で引き継がれる。env（）
-  def self.find_oauth(auth)
-    uid = auth.uid
-    provider = auth.provider
-    snscredential = SnsCredential.where(uid: uid, provider: provider).first
-    if snscredential.present?
-      user = User.where(id: snscredential.user_id).first
-    else
-      user = User.where(email: auth.info.email).first
-      if user.present?
-        SnsCredential.create(
-          uid: uid,
-          provider: provider,
-          user_id: user.id
-          )
-      else
-        user = User.create(
-          nickname: auth.info.name,
-          email:    auth.info.email,
-          password: Devise.friendly_token[0, 20],
-          )
-        SnsCredential.create(
-          uid: uid,
-          provider: provider,
-          user_id: user.id
-          )
-      end
+ # SNS認証 facebookとGoogleからuid,provider,email,などの値を受け取ってomniauth_callbacks_controller.rbにsessionとして送る。
+ def self.find_oauth(auth)
+  @user = User.where(uid: auth.uid, provider: auth.provider).first #userテーブルにprovider、uidがあったらログイン処理
+            
+    unless @user       
+      @user = User.new(
+                      uid: auth.uid,
+                      provider: auth.provider,
+                      nickname: auth.info.name,
+                      email: auth.info.email,
+                      password: Devise.friendly_token[0, 20],
+                    )
     end
-    return user
+   return @user
   end
+  
 end
