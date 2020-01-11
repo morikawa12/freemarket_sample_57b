@@ -57,7 +57,7 @@ class SignupController < ApplicationController
       uid: session[:uid],
       provider: session[:provider]
     )
-    Payjp.api_key = "sk_test_18ab26689bf327d92bf212f4"
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
 
     customer = Payjp::Customer.create(
       card: params['payjp-token']
