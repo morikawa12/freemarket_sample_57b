@@ -42,9 +42,6 @@ class SignupController < ApplicationController
 
   def step4 #クレジットカード登録画面
     session[:address_attributes_after_step3] = user_params[:address_attributes]
-    @user = User.new
-    @user.build_profile
-    @user.build_address
   end
 
   def done #登録完了画面
@@ -52,8 +49,6 @@ class SignupController < ApplicationController
   end
 
   def create
-    session[:profile_attributes_after_step4] = user_params[:profile_attributes]
-    session[:profile_attributes_after_step4].merge!(session[:profile_attributes_after_step2])
     
     @user = User.new(
       email: session[:email],
@@ -62,14 +57,20 @@ class SignupController < ApplicationController
       uid: session[:uid],
       provider: session[:provider]
     )
-    @user.build_address(session[:address_attributes_after_step3]) 
-    @user.build_profile(session[:profile_attributes_after_step4])
+    Payjp.api_key = "sk_test_18ab26689bf327d92bf212f4"
 
-    if @user.save
+    customer = Payjp::Customer.create(
+      card: params['payjp-token']
+    )
+    @user.build_address(session[:address_attributes_after_step3]) 
+    @user.build_profile(session[:profile_attributes_after_step2])
+
+    if@user.save
       session[:id] = @user.id
+      @card = Card.new(user_id: session[:id], customer_id: customer.id, card_id: customer.default_card)
+      @card.user_id = session[:id]
+      @card.save
       redirect_to done_signup_index_path
-    elsif @user.uid.present?
-      render '/signup/sns' #登録に不備があれば最初から入力し直す
     else
       render '/signup/step1' #登録に不備があれば最初から入力し直す
     end
@@ -84,7 +85,7 @@ private
       :nickname,
       :uid,
       :provider,
-      profile_attributes: [:family_name, :first_name, :family_name_kana , :first_name_kana, :birthday, :mobile_phone,:card_number, :expiration_date, :security_code],
+      profile_attributes: [:family_name, :first_name, :family_name_kana , :first_name_kana, :birthday, :mobile_phone],
       address_attributes: [:zip_code, :prefecture, :city, :block, :building, :home_phone]
     )
   end
