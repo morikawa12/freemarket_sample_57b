@@ -63,29 +63,32 @@
         line-height: 1.5;
         font-size: 16px;
       }
-      .year{
-        margin: 0 5px 0 0;
-        width: 76px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-        background: #fff;
-        line-height: 1.5;
-        font-size: 16px;
-      }
-      .month {
-        margin: 0 5px 0 5px;
-        width: 76px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-        background: #fff;
-        line-height: 1.5;
-        font-size: 16px;
-      }
       .alert{
         text-align: center;
         color: #ea352d;
       }
     }
+    &__card-data{
+      margin: 8px 0 0;
+      & select{
+        height: 48px;
+        padding: 0 16px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background: 0;
+        font-size: 16px;
+        line-height: 1.5;
+        cursor: pointer;
+        width: 70px;
+      }
+      & span{
+        background: #fff;
+        color: black;
+      }
+    }
+    &__group-card{
+      margin: 5px 0 0 0;
+    } 
     &__mid{
       text-align: center;
     }
