@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @parents = Category.where(ancestry: nil).limit(13)
   end
 
   def logout

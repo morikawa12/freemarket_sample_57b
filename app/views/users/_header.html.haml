@@ -12,6 +12,12 @@
         %li.category-box
           =fa_icon "list-ul"
           %span カテゴリーから探す
+          .category_list
+            .parents_list
+              - @parents.each do |parent|
+                = link_to "#{parent.name}", items_path(parent), class: "parent_category",id: "#{parent.id}"
+            .children_list
+            .grand_children_list
         %li.brand-box
           = image_tag "brand-logo.png", size: "18x13"
           %span ブランドから探す

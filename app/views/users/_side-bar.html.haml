@@ -2,7 +2,7 @@
   .side-bar-mypage-nav
     %ul.mypage-nav-list
       %li
-        = link_to "#", class: "mypage-nav-list-item active" do
+        = link_to "", class: "mypage-nav-list-item active" do
           マイページ
           = fa_icon "chevron-right", class: :list_item_active
 
@@ -116,6 +116,6 @@
             = fa_icon "chevron-right", class: :list_item
 
         %li
-          = link_to "link_to logout_users_path", class: "mypage-nav-list-item" do
+          = link_to  logout_users_path, class: "mypage-nav-list-item" do
             ログアウト
             = fa_icon "chevron-right", class: :list_item
