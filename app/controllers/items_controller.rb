@@ -21,6 +21,23 @@ class ItemsController < ApplicationController
         @toy_items << item
       end
     end
+
+    @chanel = []
+    @louisvuitton = []
+    @supreme = []
+    @nike = []
+    @items.each do |item|
+      if item.brand.name == "シャネル" && @chanel.length < 10
+        @chanel << item
+      elsif item.brand.name == "ルイヴィトン" && @louisvuitton.length < 10
+        @louisvuitton << item
+      elsif item.brand.name == "シュプリーム" && @supreme.length < 10
+        @supreme << item
+      elsif item.brand.name == "ナイキ" && @nike.length < 10
+        @nike << item
+      end
+    end
+
   end
 
   def new
