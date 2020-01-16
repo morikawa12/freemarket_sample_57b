@@ -327,11 +327,11 @@ button{
   background-color: #efefef;
   border-radius: 15px;
   padding: 3px 16px;
-  & a{
-    text-decoration: none;
-    color: #333333;
-    font-weight: bold;
-    font-size: 14px;
+  color: #333333;
+  font-weight: bold;
+  font-size: 14px;
+  &:hover{
+    cursor: pointer;
   }
 }
 

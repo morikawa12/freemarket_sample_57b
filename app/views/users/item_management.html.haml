@@ -16,6 +16,7 @@
         =link_to "売却済み", "#"
 
     %ul.mypage-item-management-tab__item
+    -unless @items.empty?
       -@items.each do |item|
         %li.mypage-item-list
           =link_to "", detail_item_path(item.id)
