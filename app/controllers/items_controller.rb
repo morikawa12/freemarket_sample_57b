@@ -6,6 +6,38 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order("created_at DESC").includes(:images)
+    @ledies_items = []
+    @mens_items = []
+    @camera_items = []
+    @toy_items = []
+    @items.each do |item|
+      if Category.find(item.category_id).parent.parent.id == 1 && @ledies_items.length < 10
+        @ledies_items << item
+      elsif Category.find(item.category_id).parent.parent.id == 2 && @mens_items.length < 10
+        @mens_items << item
+      elsif Category.find(item.category_id).parent.parent.id == 8 && @camera_items.length < 10 
+        @camera_items << item 
+      elsif Category.find(item.category_id).parent.parent.id == 6 && @toy_items.length < 10
+        @toy_items << item
+      end
+    end
+
+    @chanel = []
+    @louisvuitton = []
+    @supreme = []
+    @nike = []
+    @items.each do |item|
+      if item.brand.name == "シャネル" && @chanel.length < 10
+        @chanel << item
+      elsif item.brand.name == "ルイヴィトン" && @louisvuitton.length < 10
+        @louisvuitton << item
+      elsif item.brand.name == "シュプリーム" && @supreme.length < 10
+        @supreme << item
+      elsif item.brand.name == "ナイキ" && @nike.length < 10
+        @nike << item
+      end
+    end
+
   end
 
   def new

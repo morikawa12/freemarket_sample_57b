@@ -1,83 +1,83 @@
-.exhibition_wrapper
-  .exhibition_header
+.exhibition-wrapper
+  .exhibition-header
     = image_tag "mercari.png",size: "185x49"
-  .exhibition_field
-    .exhibition_field__content
-      .exhibition_field__content__inner
-        .exhibition_title
+  .exhibition-field
+    .exhibition-field__content
+      .exhibition-field__content__inner
+        .exhibition-title
           %h1 購入内容の確認
-          .exhibition_buy_content
+          .exhibition-buy-content
             - @item.images.each_with_index do |image, i|
             - break if i == 1
               =image_tag image.image.to_s
-            .exhibition_buy_item
-              .exhibition_buy_item__name
+            .exhibition-buy-item
+              .exhibition-buy-item__name
                 = @item.name
-              .exhibition_buy_item__price
+              .exhibition-buy-item__price
                 %span
                   ¥
                   = @item.price.to_s(:delimited)
-                .exhibition_buy_item__price__shipping
+                .exhibition-buy-item__price__shipping
                   -if @item.shipping_id.between?(3,11)
                     (税込)送料込み
                   - elsif @item.shipping_id.between?(12,15)
                     (税込)着払い
-          .exhibition_buy_content
-            .exhibition_buy_content__inner
-              .buy_price_table
-                .buy_price_table__title
+          .exhibition-buy-content
+            .exhibition-buy-content__inner
+              .buy-price-table
+                .buy-price-table__title
                   %p 支払い金額
-                .buy_price_table__price
+                .buy-price-table__price
                   ¥
                   = @item.price.to_s(:delimited)
-              .buy_accordion_table
-                .buy_accordion_table__check
+              .buy-accordion-table
+                .buy-accordion-table__check
                   %label
                     %input{type: 'checkbox'}
-                    .point_check_button
+                    .point-check-button
                     %p
                       ポイントを使用(所持ポイント:P0)
 
-                %ul.buy_accordion__parent
-                  %li.buy_accordion__child
+                %ul.buy-accordion__parent
+                  %li.buy-accordion__child
                     %label
                       %input{ name: "consume_point_radio", type: "radio", value: "all", id: 'point'}
-                      .point_radio_button
+                      .point-radio-button
                       %p
                         すべてのポイントを使う
                         %br
                         (使用ポイント:P0)
-                  %li.buy_accordion__child
+                  %li.buy-accordion__child
                     %label
                       %input{ name: "consume_point_radio", type: "radio", value: "all", id: 'point'}
-                      .point_radio_button
+                      .point-radio-button
                       %p
                         一部のポイントを使う
-                  %li.buy_accordion__child2
+                  %li.buy-accordion__child2
                     %input{type: "number", placeholder: '使うポイントを入力'}
 
-              .buy_info_table
-                .buy_info_table__title
+              .buy-info-table
+                .buy-info-table__title
                   %p 支払い方法
-                .buy_info_table__info
+                .buy-info-table__info
                   -if @card.blank?
                     = fa_icon 'plus-circle'
                     %span
                       =link_to '登録してください', new_card_path
                   - else
                     %p クレジットカード
-                    .buy_info_table__info__num
+                    .buy-info-table__info__num
                       = "**** **** **** " + @default_card_information.last4
-                    .buy_info_table__info__expiration
+                    .buy-info-table__info__expiration
                       有効期限
                       - exp_month = @default_card_information.exp_month.to_s
                       - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
                       = exp_month + " / " + exp_year
                     = image_tag "visa.png"
-              .buy_info_table
-                .buy_info_table__title
+              .buy-info-table
+                .buy-info-table__title
                   %p 配送先
-                .buy_info_table__info
+                .buy-info-table__info
                 -if @address.blank?
                   = fa_icon 'plus-circle'
                   %span
@@ -95,20 +95,12 @@
                       %br
                         =current_user.profile.family_name
                         =current_user.profile.first_name
-              .buy_button_table
-                .buy_button_table__button  
+              .buy-button-table
+                .buy-button-table__button  
                   = form_tag(action: :pay, method: :post, disabled: :disabled) do
                     -if @card.blank? || @address.blank?
                       %button{:disabled => "disabled"} 購入する
                     -else
                       %button{:style => "background-color : #ea352d; cursor: pointer"} 購入する
 
-
-
-  .exhibition_footer
-    %ul
-      %li=link_to 'プライバシーポリシー', 'https://www.mercari.com/jp/privacy/'
-      %li=link_to 'メルカリ利用規約', 'https://www.mercari.com/jp/tos/'
-      %li=link_to '特定商取引に関する表記', 'https://www.mercari.com/jp/tokutei/'
-    =image_tag "exhibition-footer-logo.png", class: "exhibition-footer-logo"
-    %p © 2019 Mercari
+  = render partial: 'items/exhibition_footer'
