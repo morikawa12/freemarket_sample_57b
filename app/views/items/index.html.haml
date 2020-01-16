@@ -27,8 +27,25 @@
         .items-list-name
           %h3 レディース新着アイテム
         %ul.items-list-image-block
-          =render partial:'items/items', collection: @items
+          =render partial:'items/items', collection: @ledies_items, as: 'items'
           
+      .items-list-block
+        .items-list-name
+          %h3 メンズ新着アイテム
+        %ul.items-list-image-block
+          =render partial:'items/items', collection: @mens_items, as: 'items'
+
+      .items-list-block
+        .items-list-name
+          %h3 家電・スマホ・カメラ新着アイテム
+        %ul.items-list-image-block
+          =render partial:'items/items', collection: @camera_items, as: 'items'
+
+          .items-list-block
+        .items-list-name
+          %h3 おもちゃ・ホビー・グッズ新着アイテム
+        %ul.items-list-image-block
+          =render partial:'items/items', collection: @toy_items, as: 'items'
 
   .items-contents
     .items-contents-brand
