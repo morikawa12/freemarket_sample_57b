@@ -1,4 +1,4 @@
-$(function() {
+$( document ).on('turbolinks:load', function() {
 
   function buildChildHTML(child){
     var html =`<a class="child_category" id="${child.id}" 
