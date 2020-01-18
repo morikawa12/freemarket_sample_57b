@@ -1,46 +1,46 @@
-.header
-  .header-box
-    .header-box__top 
-      .logo-box
-        = link_to image_tag("mercari.png",size: "132x35"), root_path
-      .search-box
-        %input.search-box__input-field{placeholder: '何かお探しですか？'}
-        .serach-box__btn
-          =fa_icon "search"
-    .header-box__under
-      %ul.header-box__under__left
-        %li.category-box
-          =fa_icon "list-ul"
-          %span カテゴリーから探す
-          .category_list
-            .parents_list
-              - @parents.each do |parent|
-                = link_to "#{parent.name}", items_path(parent), class: "parent_category",id: "#{parent.id}"
-            .children_list
-            .grand_children_list
-        %li.brand-box
-          = image_tag "brand-logo.png", size: "18x13"
-          %span ブランドから探す
+-# .header
+-#   .header-box
+-#     .header-box__top 
+-#       .logo-box
+-#         = link_to image_tag("mercari.png",size: "132x35"), root_path
+-#       .search-box
+-#         %input.search-box__input-field{placeholder: '何かお探しですか？'}
+-#         .serach-box__btn
+-#           =fa_icon "search"
+-#     .header-box__under
+-#       %ul.header-box__under__left
+-#         %li.category-box
+-#           =fa_icon "list-ul"
+-#           %span カテゴリーから探す
+-#           .category_list
+-#             .parents_list
+-#               - @parents.each do |parent|
+-#                 = link_to "#{parent.name}", items_path(parent), class: "parent_category",id: "#{parent.id}"
+-#             .children_list
+-#             .grand_children_list
+-#         %li.brand-box
+-#           = image_tag "brand-logo.png", size: "18x13"
+-#           %span ブランドから探す
 
-      %ul.header-box__under__right
+-#       %ul.header-box__under__right
 
-        %li.liked-items-link
-          = link_to "#", class: "pc-header-menu-link" do
-            = fa_icon "heart-o", class: :mypage_icon
-            %span いいね！一覧
+-#         %li.liked-items-link
+-#           = link_to "#", class: "pc-header-menu-link" do
+-#             = fa_icon "heart-o", class: :mypage_icon
+-#             %span いいね！一覧
 
-        %li.pc-header-user-nav
-          = link_to "#", class: "pc-header-menu-link" do
-            = fa_icon "bell-o", class: :mypage_icon
-            %span お知らせ
+-#         %li.pc-header-user-nav
+-#           = link_to "#", class: "pc-header-menu-link" do
+-#             = fa_icon "bell-o", class: :mypage_icon
+-#             %span お知らせ
 
-        %li.sign-in-box
-          = link_to "#", class: "pc-header-menu-link" do
-            = fa_icon "check", class: :mypage_icon
-            %span やることリスト
+-#         %li.sign-in-box
+-#           = link_to "#", class: "pc-header-menu-link" do
+-#             = fa_icon "check", class: :mypage_icon
+-#             %span やることリスト
 
-        %li.my-page-box
-          = link_to  user_path(current_user.id), class: "pc-header-user-icon" do
-            %figure
-              =image_tag "user_icon.jpg", size: "32x32"
-            %span マイページ
+-#         %li.my-page-box
+-#           = link_to  user_path(current_user.id), class: "pc-header-user-icon" do
+-#             %figure
+-#               =image_tag "user_icon.jpg", size: "32x32"
+-#             %span マイページ
