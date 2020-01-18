@@ -3,5 +3,4 @@ $( document ).on('turbolinks:load', function() {
     $(this).parent().parent().next('ul').slideToggle();
     $('.point-radio-button').trigger('click');
   });
-
 });
