@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_03_162817) do
+ActiveRecord::Schema.define(version: 2020_01_11_101806) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "zip_code", null: false
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_01_03_162817) do
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "image", null: false
+    t.string "image", default: "", null: false
     t.bigint "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -87,12 +87,9 @@ ActiveRecord::Schema.define(version: 2020_01_03_162817) do
     t.string "mobile_phone", null: false
     t.string "profile_image"
     t.text "profile_content"
-    t.string "card_number"
-    t.string "security_code"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "expiration_date"
     t.date "birthday"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end

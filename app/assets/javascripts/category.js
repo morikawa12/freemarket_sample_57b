@@ -8,23 +8,23 @@ $( document ).on('turbolinks:load', function() {
 
   function appendChidrenBox(insertHTML){
     var childSelectHtml = '';
-    childSelectHtml = ` <div class="children_category_wrapper">
+    childSelectHtml = ` <div class="children-category-wrapper">
                           <select class="exhibition_select_field" name="item[category_id]" id="child_category_id"><option value="">---</option>
                             ${insertHTML}
                           </select>
                         </div>`;
-    $('.category_wrapper').append(childSelectHtml);
+    $('.category-wrapper').append(childSelectHtml);
   }
 
 
   function appendGrandChidrenBox(insertHTML){
     var grandchildselectHtml = '';
-    grandchildselectHtml = `<div class="grandchildren_category_wrapper">
+    grandchildselectHtml = `<div class="grandchildren-category-wrapper">
                               <select class="exhibition_select_field" name="item[category_id]" id="grandchild_category_id"><option value="">---</option>
                                 ${insertHTML}
                               </select>
                             </div>`;
-    $('.category_wrapper').append(grandchildselectHtml);
+    $('.category-wrapper').append(grandchildselectHtml);
   }
 
 
@@ -41,11 +41,11 @@ $( document ).on('turbolinks:load', function() {
         dataType: 'json'
       })
       .done(function(children){
-        $('.children_category_wrapper').remove(); 
-        $('.grandchildren_category_wrapper').remove(); 
-        $('.size_select_wrapper').remove();
-        $('.brand_input_field').css('display','none');
-        $('#item_brand_attributes_name').val("");
+        $('.children-category-wrapper').remove(); 
+        $('.grandchildren-category-wrapper').remove(); 
+        $('.size-select-wrapper').remove();
+        $('.brand-input-field').css('display','none');
+        $('#item-brand-attributes-name').val("");
         var insertHTML = '';
         children.forEach(function(children){
           insertHTML += appendOption(children);
@@ -57,15 +57,15 @@ $( document ).on('turbolinks:load', function() {
       })
     }else{
       //親カテゴリーが初期値になった時、子以下を削除する
-      $('.children_category_wrapper').remove(); 
-      $('.grandchildren_category_wrapper').remove(); 
-      $('.size_select_wrapper').remove();
-      $('.brand_input_field').css('display','none');
+      $('.children-category-wrapper').remove(); 
+      $('.grandchildren-category-wrapper').remove(); 
+      $('.size-select-wrapper').remove();
+      $('.brand-input-field').css('display','none');
       $('#item_brand_attributes_name').val("");
     }
   });
   // 子カテゴリーの選択イベント
-  $('.category_wrapper').on('change','#child_category_id', function(){
+  $('.category-wrapper').on('change','#child_category_id', function(){
     // 子カテゴリーのidのvalueを取得
     var childCategory = document.getElementById('child_category_id').value;
     // もしchildCategoryが空じゃなかったらajax通信を始める
@@ -77,9 +77,9 @@ $( document ).on('turbolinks:load', function() {
         dataType: 'json'
       })
       .done(function(grandchild){
-        $('.grandchildren_category_wrapper').remove(); 
-        $('.size_select_wrapper').remove();
-        $('.brand_input_field').css('display','none');
+        $('.grandchildren_category-wrapper').remove(); 
+        $('.size-select-wrapper').remove();
+        $('.brand-input-field').css('display','none');
         $('#item_brand_attributes_name').val("");
         var insertHTML = '';
         grandchild.forEach(function(grandchild){
@@ -92,9 +92,9 @@ $( document ).on('turbolinks:load', function() {
       })
     }else{
       // 子カテゴリが初期値になった時、孫以下を削除
-      $('.grandchildren_category_wrapper').remove(); 
-      $('.size_select_wrapper').remove();
-      $('.brand_input_field').css('display','none');
+      $('.grandchildren-category-wrapper').remove(); 
+      $('.size-select-wrapper').remove();
+      $('.brand-input-field').css('display','none');
       $('#item_brand_attributes_name').val("");
     }
   });

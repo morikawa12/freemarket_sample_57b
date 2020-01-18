@@ -7,14 +7,14 @@ $( document ).on('turbolinks:load', function() {
 
   function appendshippingBox(insertHTML){
     var shippingSelectHtml = '';
-    shippingSelectHtml = `<div class="shipping_select_wrapper">
+    shippingSelectHtml = `<div class="shipping-select-wrapper">
                         <h2>配送の方法</h2>
                         <span>必須</span>
                           <select class="exhibition_select_field" name="item[shipping_id]" id="item_shipping_id"><option value="">---</option>
                             ${insertHTML}
                           </select>
                       </div>`;
-    $('.delivery_select_field').append(shippingSelectHtml);
+    $('.delivery-select-field').append(shippingSelectHtml);
   }
 
   $('#item_fee').on('change', function(){
@@ -27,7 +27,7 @@ $( document ).on('turbolinks:load', function() {
         dataType: 'json'
       })
       .done(function(shipping_children){
-        $('.shipping_select_wrapper').remove();
+        $('.shipping-select-wrapper').remove();
         var insertHTML = '';
         shipping_children.forEach(function(shipping){
           insertHTML += appendShippingOption(shipping);
@@ -38,7 +38,7 @@ $( document ).on('turbolinks:load', function() {
         alert('配送方法の取得に失敗しました');
       })
     }else{
-      $('.shipping_select_wrapper').remove();
+      $('.shipping-select-wrapper').remove();
     }
   })
 

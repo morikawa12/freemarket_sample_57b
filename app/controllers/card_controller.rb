@@ -1,5 +1,4 @@
 class CardController < ApplicationController
-
   before_action :authenticate_user!, only: [:new, :pay, :delete, :show]
 
   def new

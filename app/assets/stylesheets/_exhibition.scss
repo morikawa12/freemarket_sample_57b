@@ -1,10 +1,10 @@
-.exhibition_wrapper{
+.exhibition-wrapper{
   height: 100%;
   width: 100%;
   background-color: #f5f5f5;
 }
 
-.exhibition_header{
+.exhibition-header{
   height: 128px;
   width: 100%;
   position: relative;
@@ -18,7 +18,7 @@
   }
 }
 
-.exhibition_field{
+.exhibition-field{
   width: 100%;
   height: 100%;
   height: 100%;
@@ -33,7 +33,7 @@
   }
 }
 
-.exhibition_title h1{
+.exhibition-title h1{
   text-align: center;
   font-size: 22px;
   padding: 32px 0;
@@ -42,7 +42,7 @@
   border-bottom:solid 1px #f5f5f5;
 }
 
-.exhibition_sell_box{
+.exhibition-sell-box{
   padding: 40px;
   border-bottom:solid 1.5px #f5f5f5;
   display: flow-root;
@@ -54,7 +54,7 @@
 }
 
 
-.exhibition_sell_box__title{
+.exhibition-sell-box__title{
   & h2{
     font-weight: bold;
     font-size: 16px;
@@ -76,7 +76,7 @@
 }
 
 
-#image_upload_field{
+#image-upload-field{
   height: 162px;
   width: 18%;
   background-color: #f5f5f5;
@@ -93,7 +93,7 @@
   }
 }
 
-.image_upload_field__edit-btn{
+.image-upload-field__edit-btn{
   height: 45px;
   width: 50%;
   background-color: black;
@@ -110,7 +110,7 @@
   }
 }
 
-.image_upload_field__delete-btn{
+.image-upload-field__delete-btn{
   height: 45px;
   width: 50%;
   background-color: red;
@@ -129,7 +129,7 @@
   display: none;
 }
 
-.exhibition_sell_box__right{
+.exhibition-sell-box__right{
   float: right;
   width: 400px;
   & h2{
@@ -176,7 +176,7 @@
   font-weight: bold;
 }
 
-.exhibition_sell_box__left{
+.exhibition-sell-box__left{
   float: left;
   & a{
     width: 14px;
@@ -196,12 +196,12 @@
   }
 } 
 
-.exhibition_drop_upload_wrapepr{
+.exhibition-drop-upload-wrapepr{
   width: 100%;
   height: 162px;
 }
 
-.exhibition_drop_upload_box{
+.exhibition-drop-upload-box{
   width: 100%;
   height: 160px;
   background-color: #f5f5f5;
@@ -217,22 +217,22 @@
   }
 }
 
-.exhibition_drop_upload_box2{
+.exhibition-drop-upload-box2{
   width: 80%;
   display: none;
 }
 
-.exhibition_drop_upload_box3{
+.exhibition-drop-upload-box3{
   width: 60%;
   display: none;
 }
 
-.exhibition_drop_upload_box4{
+.exhibition-drop-upload-box4{
   width: 40%;
   display: none;
 }
 
-.exhibition_drop_upload_box5{
+.exhibition-drop-upload-box5{
   width: 20%;
   display: none;
 }
@@ -278,7 +278,7 @@
 }
 
 
-.exhibition_edit_prev {
+.exhibition-edit-prev {
   height: 162px;
   width: 18%;
   background-color: #f5f5f5;
@@ -319,15 +319,15 @@
   cursor: pointer;
 }
 
-.category_wrapper{
+.category-wrapper{
   margin-bottom: 40px;
 }
 
-.size_select_wrapper{
+.size-select-wrapper{
   margin-top: 40px;
 }
 
-.shipping_select_wrapper{
+.shipping-select-wrapper{
   margin-top: 40px;
 }
 
@@ -345,7 +345,7 @@
   cursor: pointer;
 }
 
-.brand_input_field{
+.brand-input-field{
   display: none;
   margin-bottom: 40px;
   & span{
@@ -377,13 +377,13 @@
   box-sizing: border-box;
 }
 
-.exhibition_price_box_left{
+.exhibition-price-box-left{
   float: left;
   line-height: 48px;
 }
 
 
-.exhibition_price_box_right{
+.exhibition-price-box-right{
   float: right;
   display: inline-flex;
   & p{
@@ -450,7 +450,7 @@
   margin: 8px 0 0;
 }
 
-.exhibition_footer{
+.exhibition-footer{
   width: 456px;
   height: 220px;
   margin: 0 auto;

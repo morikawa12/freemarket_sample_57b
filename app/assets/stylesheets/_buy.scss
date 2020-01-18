@@ -1,4 +1,4 @@
-.exhibition_buy_content{
+.exhibition-buy-content{
   padding: 24px 16px 48px;
   text-align: center;
   border-bottom: solid 1px #f5f5f5;
@@ -13,7 +13,7 @@
   }
 }
 
-.exhibition_buy_item{
+.exhibition-buy-item{
   display: inline-block;
   margin-left: 16px;
   vertical-align: top;
@@ -34,7 +34,7 @@
   }
 }
 
-.buy_price_table{
+.buy-price-table{
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -42,13 +42,13 @@
   font-weight: bold;
 }
 
-.buy_accordion_table{
+.buy-accordion-table{
   margin: 24px 0;
   text-align: left;
   &__check{
     & input {
       display: none;
-      &:checked + .point_check_button{
+      &:checked + .point-check-button{
         border-color: transparent;
         background: #0099e8;
         
@@ -62,7 +62,7 @@
   }
 }
 
-.point_check_button{
+.point-check-button{
   width: 20px;
   height: 20px;
   border-radius: 2px;
@@ -78,11 +78,11 @@
   }
 }
 
-.buy_accordion__parent{
+.buy-accordion__parent{
   display: none;
 }
 
-.buy_info_table{
+.buy-info-table{
   padding: 24px 0;
   border-top: 1px solid #f5f5f5;
   text-align: left;
@@ -117,7 +117,7 @@
   }
 }
 
-.buy_button_table{
+.buy-button-table{
   padding: 24px 0;
   border-top: 1px solid #f5f5f5;
   & button{
@@ -131,19 +131,19 @@
   }
 }
 
-.buy_accordion__parent{
+.buy-accordion__parent{
   margin-top: 16px;
   padding: 16px;
   background: #fafafa;
   text-align: left;
 }
 
-.buy_accordion__child{
+.buy-accordion__child{
   margin-bottom: 16px;
   & input{
     margin-right: 5px;
     display: none;
-    &:checked + .point_radio_button{
+    &:checked + .point-radio-button{
       border: 0;
       border: 6px solid #0099e8;
       box-sizing: border-box;
@@ -158,7 +158,7 @@
 }
 
 
-.point_radio_button{
+.point-radio-button{
   width: 20px;
   height: 20px;
   border: 1px solid #ccc;
@@ -170,7 +170,7 @@
   display: inline-block;
 }
 
-.buy_accordion__child2 input{
+.buy-accordion__child2 input{
   height: 48px;
   width: 100%;
   padding: 10px 16px 8px;
