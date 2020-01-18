@@ -1,17 +1,10 @@
 = render partial: 'items/exhibit_btn'
-.header
-  = render 'items/header'
-.headers
-  .header2
-    .header2__l
-      .header2__l__l 
-        =link_to 'メルカリ','https://www.mercari.com/jp/'
-      .header2__l__r ＞
-    .header2__c  
-      .header2__c__l
-        =link_to 'マイページ','https://www.mercari.com/jp/mypage' 
-      .header2__c__r ＞
-    .header2__r  プロフィール
+= render 'items/header'
+%nav.bread-crumbs
+  %ul
+    %li.itemscope
+      - breadcrumb :profile
+      = render "layouts/breadcrumbs"
 .profile__allo
   .profile__all
     .profile__container

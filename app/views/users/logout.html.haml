@@ -1,5 +1,9 @@
 = render partial: 'header'
-= render partial: 'mypage-bread-crumbs'
+%nav.bread-crumbs
+  %ul
+    %li.itemscope
+      - breadcrumb :logout
+      = render "layouts/breadcrumbs"
 
 .logout-section
   = render partial: 'side-bar'

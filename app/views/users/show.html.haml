@@ -1,5 +1,9 @@
 = render partial: 'header'
-= render partial: 'mypage-bread-crumbs'
+%nav.bread-crumbs
+  %ul
+    %li.itemscope
+      - breadcrumb :mypage
+      = render "layouts/breadcrumbs"
 = render partial: 'items/exhibit_btn'
 
 .l-container-clearfix

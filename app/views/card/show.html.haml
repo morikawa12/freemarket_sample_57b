@@ -1,5 +1,9 @@
-= render partial: 'items/header'
-= render partial: 'users/mypage-bread-crumbs'
+= render partial: 'layouts/header'
+%nav.bread-crumbs
+  %ul
+    %li.itemscope
+      - breadcrumb :payment
+      = render "layouts/breadcrumbs"
 = render partial: 'items/exhibit_btn'
       
 .l-container-clearfix
@@ -31,4 +35,4 @@
         
   
   = render partial: 'users/side-bar'
-= render partial: 'items/footer'
+= render partial: 'layouts/footer'
