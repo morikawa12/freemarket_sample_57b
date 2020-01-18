@@ -5,6 +5,7 @@ $(function() {
                 href="/category/${child.id}">${child.name}</a>`;
     return html;
   }
+
   $(".category_list").hide();
   
   $(function() {
@@ -30,7 +31,7 @@ $(function() {
       children.forEach(function (child) {
         var html = buildChildHTML(child);
         $(".children_list").append(html);
-      })
+      });
     });
   });
 
