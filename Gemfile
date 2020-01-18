@@ -98,3 +98,4 @@ gem 'active_hash'
 gem 'rails-i18n'
 gem 'gon'
 gem 'payjp'
+gem "gretel"
