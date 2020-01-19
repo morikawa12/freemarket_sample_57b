@@ -174,7 +174,7 @@ class ItemsController < ApplicationController
       
       @card = Card.find_by(user_id: current_user.id)
       if @card.blank?
-
+        session[:id] = params[:id]
       else
         #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
         Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
