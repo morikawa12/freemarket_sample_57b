@@ -116,12 +116,13 @@
             着払い
 
     .item-detail-content__change-box
-      .item-detail-content__change-box__edit
-        =link_to "商品の編集", edit_item_path(@item.id)
-      %p or
-      %button 出品を一旦停止する
-      .item-detail-content__change-box__delete
-        = link_to 'この商品を削除する', item_path(@item.id), method: :delete, data: { confirm: '本当に削除しますか？' }
+      -if @item.user.id == current_user.id
+        .item-detail-content__change-box__edit
+          =link_to "商品の編集", edit_item_path(@item.id)
+        %p or
+        %button 出品を一旦停止する
+        .item-detail-content__change-box__delete
+          = link_to 'この商品を削除する', item_path(@item.id), method: :delete, data: { confirm: '本当に削除しますか？' }
 
     .item-show-content__comment
       .item-show-comment

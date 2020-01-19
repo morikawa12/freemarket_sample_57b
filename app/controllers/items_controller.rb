@@ -103,41 +103,50 @@ class ItemsController < ApplicationController
   
   
   def edit
-    @parent = Category.find(@item.category_id).parent.parent.id
-    @child = Category.find(@item.category_id).parent.parent.children
-    @grand_child = Category.find(@item.category_id).parent.children
-    @shipping = Shipping.find(@item.shipping_id).parent.children
-    @shipping_select = Shipping.find(@item.shipping_id)
-    @images =  @item.images
-    if @item.size_id != nil
-    @size = Size.find(@item.size_id).parent.children
-    @select_size = Size.find(@item.size_id)
+    if @item.user.id == current_user.id && @item.product_status == nil
+      @parent = Category.find(@item.category_id).parent.parent.id
+      @child = Category.find(@item.category_id).parent.parent.children
+      @grand_child = Category.find(@item.category_id).parent.children
+      @shipping = Shipping.find(@item.shipping_id).parent.children
+      @shipping_select = Shipping.find(@item.shipping_id)
+      @images =  @item.images
+      if @item.size_id != nil
+      @size = Size.find(@item.size_id).parent.children
+      @select_size = Size.find(@item.size_id)
+      else
+        return
+      end
     else
-      return
+      redirect_to root_path
     end
-
-
   end
 
   def update
+    if @item.user_id == current_user.id && @item.product_status == nil
 
-    if params[:images_id] != nil #パラメーターでimages_idが送られてきたら
-      remove_images_at_index(params[:images_id])
+      if params[:images_id] != nil #パラメーターでimages_idが送られてきたら
+        if params[:images_id].length == @item.images.length
+          redirect_to edit_item_path(@item.id)
+        else
+          remove_images_at_index(params[:images_id])
+        end
+      else
+        if @item.update!(item_params)
+          redirect_to root_path
+        else
+          render :edit
+        end
+      end
+
     else
-      
-    end
-
-
-    if @item.update!(item_params)
       redirect_to root_path
-    else
-      render :edit
     end
-
   end
 
   def detail
-
+    # unless @item.user == current_user
+    #   redirect_to root_path
+    # end
   end
 
   def destroy
@@ -145,7 +154,7 @@ class ItemsController < ApplicationController
       @item.destroy
       redirect_to item_management_user_path(current_user.id)
     else
-      redirect_to :back , alert: '削除できません'
+      redirect_to root_path , alert: '削除できません'
     end
   end
 
@@ -188,7 +197,7 @@ class ItemsController < ApplicationController
 
   def pay
     
-    if @item.product_status == nil
+    if @item.product_status == nil && @item.user.id != current_user.id
       card = Card.find_by(user_id: current_user.id)
       Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
       Payjp::Charge.create(
