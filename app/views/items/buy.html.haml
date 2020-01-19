@@ -63,7 +63,7 @@
                   -if @card.blank?
                     = fa_icon 'plus-circle'
                     %span
-                      =link_to '登録してください', new_card_path
+                      =link_to '登録してください', new_card_path, data: {"turbolinks" => false}
                   - else
                     %p クレジットカード
                     .buy-info-table__info__num
