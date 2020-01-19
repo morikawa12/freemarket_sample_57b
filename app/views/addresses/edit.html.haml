@@ -1,17 +1,11 @@
 = render partial: 'items/exhibit_btn'
 .header
   = render 'items/header'
-.headers
-  .header2
-    .header2__l
-      .header2__l__l 
-        =link_to 'メルカリ','https://www.mercari.com/jp/'
-      .header2__l__r ＞
-    .header2__c  
-      .header2__c__l
-        =link_to 'マイページ','https://www.mercari.com/jp/mypage' 
-      .header2__c__r ＞
-    .header2__r  本人確認の登録
+%nav.bread-crumbs
+  %ul
+    %li.itemscope
+      - breadcrumb :identity_infomation
+      = render "layouts/breadcrumbs"
 .mypage__allo
   .mypage__all
     .mypage__container

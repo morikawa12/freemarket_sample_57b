@@ -1,5 +1,9 @@
-= render partial: 'header'
-= render partial: 'mypage-bread-crumbs'
+= render partial: 'layouts/header'
+%nav.bread-crumbs
+  %ul
+    %li.itemscope
+      - breadcrumb :exhibiting
+      = render "layouts/breadcrumbs"
 = render partial: 'items/exhibit_btn'
         
 .l-container-clearfix
@@ -46,4 +50,4 @@
         = fa_icon 'chevron-right'
 
   = render partial: 'side-bar'
-= render partial: 'items/footer'
+= render partial: 'layouts/footer'

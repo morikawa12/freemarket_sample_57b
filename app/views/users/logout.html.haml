@@ -1,5 +1,9 @@
 = render partial: 'header'
-= render partial: 'mypage-bread-crumbs'
+%nav.bread-crumbs
+  %ul
+    %li.itemscope
+      - breadcrumb :logout
+      = render "layouts/breadcrumbs"
 
 .logout-section
   = render partial: 'side-bar'
@@ -9,4 +13,4 @@
         = link_to destroy_user_session_path, method: :delete do
           .btn-logout{type: "submit"} ログアウト
 
-= render partial: 'items/footer'
+= render partial: 'layouts/footer'

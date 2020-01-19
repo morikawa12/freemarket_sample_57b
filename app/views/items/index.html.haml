@@ -1,7 +1,7 @@
 .wrapper
   = render partial: 'items/exhibit_btn'
 
-  = render partial: 'header'
+  = render partial: 'layouts/header'
 
 
   .slick_container
@@ -85,5 +85,5 @@
         %ul.items-list-image-block
           =render partial:'items/items', collection: @nike, as: 'items'
 
-  = render partial: 'footer'
+  = render partial: 'layouts/footer'
 
