@@ -1,5 +1,5 @@
 class AddressesController < ApplicationController
-
+  before_action :authenticate_user!, only: [:edit, :update]
 
   def edit
     @profile = Profile.find(current_user.id)
