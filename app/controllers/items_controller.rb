@@ -187,6 +187,7 @@ class ItemsController < ApplicationController
   end
 
   def pay
+    
     if @item.product_status == nil
       card = Card.find_by(user_id: current_user.id)
       Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
