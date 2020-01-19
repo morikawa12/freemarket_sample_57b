@@ -1,5 +1,10 @@
 = render partial: 'layouts/header'
-
+%nav.bread-crumbs
+  %ul
+    %li.itemscope
+      - breadcrumb :product
+      = render "layouts/breadcrumbs"
+= render partial: 'items/exhibit_btn'
 .item-detail-content
   .item-detail-content__box
     .item-show-content__box

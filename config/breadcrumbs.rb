@@ -7,8 +7,13 @@ crumb :mypage do
 end
 
 crumb :exhibiting do
-  link "出品した商品-出品中", root_path
+  link "出品した商品-出品中", item_management_user_path(params[:id])
   parent :mypage
+end
+
+crumb :product do
+  link "商品出品画面", root_path
+  parent :exhibiting
 end
 
 crumb :profile do
@@ -28,5 +33,10 @@ end
 
 crumb :logout do
   link "ログアウト", root_path
+  parent :mypage
+end
+
+crumb :credit do
+  link "クレジットカード情報入力", root_path
   parent :mypage
 end
