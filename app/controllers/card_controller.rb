@@ -19,6 +19,7 @@ class CardController < ApplicationController
       ) #念の為metadataにuser_idを入れましたがなくてもOK
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
+        #もし購入画面から登録されたら
         if session[:id] != ""
           redirect_to buy_item_path(session[:id])
           session[:id].clear
