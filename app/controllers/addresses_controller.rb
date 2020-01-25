@@ -1,5 +1,5 @@
 class AddressesController < ApplicationController
-
+  before_action :authenticate_user!, only: [:edit, :update]
 
   def edit
     @profile = Profile.find(current_user.id)
@@ -12,7 +12,7 @@ class AddressesController < ApplicationController
       redirect_to root_path
     else
       render :edit
-   end
+  end
     
   end
   

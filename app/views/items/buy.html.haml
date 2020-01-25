@@ -96,7 +96,8 @@
                         =current_user.profile.family_name
                         =current_user.profile.first_name
               .buy-button-table
-                .buy-button-table__button  
+                .buy-button-table__button 
+                -unless @item.user.id == current_user.id
                   = form_tag(action: :pay, method: :post, disabled: :disabled) do
                     -if @card.blank? || @address.blank?
                       %button{:disabled => "disabled"} 購入する
