@@ -36,8 +36,8 @@ https://gyazo.com/4ebdf971b6584a9b719a2bc50a0603ab
 |nickname|string|null: false, add_index, unique: true|
 |email|string|null: false, add_index, unique: true|
 |password|string|null: false|
-|provider|string|　sns認証用
-|uid|string|　sns認証用
+|provider|string|
+|uid|string|
 
 ### Association
 - has_one :profile, dependent: :destroy
@@ -46,7 +46,6 @@ https://gyazo.com/4ebdf971b6584a9b719a2bc50a0603ab
 - has_many :items, through: :deals
 - has_many :likes, dependent: :destroy
 - has_many :comments, dependent: :destroy
-- has_many :user_evaluations, dependent: :destroy
 - has_many :buyer_deals, class_name: 'Deal', foreign_key: :buyer_id, dependent: :destroy
 - has_many :seller_deals, class_name: 'Deal', foreign_key: :seller_id, dependent: :destroy
 
