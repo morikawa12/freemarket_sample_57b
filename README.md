@@ -57,9 +57,7 @@ https://gyazo.com/4ebdf971b6584a9b719a2bc50a0603ab
 |first_name|string|null: false|
 |family_name_kana|string|null: false|
 |first_name_kana|string|null: false|
-|birth_year|integer|null: false|
-|birth_month|integer|null: false|
-|birth_day|integer|null: false|
+|birthday|date|null: false|
 |mobile_phone|string|null: false, unique: true|
 |profile_image|text|null: true|
 |profile_content|text|null: true|
