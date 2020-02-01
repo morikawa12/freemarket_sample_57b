@@ -85,7 +85,7 @@ https://gyazo.com/4ebdf971b6584a9b719a2bc50a0603ab
 |city|string|null: false|
 |block|string|null: false|
 |building|string|null: true|
-|home_phone|string|n
+|home_phone|string|
 |user_id|references|null: false, foreign_key: true|
 
 ### Association
