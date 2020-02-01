@@ -27,7 +27,7 @@ URL http://52.193.209.45/
 Ruby 2.5.1  
 Rails 5.2.3
 
-## ER図
+## 初期ER図案
 https://gyazo.com/4ebdf971b6584a9b719a2bc50a0603ab
 
 ## usersテーブル
