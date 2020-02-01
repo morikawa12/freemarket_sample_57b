@@ -36,8 +36,8 @@ https://gyazo.com/4ebdf971b6584a9b719a2bc50a0603ab
 |nickname|string|null: false, add_index, unique: true|
 |email|string|null: false, add_index, unique: true|
 |password|string|null: false|
-|provider|string|
-|uid|string|
+|provider|string|null: true|
+|uid|string|null: true|
 
 ### Association
 - has_one :profile, dependent: :destroy
@@ -85,7 +85,7 @@ https://gyazo.com/4ebdf971b6584a9b719a2bc50a0603ab
 |city|string|null: false|
 |block|string|null: false|
 |building|string|null: true|
-|home_phone|string|
+|home_phone|string|null: true|
 |user_id|references|null: false, foreign_key: true|
 
 ### Association
