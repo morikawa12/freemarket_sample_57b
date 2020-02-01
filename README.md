@@ -1,27 +1,30 @@
-# README
+# 要旨
+プログラミングスクールTECH::EXPERTの最終課題で某フリーマーケットサービスのクローンサイトを作成しました。約2ヶ月間、４人チームでアジャイル開発を行いました。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# アプリケーション概要
+接続先情報
+  URL http://52.193.209.45/
+    ・ID: admin
+    ・Pass: 2222
+テスト用アカウント等
+  ・購入者用
+      メールアドレス:  hogehoge@gmail.com
+      パスワード: hogehoge21
+    購入用カード情報
+      番号：4242424242424242
+      期限：03/20
+      ユーザー名：hogehoge21
+      セキュリティコード：333
+  ・出品者用
+    メールアドレス名: guest@gmail.com
+    パスワード: Guest2222
 
-Things you may want to cover:
+### ドメイン/SSLサーバー証明書未取得のためFacebook, GoogleのSNS認証は使用不可
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 使用環境
+Ruby 2.5.1
+Ruby on Rails 5.2.3
 
 ## ER図
 https://gyazo.com/4ebdf971b6584a9b719a2bc50a0603ab
@@ -37,6 +40,7 @@ https://gyazo.com/4ebdf971b6584a9b719a2bc50a0603ab
 ### Association
 - has_one :profile, dependent: :destroy
 - has_one :address, dependent: :destroy
+- has_one :card, dependent: :destroy
 - has_many :items, through: :deals
 - has_many :likes, dependent: :destroy
 - has_many :comments, dependent: :destroy
@@ -57,45 +61,36 @@ https://gyazo.com/4ebdf971b6584a9b719a2bc50a0603ab
 |mobile_phone|string|null: false, unique: true|
 |profile_image|text|null: true|
 |profile_content|text|null: true|
-|card_number|string|null: true|
-|expiration_month|string|null: true|
-|expiration_year|string|null: true|
-|security_code|string|null: true|
 |user_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user, inverse_of: :profile, optional: true
 
+## cardsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|customer_id|references|null: false, foreign_key: true|
+|card_id|references|null: false|
+|user_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user, optional: true
+
 ## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|relative_family_name|string|null: false|
-|relative_first_name|string|null: false|
-|relative_family_name_kana|string|null: false|
-|relative_first_name_kana|string|null: false|
 |zip_code|string|null: false|
 |prefecture_id|integer|null: false|
 |city|string|null: false|
 |block|string|null: false|
 |building|string|null: true|
-|home_phone|string|null: false|
+|home_phone|string|n
 |user_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user, inverse_of: :address, optional: true
 - belongs_to_active_hash :prefecture
 
-## user_evaluationsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|evaluation|integer|null: false|
-|seller_id|references|null: false, foreign_key: true|
-|buyer_id|references|null: false, foreign_key: true
-
-### Association
-- belongs_to :deal
-- belongs_to :rater, class_name: 'User'
-- belongs_to :ratee, class_name: 'User'
 
 ## itemsテーブル
 

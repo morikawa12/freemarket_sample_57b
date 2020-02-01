@@ -17,7 +17,6 @@
         = f.text_field :email, placeholder: "メールアドレス", class: 'login__form__input'
         = f.password_field :password, placeholder: "パスワード", class: 'login__form__input' 
       .login__menu__tag
-        = recaptcha_tags  callback: 'recaptchaCallbackFunction'
         = f.submit "ログイン", class: "btn-red btn-default"
       .login__menu__text
         = link_to "パスワードをお忘れの方", "", class: "login__form__text"
