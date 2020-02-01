@@ -4,8 +4,8 @@
 # アプリケーション概要
 ### 接続先情報    
 URL http://52.193.209.45/    
-・ID: admin  
-・Pass: 2222  
+　・ID: admin  
+　・Pass: 2222  
 ・テスト用アカウント等  
 　- 購入者用  
 　　メールアドレス:  hogehoge@gmail.com  
