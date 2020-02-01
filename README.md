@@ -36,6 +36,8 @@ https://gyazo.com/4ebdf971b6584a9b719a2bc50a0603ab
 |nickname|string|null: false, add_index, unique: true|
 |email|string|null: false, add_index, unique: true|
 |password|string|null: false|
+|provider|string|　sns認証用
+|uid|string|　sns認証用
 
 ### Association
 - has_one :profile, dependent: :destroy
