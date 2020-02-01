@@ -23,7 +23,7 @@ URL http://52.193.209.45/
 
 
 # 使用環境
-Ruby 2.5.1
+Ruby 2.5.1  
 Ruby on Rails 5.2.3
 
 ## ER図
